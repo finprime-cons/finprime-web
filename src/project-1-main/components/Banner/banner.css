@@ -1,0 +1,44 @@
+
+
+.banner-container {
+    width: 100%;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  
+  
+  .left-section h4 {
+    text-align: left;
+    color: white;
+  }
+  
+  .right-section p {
+    text-align: center;
+    color: white;
+  }
+  
+  .second-row {
+    background-color: white;
+    padding: 40px 20px;
+  }
+  
+  .left-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+ 
+  
