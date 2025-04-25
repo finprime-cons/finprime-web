@@ -7,7 +7,7 @@ import Zain_Rabab from '../../images/team/Zain_Rabab.jpg';
 import Ishmail_martin_Muga from '../../images/team/Ishmail_martin_Muga.jpg';
 import Siljo_Devassy from '../../images/team/Siljo_Devassy.jpg';
 import Mohammed_Fayyaz_Majeed from '../../images/team/Mohammed_Fayyaz_Majeed.jpg';
-
+import Althaf from '../../images/team/althaf.jpeg';
 const Servicesection8 = () => {
   const [showMore, setShowMore] = useState(false);
 
@@ -30,6 +30,14 @@ const Servicesection8 = () => {
     },
     {
       id: 3,
+      image: Althaf,
+      alt: 'Mohamed Althaf',
+      name: 'Mohamed Althaf',
+      position: ' Head of Business Development & Operations Excellence',
+
+    },
+    {
+      id: 4,
       image: Zain_Rabab,
       alt: 'C.A Zain Rabab',
       name: 'C.A Zain Rabab',
@@ -37,7 +45,7 @@ const Servicesection8 = () => {
 
     },
     {
-      id: 4,
+      id: 5,
       image: Ishmail_martin_Muga,
       alt: 'Ishmail martin Muga',
       name: 'Ishmail martin Muga',
@@ -45,21 +53,14 @@ const Servicesection8 = () => {
 
     },
     {
-      id: 5,
+      id: 6,
       image: Siljo_Devassy,
       alt: 'Siljo Devassy',
       name: 'Siljo Devassy',
       position: 'Manager- Finance and Tax',
 
     },
-    {
-      id: 6,
-      image: Mohammed_Fayyaz_Majeed,
-      alt: 'Mohammed Fayyaz Majeed',
-      name: 'Mohammed Fayyaz Majeed',
-      position: 'Digital Marketing Manager',
 
-    },
     {
       id: 7,
       image: Hiba_Farook,
@@ -74,6 +75,14 @@ const Servicesection8 = () => {
       alt: 'Murshina A',
       name: 'Murshina A',
       position: 'Account Manager- Accounting Service',
+
+    },
+    {
+      id: 9,
+      image: Mohammed_Fayyaz_Majeed,
+      alt: 'Mohammed Fayyaz Majeed',
+      name: 'Mohammed Fayyaz Majeed',
+      position: 'Digital Marketing Manager',
 
     },
   ];
