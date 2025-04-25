@@ -12,7 +12,7 @@ import Servicesection8 from './Servicesection8'
 import Servicesection9 from './Servicesection9'
 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon'
 import BelowFooter from '../Footer/BelowFooter'
-
+import Servicesectionnew from './ServicesectionNewtext'
 const Accountingandfinancialreporting = () => {
   return (
     <HelmetProvider>
@@ -35,6 +35,7 @@ const Accountingandfinancialreporting = () => {
         <Navbar />
         <Servicesection2 />
         <Servicesection3 />
+        <Servicesectionnew />
         <Servicesection4 />
         <Servicesection5 />
         <Servicesection6 />
