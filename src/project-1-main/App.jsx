@@ -47,7 +47,7 @@ import BPost from './components/Blog/BlogPost/BPost';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import PageWrapper from './components/PageTransitionWrapper/PageWrapper';
 
-import Certificates from './components/cerificates/certifcate';
+import PartnerWithItem from './components/PartnerWith/partnerwith';
 
 
 
@@ -58,7 +58,7 @@ const Home = () => {
       <Navbar />
       <Bannerslider />
       <Text1 />
-      <Certificates />
+      <PartnerWithItem />
       <Text3 />
       <Servicecard />
       <Banner />
