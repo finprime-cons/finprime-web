@@ -279,3 +279,19 @@ html {
     background-size: 120% 100%;
   }
 }
+
+@keyframes scrollImages {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  display: inline-flex;
+  gap: 100px;
+  animation: scrollImages 20s linear infinite;
+}
