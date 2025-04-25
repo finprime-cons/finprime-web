@@ -448,9 +448,11 @@ const Navbar = () => {
                                                 <ul className="px-4 py-4 text-black md:px-28 md:py-16">
                                                     <h4 className='font-semibold md:text-3xl font-khula'>Services</h4>
                                                     {Services.map((index) => (
-                                                        <Link to={index.link} key={index.title} className='flex w-full py-2 cursor-pointer text-md font-raleway'>
+                                                        <p
+                                                            // to={index.link} 
+                                                            key={index.title} className='flex w-full py-2 cursor-pointer text-md font-raleway'>
                                                             <span className='hover-underline-animation'>{index.headtitle}</span>
-                                                        </Link>
+                                                        </p>
                                                     ))}
                                                 </ul>
                                             )}
