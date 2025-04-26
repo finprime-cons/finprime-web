@@ -66,6 +66,10 @@ export default {
           '0%': { opacity: '0', transform: 'translateX(50px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
+        scrollImages: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         rotate: 'rotate 2s linear infinite',
@@ -78,6 +82,7 @@ export default {
         fadeinbottom: 'fadeinbottom 1.5s ease-out forwards',
         fadeintop: 'fadeintop 0.5s ease-out forwards',
         fadeinbottomadj: 'fadeinbottomadj 1.5S ease-out forwards',
+        scrollImages: 'scrollImages 40s linear infinite',
       },
     },
   },
