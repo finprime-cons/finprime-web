@@ -3,11 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 
 
 const DropDown = () => {
-  
+
   const [activeIndex, setActiveIndex] = useState(null);
 
 
-  const [hasFadedIn, setHasFadedIn] = useState(false); 
+  const [hasFadedIn, setHasFadedIn] = useState(false);
   const fadeElementRef = useRef(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const DropDown = () => {
           }
         });
       },
-      { threshold: 0.1 } 
+      { threshold: 0.1 }
     );
 
     const currentElement = fadeElementRef.current;
@@ -41,33 +41,36 @@ const DropDown = () => {
 
   const Rquestion = [
     {
-      question: "Fast Decision",
-      answer: "React is a JavaScript library for building user interfaces.",
+      question: "Client-Centric, Insight-Driven",
+      answer: "From your very first interaction with FinPrime, our focus is on you. We listen carefully—not just to what you say, but also to what your business numbers reveal. Whether you’re a startup seeking efficient bookkeeping or a growing enterprise navigating complex tax structures, we take the time to understand both the minute details and major pain points. Your concerns become our mission.",
     },
     {
-      question: "Rollover Loan",
-      answer: "State is a built-in object that stores property values that belong to a component.",
+      question: "Deep Dive Diagnostics",
+      answer: "Before we propose solutions, we conduct a thorough diagnostic of your existing financial processes, tax structure, internal controls, and compliance status. This deep-dive analysis helps us pinpoint inefficiencies, potential risks, and opportunities for optimization—ensuring that no aspect is overlooked."
+    }, {
+      question: "Solutions with Clarity",
+      answer: "Based on our findings, we build bespoke solutions that align with your business objectives and regulatory requirements. Whether it’s implementing a streamlined accounting system, offering proactive tax advisory, or supporting with AML compliance, we design every service around your exact needs—not just what’s standard in the market.",
     },
     {
-      question: "No Credit Checks",
-      answer: "Props are arguments passed into React components, allowing for dynamic data rendering.",
+      question: "Working with you, not just for you",
+      answer: "Our team of experienced professionals maintains open lines of communication throughout the engagement, ensuring clarity, accountability, and smooth implementation. We explain the why behind every decision so that you’re always informed and confident in the way forward",
     },
     {
-      question: "Simple Process",
-      answer: "The virtual DOM is a lightweight copy of the actual DOM, allowing React to optimize rendering.",
+      question: "Beyond Compliance—Towards Growth",
+      answer: "Our goal is not just to keep your business compliant but to help it grow. By transforming financial data into actionable insights, we empower you to make smarter decisions. Monthly MIS reports, cash flow forecasts, and performance dashboards are some of the tools we provide to keep you in control and ahead of the curve.",
     },
     {
-      question: "No Hidden Costs",
-      answer: "You can manage forms in React using controlled components or by using hooks.",
+      question: "Your Strategic CFO Partner",
+      answer: "At FinPrime, we don’t view ourselves as just your consultants—we strive to be your long-term partners. As your business evolves, so do our services. We remain adaptive, proactive, and committed to supporting your journey every step of the way.",
     },
   ];
 
 
   const toggleQuestion = (index) => {
     if (activeIndex === index) {
-      setActiveIndex(null); 
+      setActiveIndex(null);
     } else {
-      setActiveIndex(index); 
+      setActiveIndex(index);
     }
   };
 
@@ -82,7 +85,7 @@ const DropDown = () => {
 
 
 
-  
+
   //  number to Roman numeral
   const toRoman = (num) => {
     const romanNumerals = [
@@ -113,23 +116,23 @@ const DropDown = () => {
 
   return (
     <div
-    ref={fadeElementRef}
-    className=" flex  items-center justify-center bg-gray-200 pb-24">
+      ref={fadeElementRef}
+      className=" flex  items-center justify-center bg-gray-200 pb-24">
       <div className={`space-y-4 w-[60%] ${hasFadedIn ? 'animate-fadeinbottom' : ''}`} >
         {Rquestion.map((item, index) => (
           <div key={index} className=" pb-2 mb-2">
             <div className="flex items-center">
               <div className="text-xs md:text-sm cursor-pointer mt-7 text-black mr-2"
-               onClick={() => toggleQuestion(index)}>
+                onClick={() => toggleQuestion(index)}>
                 {`${toRoman(index + 1)}`}
               </div>
               <div className="text-sm  sm:text-[32px] font-semibold sm:ml-6 -mb-4 mt-5 text-left
               hover:animate-fadeInRightsmall
                 text-black"
-               onClick={() => toggleQuestion(index)}>
+                onClick={() => toggleQuestion(index)}>
                 {item.question}
               </div>
-            
+
             </div>
             <hr className="border-black my-2" />
             {activeIndex === index && (

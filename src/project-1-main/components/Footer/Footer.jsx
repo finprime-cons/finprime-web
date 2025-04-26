@@ -98,11 +98,11 @@ const Footer = () => {
 
 
         {/* -------------------------------------------------------client section---------------------------------------------------------*/}
-        <div className="flex flex-col w-full pt-4 pb-4 lg:flex-row p-[20px] xl:p-[68px]">
+        <div className="flex flex-col w-full pt-4 pb-4 lg:flex-row  lg:mx-0">
           <div
             className="download_company_profile"
             style={{
-              height: '300px',
+
               position: 'relative',
               backgroundColor: 'white',
             }}
@@ -113,18 +113,18 @@ const Footer = () => {
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
+                objectFit: 'fit',
               }}
             />
 
             <button
-              className="pl-4 pr-4 rounded-sm shadow-md text-[16px] tracking-[1px] transition-all duration-300 ease-out bg-gradient-to-r from-brandBlue to-cyan-500 text-white"
+              className="pl-4 pr-4 rounded-sm shadow-md text-[14px] tracking-[1px] transition-all duration-300 ease-out bg-gradient-to-r from-brandBlue to-cyan-500 text-white"
               style={{
                 position: 'absolute',
                 bottom: '25px',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '70%',
+                width: '60%',
                 height: '45px',
                 border: '6px solid grey',
               }}
@@ -137,7 +137,7 @@ const Footer = () => {
             </button>
           </div>
 
-          <div className="flex items-center w-full py-4 lg:w-2/3 lg:ml-10 lg:p-4">
+          <div className="flex lg:w-2/3 lg:ml-10 mt-10 sm:mt-10 lg:mt-0 " >
             {loading ? (
               <p className="text-center">Loading testimonials...</p>
             ) : error ? (
@@ -145,30 +145,40 @@ const Footer = () => {
             ) : testimonials.length === 0 ? (
               <p className="text-center">No testimonials available.</p>
             ) : (
-              <div className="w-full">
+              <div className="w-full bg-white">
                 {/* Display only the current testimonial */}
-                <div key={testimonials[currentTestimonialIndex].id} className="xl:pl-4 lg:pl-6">
-                  <h4 className="font-semibold text-lg lg:text-[22px] pb-6 font-khula lg:pb-6">
+                <div key={testimonials[currentTestimonialIndex].id} className="mt-10">
+                  {/* <h4 className="font-semibold text-lg lg:text-[22px] pb-6 font-khula lg:pb-6">
                     Client Say
-                  </h4>
-                  <div className="lg:flex ">
+                  </h4> */}
+                  <div className="lg:flex  ">
                     <img
                       src={`https://finprimeconsulting.com/${testimonials[currentTestimonialIndex].image_path}`}
                       alt={testimonials[currentTestimonialIndex].author_name}
-                      className="object-cover object-top w-20 h-20 mx-auto rounded-full lg:mx-0"
+                      className="object-cover object-top w-80 h-80 mx-auto  lg:mx-0"
                     />
-                    <p className="mt-3 font-raleway font-medium pl-5 pr-6 lg:pr-20 text-sm leading-[24px] lg:text-[16px]">
-                      {testimonials[currentTestimonialIndex].content}
-                    </p>
+
+                    <div className="flex flex-col justify-between   items-center sm:items-center md:items-center lg:items-start"
+                      style={{ marginTop: '90px', marginLeft: '20px', marginRight: '20px' }}
+                    >
+                      <p className="text-gray-500 text-center sm:text-center md:text-center lg:text-left ">
+                        {testimonials[currentTestimonialIndex].content}
+                      </p>
+                      <div className="mb-8 sm:mb-6 flex flex-col  items-center  sm:items-center md:items-center lg:items-start  text-center md:text-center lg:text-left">
+                        <p className="font-semibold w-1/2 text-lg text-gray-500">
+                          {testimonials[currentTestimonialIndex].author_name}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {testimonials[currentTestimonialIndex].topic}
+                        </p>
+                      </div>
+                    </div>
+
                   </div>
                   {/* User's bottom name and position */}
-                  <div className="items-center mt-6 lg:flex lg:justify-between">
-                    <div className="flex items-center space-x-2">
-                      <p className="font-semibold w-1/2 text-[16px]">{testimonials[currentTestimonialIndex].author_name}</p>
-                      <p className="text-[14px] text-gray-500">{testimonials[currentTestimonialIndex].topic}</p>
-                    </div>
-                    {/* Navigation icons */}
-                    <div className="flex items-center justify-center mt-5 mr-5 space-x-4 lg:mt-0">
+                  <div className="items-center mt-6 w-full lg:flex lg:justify-center">
+                    <div className="flex flex-row items-center justify-center space-x-4 
+                  lg:space-x-4 lg:mt-0 lg:mr-10 mb-10">
                       <button
                         className="p-2 text-white rounded-full bg-brandBlue hover:bg-cyan-500 hover:text-black"
                         onClick={handlePrev}
@@ -183,6 +193,8 @@ const Footer = () => {
                       </button>
                     </div>
                   </div>
+
+
                 </div>
               </div>
             )}
