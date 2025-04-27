@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import img from '../../../images/Banner/banner2.jpg';
-
+import america from '../../../images/country/america.jpg';
+import uk from '../../../images/country/uk.jpg';
+import uae from '../../../images/country/uae.jpg';
 const Bannerrimg = () => {
 
   const [hasFadedIn, setHasFadedIn] = useState(false);
@@ -60,10 +62,9 @@ const Bannerrimg = () => {
   };
 
   const cardData = [
-    { title: 'Bridging Loans', description: 'This is the description for Card 1This is the description for Card 1.' },
-    { title: 'Development Finance', description: 'This is the description for CardThis is the description for Card 1.' },
-    { title: 'Intermediaries', description: 'This is the description for Card This is the description for Card 1' },
-
+    { image: america, title: 'United States of Amarica', description: 'income taxes, payroll taxes, state and local sales taxes, federal and state excise taxes, and local property taxes.' },
+    { image: uk, title: 'United Kingdom', description: 'individual income taxes, corporate income taxes, social insurance taxes, taxes on goods and services, and property taxes' },
+    { image: uae, title: 'United Arab Emirates', description: 'However, it levies 5 per cent value added Tax on the purchase of goods and services,' },
   ];
 
 
@@ -133,12 +134,12 @@ const Bannerrimg = () => {
 
 
               {/* Top Border */}
-              <div className={`absolute top-0 left-40 right-0 border-t-4 
+              {/* <div className={`absolute top-0 left-40 right-0 border-t-4 
                  border-white ${hoveredIndex === index ? 'opacity-0' : ''}  transition-opacity 
                duration-300`}></div>
               <div className={`absolute top-0 left-0 right-40 border-t-4 
                  border-white ${hoveredIndex === index ? 'opacity-0' : ''} transition-opacity 
-               duration-300 `}></div>
+               duration-300 `}></div> */}
 
 
 
@@ -146,20 +147,20 @@ const Bannerrimg = () => {
 
 
               {/* Bottom Border */}
-              <div className={`absolute bottom-0 left-40 right-0 border-b-4
+              {/* <div className={`absolute bottom-0 left-40 right-0 border-b-4
                  border-white ${hoveredIndex === index ? 'opacity-0' : ''} transition-opacity 
                duration-300`}></div>
               <div className={`absolute bottom-0 left-0 right-40 border-b-4
                  border-white ${hoveredIndex === index ? 'opacity-0' : ''} transition-opacity 
-               duration-300`}></div>
+               duration-300`}></div> */}
 
 
 
 
               {/* Left Border */}
-              <div className={`absolute inset-y-0 left-0 border-l-4 border-white
+              {/* <div className={`absolute inset-y-0 left-0 border-l-4 border-white
                 ${hoveredIndex === index ? 'opacity-0' : ''} transition-opacity 
-               duration-300`}></div>
+               duration-300`}></div> */}
 
 
 
@@ -167,20 +168,27 @@ const Bannerrimg = () => {
 
 
               {/* Right Border */}
-              <div className={`absolute inset-y-0 right-0 border-r-4 border-white
+              {/* <div className={`absolute inset-y-0 right-0 border-r-4 border-white
                 ${hoveredIndex === index ? 'opacity-0' : ''} transition-opacity 
-               duration-300`}></div>
-              <h3 className="text-4xl md:text-6xl lg:text-9xl font-bold mb-2 text-center">M</h3>
+               duration-300`}></div> */}
+              <div
+                key={index}
+                className="partners-img"
+                style={{
+                  backgroundImage: `url(${card.image})`,
+                }}
+              ></div>
             </div>
             <h4 className='text-xs sm:text-xs md:text-[15px] lg:text-xl xl:text-3xl font-semibold pt-7'>{card.title}
-              <span className='text-[8px] lg:text-xs font-light pl-2'>{`${toRoman(index + 1)}`}.</span></h4>
+              {/* <span className='text-[8px] lg:text-xs font-light pl-2'>{`${toRoman(index + 1)}`}.</span> */}
+            </h4>
             <p className="text-white mb-6 pt-5 text-[10px] sm:text-xs md:text-sm">
               {card.description}
             </p>
-            <button className={` border-2  px-4 py-2 text-[10px] md:text-md
+            {/* <button className={` border-2  px-4 py-2 text-[10px] md:text-md
              ${hoveredIndex === index ? 'bg-white text-black' : 'bg-transparent text-white'} transition `}>
               find out more
-            </button>
+            </button> */}
           </div>
         ))}
       </div>
