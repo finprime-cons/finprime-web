@@ -62,8 +62,8 @@ const Bannerrimg = () => {
   };
 
   const cardData = [
-    { image: america, title: 'United States of Amarica', description: 'income taxes, payroll taxes, state and local sales taxes, federal and state excise taxes, and local property taxes.' },
-    { image: uk, title: 'United Kingdom', description: 'individual income taxes, corporate income taxes, social insurance taxes, taxes on goods and services, and property taxes' },
+    { image: america, title: 'United States of Amarica', description: 'Income taxes, payroll taxes, state and local sales taxes, federal and state excise taxes, and local property taxes.' },
+    { image: uk, title: 'United Kingdom', description: 'Individual income taxes, corporate income taxes, social insurance taxes, taxes on goods and services, and property taxes' },
     { image: uae, title: 'United Arab Emirates', description: 'However, it levies 5 per cent value added Tax on the purchase of goods and services,' },
   ];
 
