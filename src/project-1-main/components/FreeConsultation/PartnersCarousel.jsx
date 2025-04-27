@@ -7,6 +7,10 @@ import SS_LOOTH from "../../images/partners/SS_LOOTH.png";
 import Careem from "../../images/partners/Careem.png";
 import DARKEN_SWEETS from "../../images/partners/DARKEN_SWEETS.png";
 import GARNER from "../../images/partners/GARNER.png";
+import image1 from '../../images/partners/partner1.png';
+import image2 from '../../images/partners/partner2.png';
+import image3 from '../../images/partners/partner3.png';
+import image4 from '../../images/partners/partner4.png';
 
 const PartnersCarousel = () => {
   const images = [
@@ -17,6 +21,10 @@ const PartnersCarousel = () => {
     Careem,
     DARKEN_SWEETS,
     GARNER,
+    image1,
+    image2,
+    image3,
+    image4
   ];
 
   // Duplicate the images multiple times for infinite scroll
