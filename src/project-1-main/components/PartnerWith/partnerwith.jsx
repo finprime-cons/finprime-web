@@ -16,6 +16,7 @@ import sharjahAirportFreeZone from '../../images/partner/sharjah-airport-free-zo
 import sharjahMediaCity from '../../images/partner/sharjah-media-city.jpg';
 import sharjahPublishingCity from '../../images/partner/sharjah-publishing-city-free-zone.jpg';
 import uaqFreeZone from '../../images/partner/uaq-free-trade-zone.jpg';
+import "./partnerwith.css";
 
 const partnerWithItem = () => {
     const imageList = [
@@ -34,6 +35,7 @@ const partnerWithItem = () => {
         sharjahPublishingCity,
         uaqFreeZone,
         ajmanFreeZone,
+
     ];
 
     const [hasFadedIn, setHasFadedIn] = useState(false);
@@ -62,7 +64,8 @@ const partnerWithItem = () => {
             }
         };
     }, [hasFadedIn]);
-
+    const duplicateCount = 200;
+    const carouselImages = Array(duplicateCount).fill([...imageList]).flat();
     return (
         <div
             ref={fadeElementRef}
@@ -71,21 +74,20 @@ const partnerWithItem = () => {
                 We are authorized Partners with,
             </h1>
 
-            <div
-                className="w-full mt-[50px] md:mt-[100px] mx-auto overflow-hidden"
-                style={{ animation: 'slideIn 1s ease-out' }}
-            >
-                <div className="flex gap-10 p-4 bg-white animate-scrollImages">
-                    {[...imageList, ...imageList].map((imageSrc, index) => (
-                        <img
-                            key={index}
-                            src={imageSrc}
-                            alt={`Partner logo ${index + 1}`}
-                            className="h-[100px] md:h-[200px] w-[100px] md:w-[200px] object-cover rounded shrink-0"
-                        />
-                    ))}
-                </div>
-
+            <div className="overflow-hidden bg-white">
+                <section className="partners">
+                    <div className="partners-img-container">
+                        {carouselImages.map((image, index) => (
+                            <div
+                                key={index}
+                                className="partners-img"
+                                style={{
+                                    backgroundImage: `url(${image})`,
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );
