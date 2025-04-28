@@ -185,10 +185,10 @@ const Bannerrimg = () => {
             <p className="text-white mb-6 pt-5 text-[10px] sm:text-xs md:text-sm">
               {card.description}
             </p>
-            {/* <button className={` border-2  px-4 py-2 text-[10px] md:text-md
+            <button className={` border-2  px-4 py-2 text-[10px] md:text-md
              ${hoveredIndex === index ? 'bg-white text-black' : 'bg-transparent text-white'} transition `}>
               find out more
-            </button> */}
+            </button>
           </div>
         ))}
       </div>

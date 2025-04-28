@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon'
 import BelowFooter from '../Footer/BelowFooter';
-
+import BottomDropDown from './BottomDropDown/BottomDropDown';
 
 
 const RightSolutions = () => {
@@ -36,6 +36,7 @@ const RightSolutions = () => {
         <Rtext />
         <DropDown />
         <Bannerrimg />
+        <BottomDropDown />
         <div className='bg-black'>
           <Rinput />
           <Footer />
