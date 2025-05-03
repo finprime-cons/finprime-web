@@ -24,6 +24,7 @@
     "nodemailer": "^6.9.16",
     "quill": "^2.0.2",
     "react-router-dom": "^6.28.0",
+    "slugify": "^1.6.6",
     "validator": "^13.12.0"
   }
 }
