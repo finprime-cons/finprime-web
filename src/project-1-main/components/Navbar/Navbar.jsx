@@ -434,11 +434,15 @@ const Navbar = () => {
                                                             <li key={sub.subid}>
                                                                 <Link
                                                                     to={`/services/${Services[selectedIndexOpen].title.replace(/\s+/g, '-')}/${sub.keyword.replace(/\s+/g, '-')}`}
-                                                                    state={{ "service_id": Services[selectedIndexOpen].id, "subtitles_id": sub.subid }}
+                                                                    state={{
+                                                                        service_id: Services[selectedIndexOpen].id,
+                                                                        subtitles_id: sub.subid
+                                                                    }}
                                                                     className="mb-1 ml-8 text-lg text-white hover-underline-animation"
                                                                     onClick={handleLinkClick}
-
-                                                                >{sub.headsubtitle}</Link>
+                                                                >
+                                                                    {sub.headsubtitle}
+                                                                </Link>
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -836,6 +840,8 @@ const Navbar = () => {
                                                                 className=""
                                                             >
                                                                 <Link
+
+
                                                                     to={`/services/${service.title.replace(/\s+/g, '-')}/${subservice.keyword.replace(/\s+/g, '-')}`}
                                                                     state={{ "service_id": service.id, "subtitles_id": subservice.subid }}
                                                                     className="mb-2 text-lg font-medium text-left text-white uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation font-khula lg:text-lg"

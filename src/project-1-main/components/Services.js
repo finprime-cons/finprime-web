@@ -196,7 +196,7 @@ export const Services = [
                 subid: 4,
                 headsubtitle: "In Country Value Program (ICV)",
                 subtitle: "in-country-value-program",
-                keyword: "in-country-value-program",
+                keyword: "in-country-value-program-in-uae",
                 subcontent: ` 
                     <p>
                     At FinPrime, we recognize the growing importance of the In-Country Value (ICV) program in fostering sustainable economic development and business growth in the UAE. The ICV initiative aims to encourage companies operating in the region to increase their contribution to the local economy through sourcing goods and services, creating jobs, and enhancing skills within the UAE. As part of our comprehensive service offerings, we provide expert support for businesses navigating the ICV process, helping them to maximize their ICV score and align with the goals of the UAE's economic diversification strategy.
@@ -276,7 +276,7 @@ export const Services = [
                 subid: 3,
                 headsubtitle: "Management Reports",
                 subtitle: "management-reports",
-                keyword: "accounting-and-bookkeeping-services-in-uae",
+                keyword: "management-reports-accounting-and-bookkeeping-services-in-uae",
                 subcontent: "Unlock the power of tailored insights with our Customized Management Reports, designed specifically for investors and decision-makers. We transform complex data into clear, actionable intelligence, presented in multiple formats, including dynamic dashboards. Whether you need a high-level overview or an in-depth analysis, our reports equip you with the essential information to drive strategic decisions and enhance performance. Elevate your investment strategy with data-driven clarity and precision",
                 subcontentbottom: `  `,
 
@@ -287,7 +287,7 @@ export const Services = [
                 subid: 4,
                 headsubtitle: "Finance officer for DIFC and ADGM regulated entities",
                 subtitle: "finance-officer-for-difc-and-adgm-regulated-entities",
-                keyword: "finance-officer-for-difc-and-adgm-regulated-entities",
+                keyword: "finance-officer-for-difc-and-adgm-regulated-entities-in-uae",
                 subcontent: "In accordance with regulations in the Abu Dhabi Global Market (ADGM) and the Dubai International Financial Centre (DIFC), all regulated entities must appoint a Finance Officer to oversee compliance with financial reporting obligations, including quarterly and annual submissions. For many organizations, particularly those with limited personnel or those just starting out, outsourcing this critical role proves to be a cost-efficient strategy.Our experienced finance professionals specialize in providing comprehensive support tailored to your firm’s unique needs. We can serve as your designated Finance Officer or offer the necessary expertise to bolster an internal team member who holds this position.",
                 subcontentbottom: `  `,
             },
@@ -419,7 +419,7 @@ export const Services = [
                 subid: 7,
                 headsubtitle: "Inventory verification",
                 subtitle: "inventory-verification",
-                keyword: "inventory-verification",
+                keyword: "inventory-verification-in-uae",
                 subcontent: "Ensure accuracy and accountability with our Fixed Inventory Verification and Stock Audits service. We meticulously assess your inventory levels and processes to identify discrepancies, enhance efficiency, and minimize losses. Our experienced team employs advanced techniques to provide you with a clear picture of your stock position, ensuring compliance and boosting your operational confidence. Stay ahead of inventory challenges and make informed decisions with our thorough and reliable audits.",
                 subcontentbottom: "",
             },
@@ -449,7 +449,7 @@ export const Services = [
                 subid: 2,
                 headsubtitle: "International Taxation",
                 subtitle: "international-taxation",
-                keyword: "international-taxation-services-in-dubai-uae",
+                keyword: "international-taxation-services-in-uae",
                 subcontent: "In today’s interconnected world, navigating international taxation can be a complex endeavor. Our dedicated team specializes in helping businesses understand and comply with the diverse tax obligations across borders. Whether you're expanding into new markets or optimizing your global tax strategy, we provide tailored solutions that align with your business goals.From cross-border transactions to compliance with international tax treaties, we ensure you are well-informed and prepared to tackle any challenges. With our expertise, you can minimize risks, enhance operational efficiency, and seize growth opportunities on a global scale. Let us be your trusted partner in mastering international taxation.",
                 subcontentbottom: "",
             },
@@ -459,7 +459,7 @@ export const Services = [
                 subid: 3,
                 headsubtitle: "Transfer Pricing",
                 subtitle: "transfer-pricing",
-                keyword: "transfer-pricing",
+                keyword: "transfer-pricing-services-in-uae",
                 subcontent: "Transfer pricing doesn’t have to be a source of stress for your multinational operations. Our expert team specializes in navigating the intricate world of transfer pricing to ensure compliance with international regulations while optimizing your tax strategy.We provide comprehensive solutions, including documentation, policy development, and benchmarking analysis, tailored to your unique business model. By aligning your pricing strategies with global standards, we help you mitigate risks and enhance transparency, paving the way for sustainable growth. Trust us to guide you through the complexities of transfer pricing, empowering your business to thrive in a competitive landscape.",
                 subcontentbottom: "",
             },
@@ -567,7 +567,7 @@ export const Services = [
                 subid: 1,
                 headsubtitle: "AML Compliance",
                 subtitle: "aml-compliance",
-                keyword: "aml-compliance",
+                keyword: "aml-compliance-services-in-uae",
                 subcontent: ` 
                     <p>
                     In today’s interconnected and rapidly changing global economy, businesses face an increasing risk of becoming entangled in money laundering activities. Money laundering not only poses a significant threat to the financial integrity of organizations but also risks damaging their reputation and subjecting them to severe financial penalties. To address these risks, businesses are required to adhere to stringent Anti-Money Laundering (AML) regulations designed to prevent the illicit flow of funds through legitimate financial systems. At FinPrime, we offer comprehensive AML compliance solutions that are tailored to meet the unique needs of your business, helping you navigate the complexities of regulatory requirements and safeguarding your operations against the threats posed by financial crime.
@@ -641,7 +641,7 @@ export const Services = [
                 subid: 1,
                 headsubtitle: "Mainland Company Incorporation",
                 subtitle: "mainland-company-incorporation",
-                keyword: "company-incorporation-services-in-uae",
+                keyword: "mainland-company-incorporation-services-in-uae",
                 subcontent: "Unlock your business potential in Dubai with our expert Mainland Company Incorporation services. We guide you through the entire process, ensuring compliance with local regulations while helping you establish a strong foothold in the vibrant UAE market. Our team of experienced professionals will assist you in selecting the right business structure, securing necessary licenses, and navigating the paperwork, making your journey to success seamless and efficient. Whether you’re a startup or an established enterprise, we’re here to turn your vision into reality. Let’s build your future in the heart of Dubai!",
                 subcontentbottom: "",
             },
@@ -651,7 +651,7 @@ export const Services = [
                 subid: 2,
                 headsubtitle: "Free zone Business setup",
                 subtitle: "free-zone-business-setup",
-                keyword: "free-zone-business-setup",
+                keyword: "free-zone-business-setup-in-uae",
                 subcontent: "Free zone companies are businesses established in specially designated areas that offer exceptional benefits like 100% foreign ownership, tax exemptions, and simplified regulations. These zones are designed to attract investment and foster innovation, making them ideal for entrepreneurs and companies looking to thrive in a dynamic business environment. In the UAE, free zones are key drivers of economic growth and diversification.",
                 subcontentbottom: "",
             },
@@ -723,7 +723,7 @@ export const Services = [
                 subid: 5,
                 headsubtitle: "Feasibility Studies and Project Report",
                 subtitle: "feasibility-studies-and-project-report",
-                keyword: "feasibility-studies-and-project-report",
+                keyword: "feasibility-studies-and-project-report-in-uae",
                 subcontent: "A feasibility study is an analysis that evaluates the viability of a proposed project by examining market demand, financial projections, technical requirements, and regulatory factors. It identifies potential risks and benefits, providing stakeholders with a clear assessment of the project's likelihood of success. Accompanied by a project report, which details objectives, scope, methodology, and implementation steps, these documents guide decision-making and help determine whether to pursue the project",
                 subcontentbottom: ""
             },
@@ -823,3 +823,152 @@ export const Services = [
         ],
     },
 ];
+
+export const metaDetails = {
+    'external-audit-services-in-dubai-uae': {
+        title: 'External Audit Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Ensure financial transparency with expert External Audit Services in Dubai, UAE, by FinPrime Consulting. Get accurate reporting, compliance, and risk assessment for your business.',
+        keywords: 'External Audit Services in Dubai, UAE',
+    },
+    'internal-audit-services-in-dubai-uae': {
+        title: 'Internal Audit Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Enhance business efficiency with expert Internal Audit Services in Dubai, UAE, by FinPrime Consulting. Ensure compliance, risk management, and financial accuracy.',
+        keywords: 'Internal Audit Services in Dubai, UAE',
+    },
+    'forensic-audit-services-in-dubai-uae': {
+        title: 'Forensic Audit Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Uncover financial irregularities with expert Forensic Audit Services in Dubai, UAE, by FinPrime Consulting. Ensure transparency, fraud detection, and compliance for your business.',
+        keywords: 'Forensic Audit Services in Dubai, UAE',
+    },
+    'in-country-value-program-in-uae': {
+        title: 'In Country Value Program (ICV) in UAE | FinPrime Consulting',
+        description: 'We provide expert support for businesses navigating the ICV process, helping them to maximize their ICV score and align with the goals of the UAE\'s economic diversification strategy.',
+        keywords: 'In Country Value Program (ICV) in UAE',
+    },
+    'accounting-services-in-dubai': {
+        title: 'Accounting Services in Dubai | Best Bookkeeping & Accounting Company',
+        description: 'Get expert Accounting Services in Dubai with FinPrime. Ensure accurate financial management, compliance, and growth for your business with our professional solutions.',
+        keywords: 'Accounting Services in Dubai',
+    },
+    'top-financial-reporting-services-in-dubai': {
+        title: 'Top Financial Reporting Services in Dubai | FinPrime Consulting',
+        description: 'Get accurate and reliable Financial Reporting Services in Dubai with FinPrime Consulting. Ensure compliance, transparency, and informed decision-making for your business.',
+        keywords: 'Top Financial Reporting Services in Dubai',
+    },
+    'management-reports-accounting-and-bookkeeping-services-in-uae': {
+        title: 'Management Reports Accounting and Bookkeeping Services in UAE | FinPrime Consulting',
+        description: 'Get expert Management Reports Accounting and Bookkeeping Services in UAE with FinPrime. Ensure accurate financial management, compliance, and growth for your business.',
+        keywords: 'Management Reports Accounting and Bookkeeping Services in UAE',
+    },
+    'finance-officer-for-difc-and-adgm-regulated-entities-in-uae': {
+        title: 'Finance officer for DIFC and ADGM regulated entities in UAE | FinPrime Consulting',
+        description: 'Finance officer for DIFC and ADGM regulated entities in UAE, Abu Dhabi Global Market (ADGM) and the Dubai International Financial Centre (DIFC), all regulated entities must appoint a Finance Officer to oversee compliance with financial reporting obligations, including quarterly and annual submissions.',
+        keywords: 'Finance officer for DIFC and ADGM regulated entities in UAE',
+    },
+    'payroll-management-services-in-dubai-uae': {
+        title: 'Best Payroll Management Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Get expert Payroll Management Services in Dubai, UAE with FinPrime. Ensure accurate payroll processing, compliance, and seamless salary management for your business.',
+        keywords: 'Payroll Management Services in Dubai, UAE',
+    },
+    'fixed-asset-management-solutions-in-uae': {
+        title: 'Fixed Asset Management Solutions in UAE | FinPrime Consulting',
+        description: 'Optimize your assets with Fixed Asset Management Solutions in UAE by FinPrime Consulting. Ensure accurate tracking, compliance, and efficient asset utilization.',
+        keywords: 'Fixed Asset Management Solutions in UAE',
+    },
+    'inventory-verification-in-uae': {
+        title: 'Inventory Verification in UAE | FinPrime Consulting',
+        description: 'Ensure accuracy and accountability with our Inventory Verification in UAE and Stock Audits service. We meticulously assess your inventory levels and processes to identify discrepancies, enhance efficiency, and minimize losses.',
+        keywords: 'Inventory verification in UAE',
+    },
+    'corporate-taxation-services-in-dubai': {
+        title: 'Corporate Taxation Services in Dubai | FinPrime Consulting',
+        description: 'Get expert Corporate Taxation Services in Dubai with FinPrime Consulting. Ensure compliance, optimize tax planning, and streamline your business finances effectively.',
+        keywords: 'Corporate Taxation Services in Dubai',
+    },
+    'international-taxation-services-in-uae': {
+        title: 'International Taxation Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Optimize your global tax strategy with International Taxation Services in Dubai, UAE, by FinPrime Consulting. Ensure compliance and maximize tax efficiency for your business.',
+        keywords: 'International Taxation Services in Dubai, UAE',
+    },
+    'transfer-pricing-services-in-uae': {
+        title: 'Transfer Pricing Services in UAE | FinPrime Consulting',
+        description: 'Transfer pricing doesn’t have to be a source of stress for your multinational operations. Our expert team specializes in navigating the intricate world of transfer pricing to ensure compliance with international regulations while optimizing your tax strategy.',
+        keywords: 'Transfer Pricing Services in UAE',
+    },
+    'vat-accounting-services-in-uae': {
+        title: 'VAT Accounting Services in UAE | FinPrime Consulting',
+        description: 'Optimize your finances with expert VAT Accounting Services in UAE by FinPrime Consulting. Ensure compliance, accuracy, and hassle-free VAT management for your business.',
+        keywords: '⁠VAT Accounting services in UAE',
+    },
+    'top-customs-tax-solutions-in-uae': {
+        title: 'Top Customs Tax Solutions in UAE | FinPrime Consulting',
+        description: 'Get the best Customs Tax Solutions in UAE with FinPrime Consulting. Ensure smooth customs clearance, compliance, and cost-effective tax management for your business.',
+        keywords: 'Top Customs Tax Solutions in UAE',
+    },
+    'best-excise-tax-services-in-dubai-uae': {
+        title: 'Best Excise Tax Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Ensure compliance with the Best Excise Tax Services in Dubai, UAE, by FinPrime Consulting. Get expert guidance on excise tax registration, filing, and management.',
+        keywords: 'Best Excise Tax Services in Dubai, UAE',
+    },
+    'best-tax-residency-certificate-in-dubai-uae': {
+        title: 'Best Tax Residency Certificate in Dubai, UAE | FinPrime Consulting',
+        description: 'Tax Residency Certificate (TRC) is an official document issued by the UAE Federal Tax Authority (FTA) that certifies an individual or business entity as a tax resident of the United Arab Emirates (UAE).',
+        keywords: 'Best Tax Residency Certificate in Dubai, UAE',
+    },
+    'aml-compliance-services-in-uae': {
+        title: 'AML Compliance Services in UAE | FinPrime Consulting',
+        description: 'To address these risks, businesses are required to adhere to stringent Anti-Money Laundering (AML) regulations designed to prevent the illicit flow of funds through legitimate financial systems.',
+        keywords: 'AML Compliance Services in UAE',
+    },
+    'best-outsourcing-company-in-dubai': {
+        title: 'Best Outsourcing Company in Dubai, UAE | FinPrime Consulting',
+        description: 'FinPrime – The Best Outsourcing Company in Dubai. Streamline your business operations with expert financial and business solutions tailored for growth and efficiency.',
+        keywords: 'Best Outsourcing company in Dubai',
+    },
+    'mainland-company-incorporation-services-in-uae': {
+        title: 'Company Incorporation Services in UAE | FinPrime Consulting',
+        description: 'Set up your business with ease using Company Incorporation Services in UAE by FinPrime Consulting. Get expert guidance on legal compliance and business registration.',
+        keywords: 'Mainland Company Incorporation Services in UAE',
+    },
+    'free-zone-business-setup-in-uae': {
+        title: 'Free Zone Business Setup in UAE | FinPrime Consulting',
+        description: 'Free zone companies are businesses established in specially designated areas that offer exceptional benefits like 100% foreign ownership, tax exemptions, and simplified regulations for Free zone Business setup in UAE.',
+        keywords: 'Free zone Business setup in UAE',
+    },
+    'company-liquidation-services-in-dubai-uae': {
+        title: 'Company Liquidation Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Liquidation is the formal process through which a company ceases its operations and legally dissolves its structure, settling all financial and legal obligations before its closure. It is a multifaceted procedure that involves selling off assets, paying off debts, and distributing any remaining funds to shareholders.',
+        keywords: 'Company Liquidation Services in Dubai, UAE',
+    },
+    'best-business-valuation-services-in-uae': {
+        title: 'Best Business Valuation Services in UAE | FinPrime Consulting',
+        description: 'Get accurate and reliable Business Valuation Services in UAE with FinPrime Consulting. Assess your company’s worth with expert insights for strategic decision-making.',
+        keywords: 'Best Business Valuation Services in UAE',
+    },
+    'feasibility-studies-and-project-report-in-uae': {
+        title: 'Feasibility Studies and Project Report in UAE | FinPrime Consulting',
+        description: 'A feasibility study is an analysis that evaluates the viability of a proposed project by examining market demand, financial projections, technical requirements, and regulatory factors.',
+        keywords: 'Feasibility Studies and Project Report in UAE',
+    },
+    'due-diligence-services-in-dubai-uae': {
+        title: 'Due Diligence Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Ensure informed business decisions with expert Due Diligence Services in Dubai, UAE, by FinPrime Consulting. Get comprehensive risk assessment and financial analysis.',
+        keywords: 'Due Diligence Services in Dubai, UAE',
+    },
+
+    'hr-consulting-advisory-services-in-dubai': {
+        title: 'HR Consulting & Advisory Services in Dubai | FinPrime Consulting',
+        description: 'Optimize your workforce with expert HR Consulting & Advisory Services in Dubai from FinPrime Consulting. Enhance HR strategies, compliance, and business efficiency.',
+        keywords: 'HR Consulting & Advisory Services in Dubai',
+    },
+    'talent-acquisition-services-in-dubai-uae': {
+        title: 'Talent Acquisition Services in Dubai, UAE | FinPrime Consulting',
+        description: 'Find top talent with expert Talent Acquisition Services in Dubai, UAE, by FinPrime Consulting. Streamline hiring and build a strong workforce for your business success.',
+        keywords: 'Talent Acquisition Services in Dubai, UAE',
+    },
+    'recruiting-process-outsourcing-services-in-uae': {
+        title: 'RPO (Recruiting Process Outsourcing) Services in UAE | FinPrime Consulting',
+        description: 'Optimize your hiring with RPO (Recruiting Process Outsourcing) Services in UAE by FinPrime Consulting. Streamline recruitment and build a talented workforce efficiently.',
+        keywords: 'RPO (Recruiting Process Outsourcing) Services in UAE',
+    },
+};

@@ -8,14 +8,14 @@ import 'quill/dist/quill.snow.css';
 
 const BPost = () => {
   const { slug } = useParams();
+  console.log(slug)
   const location = useLocation();
-  const { id } = location.state ?? {};
+  var { id } = location.state ?? {};
   const [allBlogs, setAllBlogs] = useState([]); // Renamed blogs to allBlogs
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const contentRefs = useRef([]);
-
   // Fetch Blogs
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -23,16 +23,17 @@ const BPost = () => {
         const response = await axios.get('https://finprimeconsulting.com/api/blogs');
         const sortedBlogs = response.data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
         setAllBlogs(sortedBlogs);
-
-        const selectedBlog = sortedBlogs.find((b) => b.id === parseInt(id));
-        setSelectedBlog(selectedBlog);
+        const responseBlog = await axios.get(`https://finprimeconsulting.com/api/blogs/${slug}`);
+        id = responseBlog.data.id
+        setSelectedBlog(responseBlog.data);
+        console.log(selectedBlog)
       } catch (err) {
         setError('Error fetching blogs. Please try again later.');
       } finally {
         setLoading(false);
       }
     };
-
+    console.log(selectedBlog)
     fetchBlogs();
   }, [id]);
 
@@ -168,7 +169,7 @@ const BPost = () => {
             </p>
           </div>
           <img
-            src={`https://finprimeconsulting.com/${selectedBlog.image_path}`}
+            src={`${selectedBlog.image_path}`}
             alt={selectedBlog.title}
             className="w-full h-80 object-cover shadow-md animate-fadeinbottom"
           />
@@ -205,7 +206,7 @@ const BPost = () => {
                 className="relative overflow-hidden shadow-lg transition-transform transform hover:scale-105 h-[300px]"
               >
                 <Link
-                  to={`/blog/${recentBlog.topic.replace(/\s+/g, '-')}`}
+                  to={`/blogs/${recentBlog.blog_slug}`}
                   state={{ id: recentBlog.id }}
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >

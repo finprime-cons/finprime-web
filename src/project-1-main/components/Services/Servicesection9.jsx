@@ -7,18 +7,18 @@ const Servicesection9 = () => {
       {/* First Column */}
       <div className="w-full md:w-1/2    justify-center text-left md:px-10 md:py-16 lg:px-24">
         <h4 className="text-4xl font-semibold font-khula tracking-[1px] mb-4 ">Careers at Finprime</h4>
-        <p className="text-md sm:text-[16px] tracking-[1px]  font-raleway mb-4 ">At Finprime, you’ll have the chance to build a career as unique as you are, with 
-            the global scale, support, inclusive culture and technology to become the best version of you.</p>
-        
+        <p className="text-md sm:text-[16px] tracking-[1px]  font-raleway mb-4 ">At Finprime, you’ll have the chance to build a career as unique as you are, with
+          the global scale, support, inclusive culture and technology to become the best version of you.</p>
+
         <h4 className="text-xl font-semibold tracking-[1px]  font-raleway mb-4 ">experienced professionals</h4>
         <span className='mb-4 border-b border-black'></span>
         <h4 className="text-xl font-semibold mb-5 tracking-[1px]  font-raleway sm:mb-0">Students</h4>
-        
+
       </div>
 
       <div className="w-full md:w-1/2 ">
         <img
-          src={FINANCIAL_REPORTING} 
+          src={FINANCIAL_REPORTING}
           alt="Careers at Finprime"
           className="w-full h-full object-cover"
         />

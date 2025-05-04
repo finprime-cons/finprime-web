@@ -91,7 +91,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BPost />} />
+        <Route path="/blogs/:slug" element={<BPost />} />
         <Route path="/rightsolutions" element={<RightSolutions />} />
         <Route path="/contactus" element={<Contact />} />
         <Route path="/offer" element={<Offer />} />
@@ -100,10 +100,9 @@ const App = () => {
             <PageWrapper>
               <Industries />
             </PageWrapper>
-
           } />
         <Route path="/freeconsultation" element={<FreeConsultation />} />
-        <Route path="/services/:subServicetitle/:subServiceTitle"
+        <Route path="/services/:servicetitle/:subServicetitle"
           element={
             <PageTransitionWrapper>
               <Accountingandfinancialreporting />
