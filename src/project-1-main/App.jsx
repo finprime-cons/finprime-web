@@ -9,7 +9,7 @@ import Text4 from './components/Text/Text4';
 import Inputsection from './components/inputsection/Inputsection';
 import Oursection from './components/Oursection/Oursection';
 import Blogsection from './components/Blogsection/Blogsection';
-import Faq from './components/Faq/Faq';
+import Faq from './components/Faq/Faq'; 
 import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About/About';
