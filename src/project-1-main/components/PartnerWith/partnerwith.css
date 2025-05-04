@@ -13,7 +13,7 @@
 .partners-img-container {
     display: flex;
     gap: 70px;
-    animation: slideleft 50s linear infinite;
+    animation: slideleft 100s linear infinite;
     /* Adjust duration for smooth scrolling */
 }
 

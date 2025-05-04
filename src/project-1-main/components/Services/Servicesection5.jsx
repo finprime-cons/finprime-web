@@ -2,14 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Services } from '../Services';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const Servicesection5 = () => {
-  const location = useLocation();
-  const { service_id, subtitles_id } = location.state ?? {};
-  const service = Services.find((s) => s.id === service_id);
-  console.log(service);
-  const subService = service?.subtitles.find((sub) => sub.subid === subtitles_id);
+  const { servicetitle, subServicetitle } = useParams();
+  const service = Services.find((s) =>
+    s.title.replace(/\s+/g, '-') === servicetitle);
+  const subService = service?.subtitles.find((sub) => sub.keyword.replace(/\s+/g, '-') === subServicetitle);
+
+
+  // const location = useLocation();
+  // const { service_id, subtitles_id } = location.state ?? {};
+  // const service = Services.find((s) => s.id === service_id);
+  // console.log(service);
+  // const subService = service?.subtitles.find((sub) => sub.subid === subtitles_id);
   return (
     <div className="mx-w-full h-[160px] mt-16 bg-brandBlue px-5 sm:px-16 flex items-center justify-between
     xl:ml-12 xl:mr-10 lg:ml-10 lg:mr-8 md:mr-6 md:ml-8 ml-6 mr-4">

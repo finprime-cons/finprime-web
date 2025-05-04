@@ -93,7 +93,7 @@ const BList = () => {
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold  p-4">
                   <span className="text-center">{blog.topic}</span>
                   <Link
-                    to={`/blog/${blog.topic.replace(/\s+/g, '-')}`}
+                    to={`/blogs/${blog.blog_slug}`}
                     state={{ id: blog.id }}
                     className="text-blue-400 hover:text-white flex gap-1 mt-2"
                   >

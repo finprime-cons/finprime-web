@@ -12,16 +12,23 @@ const Servicesection4 = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
+  const { servicetitle, subServicetitle } = useParams();
+  const service = Services.find((s) =>
+    s.title.replace(/\s+/g, '-') === servicetitle);
+  const subService = service?.subtitles.find((sub) => sub.keyword.replace(/\s+/g, '-') === subServicetitle);
+
+
   // const { servicetitle, subServicetitle } = useParams();
 
   // // Find the service based on the title
   // const service = Services.find((s) => s.title === servicetitle);
   // const subService = service?.subtitles.find((sub) => sub.subtitle === subServicetitle);
-  const location = useLocation();
-  const { service_id, subtitles_id } = location.state ?? {};
-  const service = Services.find((s) => s.id === service_id);
-  console.log(service);
-  const subService = service?.subtitles.find((sub) => sub.subid === subtitles_id);
+  // const location = useLocation();
+  // const { service_id, subtitles_id } = location.state ?? {};
+  // const service = Services.find((s) => s.id === service_id);
+  // console.log(service);
+  // const subService = service?.subtitles.find((sub) => sub.subid === subtitles_id);
   // If service or sub-service not found, return error message
   if (!service || !subService) {
     return <div className="mt-10 text-xl font-bold text-center text-red-500">Sub-service not found</div>;
@@ -69,7 +76,7 @@ const Servicesection4 = () => {
         ) : (
           currentItems.map((blog) => (
             <Link
-              to={`/blog/${blog.topic.replace(/\s+/g, '-')}`}
+              to={`/blogs/${blog.blog_slug}`}
               state={{ id: blog.id }}
 
               key={blog.id} className="mb-5">
@@ -78,7 +85,7 @@ const Servicesection4 = () => {
                 alt={`Image ${blog.topic}`}
                 className="w-full h-[280px] mb-4"
               />
-              <Link to={`/blog/${blog.topic.replace(/\s+/g, '-')}`}
+              <Link to={`/blogs/${blog.blog_slug}`}
                 state={{ id: blog.id }}
                 className="text-xl font-khula font-semibold sm:text-[22px] tracking-[1px] ">{blog.topic}</Link>
               <p className="hidden mb-2 text-lg font-medium text-gray-700">{blog.subservices}</p> {/* Subtitle */}

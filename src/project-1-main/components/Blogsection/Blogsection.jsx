@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
 
-const BlogCard = ({ title, image, description, id, date }) => {
+const BlogCard = ({ title, image, description, id, date, blog_slug }) => {
   return (
     <div className="relative pt-6 sm:px-0 overflow-hidden w-full lg:w-[420px] xl:w-[600px] 2xl:w-[700px] mx-auto flex flex-col lg:h-full">
       <img
@@ -25,7 +25,7 @@ const BlogCard = ({ title, image, description, id, date }) => {
         <p className="absolute bottom-6 right-2 pr-2 lg:pr-7 text-md text-gray-600">{date}</p>
         <Link
 
-          to={`/blog/${title.replace(/\s+/g, '-')}`}
+          to={`/blogs/${blog_slug}`}
           state={{ id: id }}
           className="absolute bottom-6 mx-4 font-medium left-2 px-8 py-2 text-xs sm:text-[14px] bg-blue-950 font-raleway text-white rounded-full duration-300
            ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500"
@@ -91,6 +91,7 @@ const BlogSection = () => {
                   title={blog.topic}
                   description={DOMPurify.sanitize(blog.content.split(/\s+/).slice(0, 30).join(' '))}
                   id={blog.id}
+                  blog_slug={blog.blog_slug}
                 />
               </div>
             ))

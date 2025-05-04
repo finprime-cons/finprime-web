@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import Servicesection2 from './Servicesection2'
@@ -13,14 +14,26 @@ import Servicesection9 from './Servicesection9'
 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon'
 import BelowFooter from '../Footer/BelowFooter'
 import Servicesectionnew from './ServicesectionNewtext'
+import { metaDetails } from '../Services';
+
+
 const Accountingandfinancialreporting = () => {
+  const { servicetitle, subServicetitle } = useParams();
+
+  const currentMeta = metaDetails[subServicetitle] || {
+    title: 'Finprime Business and Tax Consultancy',
+    description: 'Professional business and tax consultancy services in Dubai by FinPrime. Explore our solutions.',
+    keywords: 'business consultancy, tax consultancy, Dubai services'
+  };
+
+  console.log(currentMeta)
   return (
     <HelmetProvider>
       <div className='relative overflow-hidden'>
         <Helmet>
-          <title>Finprime Business and Tax Consultancy</title>
-          <meta name="description" content="Get in touch with EpicEventz for all your corporate event planning needs. Contact us today!" />
-          <meta name="keywords" content="contact, event planning, corporate events" />
+          <title>{currentMeta.title}</title>
+          <meta name="description" content={currentMeta.description} />
+          <meta name="keywords" content={currentMeta.keywords} />
           <meta name="author" content="EpicEventz" />
           <meta property="og:title" content="Contact Us - EpicEventz" />
           <meta property="og:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />

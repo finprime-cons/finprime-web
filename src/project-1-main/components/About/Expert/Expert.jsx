@@ -7,7 +7,7 @@ import Zain_Rabab from '../../../images/team/Zain_Rabab.jpg';
 import Ishmail_martin_Muga from '../../../images/team/Ishmail_martin_Muga.jpg';
 import Siljo_Devassy from '../../../images/team/Siljo_Devassy.jpg';
 import Mohammed_Fayyaz_Majeed from '../../../images/team/Mohammed_Fayyaz_Majeed.jpg';
-import Althaf from '../../../images/team/althaf.jpeg';
+import Althaf from '../../../images/team/althaf.png';
 
 const cardsData = [
   {
