@@ -32,6 +32,7 @@ const Accountingandfinancialreporting = () => {
       <div className='relative overflow-hidden'>
         <Helmet>
           <title>{currentMeta.title}</title>
+          <meta name="title" content={currentMeta.title} />
           <meta name="description" content={currentMeta.description} />
           <meta name="keywords" content={currentMeta.keywords} />
           <meta name="author" content="EpicEventz" />

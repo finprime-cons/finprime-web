@@ -125,7 +125,7 @@ const Footer = () => {
                 left: '50%',
                 transform: 'translateX(-50%)',
                 width: '60%',
-                height: '45px',
+                height: '60px',
                 border: '6px solid grey',
               }}
 

@@ -70,9 +70,9 @@ const partnerWithItem = () => {
         <div
             ref={fadeElementRef}
             className={` mb-[35px] sm:mt-44 sm:mb-44 lg:mt-54 lg:mb-64 font-khula xl:px-12 lg:px-10 md:px-8 px-6 pt-4 md:space-y-3 ${hasFadedIn ? 'animate-fadeinbottom' : ''}`}>
-            <h1 className='mb-[35px] sm:mb-20 lg:mb-30 text-[34px] sm:text-[50px] md:text-[72px] lg:text-[90px] xl:text-[120px] font-bold text-left leading-tight'>
+            <p className='mb-[35px] sm:mb-20 lg:mb-30 text-[34px] sm:text-[50px] md:text-[72px] lg:text-[90px] xl:text-[120px] font-bold text-left leading-tight'>
                 We are authorized Partners with,
-            </h1>
+            </p>
 
             <div className="overflow-hidden bg-white">
                 <section className="partners">
