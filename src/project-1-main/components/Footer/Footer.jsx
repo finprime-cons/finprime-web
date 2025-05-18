@@ -100,12 +100,7 @@ const Footer = () => {
         {/* -------------------------------------------------------client section---------------------------------------------------------*/}
         <div className="flex flex-col w-full pt-4 pb-4 lg:flex-row  lg:mx-0">
           <div
-            className="download_company_profile"
-            style={{
-
-              position: 'relative',
-              backgroundColor: 'white',
-            }}
+            className="bg-white relative w-full lg:w-[30vw]"
           >
             <img
               src={companyProfileImage}
@@ -113,7 +108,7 @@ const Footer = () => {
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'fit',
+                objectFit: 'fill',
               }}
             />
 
