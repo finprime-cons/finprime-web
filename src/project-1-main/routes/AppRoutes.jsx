@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "../components/About/About";
 import Blog from "../components/Blog/Blog";
-import RightSolutions from "../components/Right-Solutions/RightSolutions";
+import RightSolutions from "../features/RightSolutions/RightSolutions";
 import Contact from "../components/ContactUs/Contact";
 import Offer from "../components/Offer/Offer";
 import FreeConsultation from "../components/FreeConsultation/FreeConsultation";
@@ -67,6 +67,7 @@ const AppRoutes = () => {
       <Route path="/update-blog/:blogId" element={<EditBlog />} />
       <Route
         path="/update-testimonial/:testimonialsId"
+        x
         element={<EditTestimonials />}
       />
       <Route path="/login" element={<Login />} />

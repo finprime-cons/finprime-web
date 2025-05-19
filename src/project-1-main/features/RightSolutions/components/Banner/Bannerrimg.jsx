@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import img from "../../../assets/images/Banner/banner2.jpg";
-import america from "../../../assets/images/country/america.jpg";
-import uk from "../../../assets/images/country/uk.jpg";
-import uae from "../../../assets/images/country/uae.jpg";
+import img from "../../../../assets/images/Banner/banner2.jpg";
+import america from "../../../../assets/images/country/america.jpg";
+import uk from "../../../../assets/images/country/uk.jpg";
+import uae from "../../../../assets/images/country/uae.jpg";
 const Bannerrimg = () => {
   const [hasFadedIn, setHasFadedIn] = useState(false);
   const fadeElementRef = useRef(null);
