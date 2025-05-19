@@ -14,7 +14,7 @@ import Servicesection9 from "./Servicesection9";
 import WhatsAppIcon from "../WhatsAppIcon/WhatsAppIcon";
 import BelowFooter from "../Footer/BelowFooter";
 import Servicesectionnew from "./ServicesectionNewtext";
-import { metaDetails } from "../Services";
+import { metaDetails } from "../../data/services/Services";
 
 const Accountingandfinancialreporting = () => {
   const { servicetitle, subServicetitle } = useParams();

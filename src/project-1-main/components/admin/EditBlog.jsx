@@ -1,23 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
-import Quill from 'quill';
-import 'quill/dist/quill.snow.css';
-import DOMPurify from 'dompurify';
-import SideNavbar from '../adminregister/SideNavbar';
-import { Services } from '../Services';
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import Quill from "quill";
+import "quill/dist/quill.snow.css";
+import DOMPurify from "dompurify";
+import SideNavbar from "../adminregister/SideNavbar";
+import { Services } from "../../data/services/Services";
 import { MdArrowBack } from "react-icons/md";
-
 
 const EditBlog = () => {
   const { blogId } = useParams();
   const [blog, setBlog] = useState(null);
   const [formData, setFormData] = useState({
-    topic: '',
-    content: '',
-    author_name: '',
-    services: '',
-    subservices: '',
+    topic: "",
+    content: "",
+    author_name: "",
+    services: "",
+    subservices: "",
     image: null,
     imagePreview: null,
   });
@@ -33,7 +32,9 @@ const EditBlog = () => {
   // Fetch blog details
   const fetchBlog = async () => {
     try {
-      const response = await axios.get(`https://finprimeconsulting.com/api/blogs/${blogId}`);
+      const response = await axios.get(
+        `https://finprimeconsulting.com/api/blogs/${blogId}`
+      );
       if (response.data) {
         setBlog(response.data);
         setFormData({
@@ -43,13 +44,15 @@ const EditBlog = () => {
           services: response.data.services,
           subservices: response.data.subservices,
           image: null,
-          imagePreview: response.data.image_path ? `https://finprimeconsulting.com/${response.data.image_path}` : null,
+          imagePreview: response.data.image_path
+            ? `https://finprimeconsulting.com/${response.data.image_path}`
+            : null,
         });
       } else {
-        setError('Blog not found');
+        setError("Blog not found");
       }
     } catch (err) {
-      setError('Error fetching blog');
+      setError("Error fetching blog");
     } finally {
       setLoading(false);
     }
@@ -59,7 +62,7 @@ const EditBlog = () => {
     if (blogId) {
       fetchBlog();
     } else {
-      setError('No blog ID provided');
+      setError("No blog ID provided");
       setLoading(false);
     }
   }, [blogId]);
@@ -92,24 +95,24 @@ const EditBlog = () => {
     setSuccessMessage(null);
 
     const form = new FormData();
-    form.append('topic', formData.topic);
-    form.append('content', formData.content);
-    form.append('author_name', formData.author_name);
-    form.append('services', formData.services);
-    form.append('subservices', formData.subservices);
+    form.append("topic", formData.topic);
+    form.append("content", formData.content);
+    form.append("author_name", formData.author_name);
+    form.append("services", formData.services);
+    form.append("subservices", formData.subservices);
     if (formData.image) {
-      form.append('image', formData.image);
+      form.append("image", formData.image);
     }
 
     try {
       const response = await axios.put(
         `https://finprimeconsulting.com/api/blogs/${blogId}`,
         form,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
       setSuccessMessage(response.data.message);
     } catch (err) {
-      setError(err.response?.data?.message || 'Error updating blog');
+      setError(err.response?.data?.message || "Error updating blog");
     } finally {
       setLoading(false);
     }
@@ -120,20 +123,27 @@ const EditBlog = () => {
     if (quillRef.current && !quillInstance.current) {
       // Initialize Quill editor only once
       const quill = new Quill(quillRef.current, {
-        theme: 'snow',
+        theme: "snow",
         modules: {
           toolbar: [
-            [{ header: '3' }, { header: '4' }, { font: [] }],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['bold', 'italic', 'underline'],
-            ['link'],
+            [{ header: "3" }, { header: "4" }, { font: [] }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["bold", "italic", "underline"],
+            ["link"],
             [{ align: [] }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'size': ['small', 'normal', 'large', 'huge'] }],
-            ['image'],
-            [{
-              'table': ['insertRow', 'insertColumn', 'deleteRow', 'deleteColumn']
-            }],
+            [{ color: [] }, { background: [] }],
+            [{ size: ["small", "normal", "large", "huge"] }],
+            ["image"],
+            [
+              {
+                table: [
+                  "insertRow",
+                  "insertColumn",
+                  "deleteRow",
+                  "deleteColumn",
+                ],
+              },
+            ],
           ],
         },
       });
@@ -146,7 +156,7 @@ const EditBlog = () => {
       }
 
       // Update content state after Quill is initialized
-      quill.on('text-change', () => {
+      quill.on("text-change", () => {
         setFormData((prev) => ({ ...prev, content: quill.root.innerHTML }));
       });
     }
@@ -163,30 +173,38 @@ const EditBlog = () => {
     <div className="flex h-screen">
       <SideNavbar />
       <div className="w-full max-w-full py-20 pl-10 pr-10 mx-auto mt-10 overflow-auto bg-white rounded-lg shadow-lg ">
-        <div className='flex'>
-      <button
-          onClick={() => navigate(-1)} // Go back to the previous page
-          className="px-3 mb-4 ml-1 text-white rounded-full bg-cyan-500 hover:bg-gray-700"
-        >
-         <MdArrowBack className='text-xl text-black' />
-        </button>
-        <h4 className="mb-6 ml-5 text-3xl font-bold text-black">Edit Blog</h4>
-
+        <div className="flex">
+          <button
+            onClick={() => navigate(-1)} // Go back to the previous page
+            className="px-3 mb-4 ml-1 text-white rounded-full bg-cyan-500 hover:bg-gray-700"
+          >
+            <MdArrowBack className="text-xl text-black" />
+          </button>
+          <h4 className="mb-6 ml-5 text-3xl font-bold text-black">Edit Blog</h4>
         </div>
         {error && <p className="mb-4 text-red-500">{error}</p>}
-        {successMessage && <p className="mb-4 text-green-500">{successMessage}</p>}
+        {successMessage && (
+          <p className="mb-4 text-green-500">{successMessage}</p>
+        )}
 
         {/* Back Button */}
-        
 
         {blog ? (
-          <form onSubmit={handleSubmit} className="space-y-6 border border-black">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6 border border-black"
+          >
             {/* Author Name and Image */}
             <div className="grid grid-cols-1 gap-4 p-4 mb-10">
               <div className="space-y-2 ">
                 {/* Image Input */}
-                <div >
-                  <label htmlFor="image" className="mb-2 font-medium text-gray-700">Image</label>
+                <div>
+                  <label
+                    htmlFor="image"
+                    className="mb-2 font-medium text-gray-700"
+                  >
+                    Image
+                  </label>
                   <input
                     type="file"
                     id="image"
@@ -210,12 +228,19 @@ const EditBlog = () => {
                         alt="Current Blog"
                         className="object-cover w-24 h-24 border border-gray-200 rounded-md"
                       />
-                      <p className="mt-2 text-sm text-gray-500">Current image</p>
+                      <p className="mt-2 text-sm text-gray-500">
+                        Current image
+                      </p>
                     </div>
                   )}
                 </div>
                 <div>
-                  <label htmlFor="image" className="mb-2 font-medium text-gray-700">Author Name</label>
+                  <label
+                    htmlFor="image"
+                    className="mb-2 font-medium text-gray-700"
+                  >
+                    Author Name
+                  </label>
                   {/* Author Name Input */}
                   <input
                     type="text"
@@ -230,51 +255,64 @@ const EditBlog = () => {
 
               {/* Services and Subservices */}
               <div className="flex w-full gap-8 mt-2">
-              <div className="grid w-full grid-cols-2 gap-8 ">
-      {/* Service Dropdown */}
-      <select
-        name="services"
-        value={formData.services}
-        onChange={handleChange}
-        className="w-full p-2 border border-black placeholder:uppercase placeholder:text-black"
-        required
-      >
-        <option value="" disabled>Select a Service</option>
-        {Services.map((service) => (
-          <option key={service.id} value={service.title}>
-            {service.title}
-          </option>
-        ))}
-      </select>
+                <div className="grid w-full grid-cols-2 gap-8 ">
+                  {/* Service Dropdown */}
+                  <select
+                    name="services"
+                    value={formData.services}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-black placeholder:uppercase placeholder:text-black"
+                    required
+                  >
+                    <option value="" disabled>
+                      Select a Service
+                    </option>
+                    {Services.map((service) => (
+                      <option key={service.id} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
+                  </select>
 
-      {/* Subservice Dropdown (Visible only after selecting a service) */}
-      <select
-        name="subservices"
-        value={formData.subservices}
-        onChange={handleChange}
-        className="w-full p-2 border border-black placeholder:uppercase placeholder:text-black"
-        required
-        disabled={!formData.services}
-      >
-        <option value="" disabled>Select a Sub-Service</option>
-        {formData.services && (
-          Services.find((service) => service.title === formData.services)?.subtitles?.map((subservice) => {
-            console.log(subservice);  // Debugging here
-            return (
-              <option key={subservice.subid} value={subservice.subtitle}>
-                {subservice.subtitle}
-              </option>
-            );
-          })
-        )}
-      </select>
-    </div>
+                  {/* Subservice Dropdown (Visible only after selecting a service) */}
+                  <select
+                    name="subservices"
+                    value={formData.subservices}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-black placeholder:uppercase placeholder:text-black"
+                    required
+                    disabled={!formData.services}
+                  >
+                    <option value="" disabled>
+                      Select a Sub-Service
+                    </option>
+                    {formData.services &&
+                      Services.find(
+                        (service) => service.title === formData.services
+                      )?.subtitles?.map((subservice) => {
+                        console.log(subservice); // Debugging here
+                        return (
+                          <option
+                            key={subservice.subid}
+                            value={subservice.subtitle}
+                          >
+                            {subservice.subtitle}
+                          </option>
+                        );
+                      })}
+                  </select>
+                </div>
               </div>
             </div>
 
             {/* Blog Topic */}
             <div className="mx-4 ">
-              <label htmlFor="topic" className="block font-medium text-gray-700">Blog Topic</label>
+              <label
+                htmlFor="topic"
+                className="block font-medium text-gray-700"
+              >
+                Blog Topic
+              </label>
               <input
                 type="text"
                 name="topic"
@@ -287,7 +325,10 @@ const EditBlog = () => {
 
             {/* Quill Editor */}
             <div className="mx-4 mb-6 border border-black">
-              <div ref={quillRef} className="border h-[300px] border-black "></div>
+              <div
+                ref={quillRef}
+                className="border h-[300px] border-black "
+              ></div>
             </div>
 
             <div className="flex justify-center">
