@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
-import vdo from "../../../assets/video/blog/blogvideo.mp4";
+import vdo from "../../../../assets/video/blog/blogvideo.mp4";
 import { Link } from "react-router-dom";
 
 const Bbanner = () => {

@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
-import Footer from '../../Footer/Footer';
-import Navbar from '../../Navbar/Navbar';
-import axios from 'axios';
-import DOMPurify from 'dompurify';
-import 'quill/dist/quill.snow.css';
+import React, { useEffect, useRef, useState } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
+import Footer from "../../../../components/Footer/Footer";
+import Navbar from "../../../../components/Navbar/Navbar";
+import axios from "axios";
+import DOMPurify from "dompurify";
+import "quill/dist/quill.snow.css";
 
 const BPost = () => {
   const { slug } = useParams();
-  console.log(slug)
+  console.log(slug);
   const location = useLocation();
   var { id } = location.state ?? {};
   const [allBlogs, setAllBlogs] = useState([]); // Renamed blogs to allBlogs
@@ -20,20 +20,26 @@ const BPost = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('https://finprimeconsulting.com/api/blogs');
-        const sortedBlogs = response.data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        const response = await axios.get(
+          "https://finprimeconsulting.com/api/blogs"
+        );
+        const sortedBlogs = response.data.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
         setAllBlogs(sortedBlogs);
-        const responseBlog = await axios.get(`https://finprimeconsulting.com/api/blogs/${slug}`);
-        id = responseBlog.data.id
+        const responseBlog = await axios.get(
+          `https://finprimeconsulting.com/api/blogs/${slug}`
+        );
+        id = responseBlog.data.id;
         setSelectedBlog(responseBlog.data);
-        console.log(selectedBlog)
+        console.log(selectedBlog);
       } catch (err) {
-        setError('Error fetching blogs. Please try again later.');
+        setError("Error fetching blogs. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
-    console.log(selectedBlog)
+    console.log(selectedBlog);
     fetchBlogs();
   }, [id]);
 
@@ -42,83 +48,83 @@ const BPost = () => {
     if (selectedBlog && contentRefs.current.length > 0) {
       contentRefs.current.forEach((contentDiv) => {
         if (contentDiv) {
-          const headersH3 = contentDiv.querySelectorAll('h3');
+          const headersH3 = contentDiv.querySelectorAll("h3");
           headersH3.forEach((h) => {
             h.classList.add(
-              'font-mediam',
-              'sm:text-3xl',
-              'font-raleway',
-              'text-xl',
-              'mb-2',
-              'text-gray-900'
+              "font-mediam",
+              "sm:text-3xl",
+              "font-raleway",
+              "text-xl",
+              "mb-2",
+              "text-gray-900"
             );
           });
 
-          const headersH4 = contentDiv.querySelectorAll('h4');
+          const headersH4 = contentDiv.querySelectorAll("h4");
           headersH4.forEach((h) => {
             h.classList.add(
-              'font-mediam',
-              'sm:text-2xl',
-              'font-raleway',
-              'text-lg',
-              'mb-2',
-              'text-gray-900'
+              "font-mediam",
+              "sm:text-2xl",
+              "font-raleway",
+              "text-lg",
+              "mb-2",
+              "text-gray-900"
             );
           });
 
-          const paragraphs = contentDiv.querySelectorAll('p');
+          const paragraphs = contentDiv.querySelectorAll("p");
           paragraphs.forEach((p) => {
             p.classList.add(
-              'text-[12px]',
-              'mb-4',
-              'sm:text-[18px]',
-              'tracking-[1px]',
-              'font-medium',
-              'font-raleway',
-              'text-gray-700'
+              "text-[12px]",
+              "mb-4",
+              "sm:text-[18px]",
+              "tracking-[1px]",
+              "font-medium",
+              "font-raleway",
+              "text-gray-700"
             );
           });
 
           // Style unordered lists and list items
-          const ulElements = contentDiv.querySelectorAll('ul');
+          const ulElements = contentDiv.querySelectorAll("ul");
           ulElements.forEach((ul) => {
             ul.classList.add(
-              'list-disc',
-              'pl-5',
-              'text-gray-700',
-              'text-[12px]',
-              'sm:text-[18px]',
-              'tracking-[1px]',
-              'font-medium',
-              'font-raleway'
+              "list-disc",
+              "pl-5",
+              "text-gray-700",
+              "text-[12px]",
+              "sm:text-[18px]",
+              "tracking-[1px]",
+              "font-medium",
+              "font-raleway"
             );
           });
 
           // Apply styles to ordered lists
-          const olElements = contentDiv.querySelectorAll('ol');
+          const olElements = contentDiv.querySelectorAll("ol");
           olElements.forEach((ol) => {
             ol.classList.add(
-              'list-decimal',
-              'pl-5',
-              'text-gray-700',
-              'text-[12px]',
-              'sm:text-[18px]',
-              'tracking-[1px]',
-              'font-medium',
-              'font-raleway'
+              "list-decimal",
+              "pl-5",
+              "text-gray-700",
+              "text-[12px]",
+              "sm:text-[18px]",
+              "tracking-[1px]",
+              "font-medium",
+              "font-raleway"
             );
           });
 
-          const liElements = contentDiv.querySelectorAll('li');
+          const liElements = contentDiv.querySelectorAll("li");
           liElements.forEach((li) => {
             li.classList.add(
-              'ml-2',
-              'text-gray-700',
-              'text-[12px]',
-              'sm:text-[18px]',
-              'tracking-[1px]',
-              'font-medium',
-              'font-raleway'
+              "ml-2",
+              "text-gray-700",
+              "text-[12px]",
+              "sm:text-[18px]",
+              "tracking-[1px]",
+              "font-medium",
+              "font-raleway"
             );
           });
         }
@@ -138,9 +144,7 @@ const BPost = () => {
     return <div className="text-center py-20">Blog post not found!</div>;
   }
 
-  const recentBlogs = allBlogs
-    .filter((b) => b.id !== parseInt(id))
-    .slice(0, 4); // Updated to allBlogs
+  const recentBlogs = allBlogs.filter((b) => b.id !== parseInt(id)).slice(0, 4); // Updated to allBlogs
 
   return (
     <div>
@@ -149,7 +153,7 @@ const BPost = () => {
       <div className="max-w-7xl mx-auto p-4 pt-40 xl:pl-12 xl:pr-10 lg:pl-10 lg:pr-8 md:pl-8 md:pr-6 pl-6 pr-4">
         <Link
           to="/blog"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="bg-brandBlue py-2 px-6 text-white font-semibold rounded-md transition-all duration-300 sm:text-[16px] 
               tracking-[1px] ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 "
         >
@@ -163,9 +167,9 @@ const BPost = () => {
           <div className="flex justify-center text-xs items-center space-x-4 mb-6 text-gray-500">
             <p className="animate-fadeinright">
               <strong>Date:</strong>
-              {new Date(selectedBlog.created_at).toLocaleDateString()}{' '}
+              {new Date(selectedBlog.created_at).toLocaleDateString()}{" "}
               <strong>Author:</strong>
-              {selectedBlog.author_name}{' '}
+              {selectedBlog.author_name}{" "}
             </p>
           </div>
           <img
@@ -191,7 +195,7 @@ const BPost = () => {
             </h4>
             <Link
               to="/blog"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="bg-brandBlue py-3 text-xs px-4 font-raleway transition-all duration-300 sm:text-[16px] 
               tracking-[1px] ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 text-white shadow-md"
             >
@@ -208,7 +212,9 @@ const BPost = () => {
                 <Link
                   to={`/blogs/${recentBlog.blog_slug}`}
                   state={{ id: recentBlog.id }}
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                 >
                   <img
                     src={`https://finprimeconsulting.com/${recentBlog.image_path}`}

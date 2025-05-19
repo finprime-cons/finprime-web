@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import About from "../features/Company/About";
-import Blog from "../components/Blog/Blog";
+import About from "../features/About/About";
+import Blog from "../features/Blog/Blog";
 import RightSolutions from "../features/RightSolutions/RightSolutions";
 import Contact from "../components/ContactUs/Contact";
 import Offer from "../components/Offer/Offer";
@@ -24,7 +24,7 @@ import SideNavbar from "../components/adminregister/SideNavbar";
 import Form2SubmissionsList from "../components/admin/Form2SubmissionsList";
 import MailList from "../components/admin/MailList";
 import MailList2 from "../components/admin/MailList2";
-import BPost from "../components/Blog/BlogPost/BPost";
+import BPost from "../features/Blog/components/BlogPost/BPost";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import PageWrapper from "../components/PageTransitionWrapper/PageWrapper";
 import Home from "../features/Home/Home";

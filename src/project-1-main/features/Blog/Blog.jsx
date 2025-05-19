@@ -1,12 +1,12 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
-import Bbanner from "./Bbanner/Bbanner";
-import Btext from "./Btext/Btext";
-import WhatsAppIcon from "../WhatsAppIcon/WhatsAppIcon";
-import BList from "./BlogList/BList";
-import BelowFooter from "../Footer/BelowFooter";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
+import Bbanner from "./components/Bbanner/Bbanner";
+import Btext from "./components/Btext/Btext";
+import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
+import BList from "./components/BlogList/BList";
+import BelowFooter from "../../components/Footer/BelowFooter";
 
 const Blog = () => {
   return (
