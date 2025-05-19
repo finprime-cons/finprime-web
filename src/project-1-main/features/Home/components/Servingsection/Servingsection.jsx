@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 import { HiOutlineArrowSmallRight } from "react-icons/hi2";
-import { Industries } from "../../data/industries/Industries";
+import { Industries } from "../../../../data/industries/Industries";
 import { Link } from "react-router-dom";
 
 const ServingSection = () => {

@@ -1,9 +1,9 @@
 import React from "react";
-import certificate1 from "../../assets/images/certificates/image1.jpg";
-import certificate2 from "../../assets/images/certificates/image2.jpg";
-import certificate3 from "../../assets/images/certificates/image3.jpg";
-import certificate4 from "../../assets/images/certificates/image4.jpg";
-import certificate5 from "../../assets/images/certificates/image5.jpg";
+import certificate1 from "../../../../assets/images/certificates/image1.jpg";
+import certificate2 from "../../../../assets/images/certificates/image2.jpg";
+import certificate3 from "../../../../assets/images/certificates/image3.jpg";
+import certificate4 from "../../../../assets/images/certificates/image4.jpg";
+import certificate5 from "../../../../assets/images/certificates/image5.jpg";
 function certifcate() {
   return (
     <div class="w-[90vw] mt-[50px] md:mt-[100px] mx-auto flex flex-wrap justify-around gap-4 p-4 bg-white">

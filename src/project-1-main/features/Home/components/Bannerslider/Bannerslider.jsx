@@ -5,13 +5,13 @@ import { FaInstagramSquare } from "react-icons/fa";
 // import { IoIosClose } from 'react-icons/io';
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 import { HiOutlineArrowSmallRight } from "react-icons/hi2";
-import Audit_and_Assurance from "../../assets/video/banner_slider/Audit_and_Assurance.mp4";
-import Company_formation_Business_Consultancy from "../../assets/video/banner_slider/Company_formation_Business_Consultancy.mp4";
-import HR_Consulting_Advisory from "../../assets/video/banner_slider/HR_Consulting_Advisory.mp4";
-import Regulatory_and_Compliance from "../../assets/video/banner_slider/Regulatory_and_Compliance.mp4";
-import Taxation from "../../assets/video/banner_slider/Taxation.mp4";
-import Accounting_Finance from "../../assets/video/banner_slider/Accounting_Finance.mp4";
-import { Services } from "../../data/services/Services";
+import Audit_and_Assurance from "../../../../assets/video/banner_slider/Audit_and_Assurance.mp4";
+import Company_formation_Business_Consultancy from "../../../../assets/video/banner_slider/Company_formation_Business_Consultancy.mp4";
+import HR_Consulting_Advisory from "../../../../assets/video/banner_slider/HR_Consulting_Advisory.mp4";
+import Regulatory_and_Compliance from "../../../../assets/video/banner_slider/Regulatory_and_Compliance.mp4";
+import Taxation from "../../../../assets/video/banner_slider/Taxation.mp4";
+import Accounting_Finance from "../../../../assets/video/banner_slider/Accounting_Finance.mp4";
+import { Services } from "../../../../data/services/Services";
 import { Link } from "react-router-dom";
 
 const Bannerslider = () => {

@@ -1,4 +1,4 @@
-import imag2 from "../../assets/images/Navbar/logo-dark.png";
+import imag2 from "../../../../assets/images/Navbar/logo-dark.png";
 import "./banner.css";
 import React, { useState, useEffect } from "react";
 import { IoIosClose } from "react-icons/io";

@@ -1,34 +1,35 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import About from "../features/About/About";
+import AppServices from "../features/Services/AppServices";
+import BPost from "../features/Blog/components/BlogPost/BPost";
 import Blog from "../features/Blog/Blog";
-import RightSolutions from "../features/RightSolutions/RightSolutions";
-import Contact from "../components/ContactUs/Contact";
-import Offer from "../components/Offer/Offer";
-import FreeConsultation from "../features/FreeConsultation/FreeConsultation";
-import PageTransitionWrapper from "../components/PageTransitionWrapper/PageTransitionWrapper";
-import Industries from "../components/Servingsection/industries/Industries";
-import Form from "../components/Speaktoanexprt/Form";
-import Form2 from "../components/Speaktoanexprt/Form2";
-import CEO from "../components/Speaktoanexprt/CEO";
 import BlogForm from "../components/admin/BlogForm";
 import BlogLists from "../components/admin/BlogLists";
-import TestimonialsLists from "../components/admin/TestimonialsLists";
-import TestimonialsForm from "../components/admin/TestimonialsForm";
+import CEO from "../components/Speaktoanexprt/CEO";
+import Contact from "../features/ContactUs/Contact";
+import Dashboard from "../components/adminregister/Dashboard";
 import EditBlog from "../components/admin/EditBlog";
 import EditTestimonials from "../components/admin/EditTestimonials";
-import Login from "../components/adminregister/Login";
-import Dashboard from "../components/adminregister/Dashboard";
-import FormSubmissionsList from "../components/admin/FormSubmissionsList";
-import SideNavbar from "../components/adminregister/SideNavbar";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Form from "../components/Speaktoanexprt/Form";
+import Form2 from "../components/Speaktoanexprt/Form2";
 import Form2SubmissionsList from "../components/admin/Form2SubmissionsList";
+import FormSubmissionsList from "../components/admin/FormSubmissionsList";
+import FreeConsultation from "../features/FreeConsultation/FreeConsultation";
+import Home from "../features/Home/Home";
+import Industries from "../features/Home/components/Servingsection/Servingsection";
+import Login from "../components/adminregister/Login";
 import MailList from "../components/admin/MailList";
 import MailList2 from "../components/admin/MailList2";
-import BPost from "../features/Blog/components/BlogPost/BPost";
-import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Offer from "../features/Offer/Offer";
+import PageTransitionWrapper from "../components/PageTransitionWrapper/PageTransitionWrapper";
 import PageWrapper from "../components/PageTransitionWrapper/PageWrapper";
-import Home from "../features/Home/Home";
-import AppServices from "../features/Services/AppServices";
+import RightSolutions from "../features/RightSolutions/RightSolutions";
+import SideNavbar from "../components/adminregister/SideNavbar";
+import TestimonialsForm from "../components/admin/TestimonialsForm";
+import TestimonialsLists from "../components/admin/TestimonialsLists";
 
 const AppRoutes = () => {
   return (
