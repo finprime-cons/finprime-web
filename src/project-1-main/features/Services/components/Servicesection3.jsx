@@ -1,6 +1,6 @@
 import React from "react";
-import { Services } from "../../data/services/Services";
-import { useParams, useLocation } from "react-router-dom";
+import { Services } from "../../../data/services/Services";
+import { useParams } from "react-router-dom";
 
 const Servicesection3 = () => {
   const { servicetitle, subServicetitle } = useParams();
@@ -11,11 +11,6 @@ const Servicesection3 = () => {
     (sub) => sub.keyword.replace(/\s+/g, "-") === subServicetitle
   );
 
-  // const location = useLocation();
-  // const { service_id, subtitles_id } = location.state ?? {};
-  // const service = Services.find((s) => s.id === service_id);
-  // console.log(service);
-  // const subService = service?.subtitles.find((sub) => sub.subid === subtitles_id);
   // If service or sub-service not found, return error message
   if (!service || !subService) {
     return (

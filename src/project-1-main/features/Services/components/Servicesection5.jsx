@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Services } from "../../data/services/Services";
+import { Services } from "../../../data/services/Services";
 
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Servicesection5 = () => {
   const { servicetitle, subServicetitle } = useParams();
@@ -13,11 +13,6 @@ const Servicesection5 = () => {
     (sub) => sub.keyword.replace(/\s+/g, "-") === subServicetitle
   );
 
-  // const location = useLocation();
-  // const { service_id, subtitles_id } = location.state ?? {};
-  // const service = Services.find((s) => s.id === service_id);
-  // console.log(service);
-  // const subService = service?.subtitles.find((sub) => sub.subid === subtitles_id);
   return (
     <div
       className="mx-w-full h-[160px] mt-16 bg-brandBlue px-5 sm:px-16 flex items-center justify-between

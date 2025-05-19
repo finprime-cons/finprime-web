@@ -1,6 +1,6 @@
 import React from "react";
-import BUSINESS_VALUATION from "../../assets/images/servicecard/subservices/BUSINESS_VALUATION.jpg";
-import INTERNATIONAL_TAXATION from "../../assets/images/servicecard/subservices/INTERNATIONAL_TAXATION.jpg";
+import BUSINESS_VALUATION from "../../../assets/images/servicecard/subservices/BUSINESS_VALUATION.jpg";
+import INTERNATIONAL_TAXATION from "../../../assets/images/servicecard/subservices/INTERNATIONAL_TAXATION.jpg";
 
 const Servicesection7 = () => {
   return (

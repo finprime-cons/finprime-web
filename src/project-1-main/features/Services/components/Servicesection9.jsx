@@ -1,5 +1,5 @@
 import React from "react";
-import FINANCIAL_REPORTING from "../../assets/images/servicecard/subservices/FINANCIAL_REPORTING.jpg";
+import FINANCIAL_REPORTING from "../../../assets/images/servicecard/subservices/FINANCIAL_REPORTING.jpg";
 
 const Servicesection9 = () => {
   return (

@@ -28,7 +28,7 @@ import BPost from "../components/Blog/BlogPost/BPost";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import PageWrapper from "../components/PageTransitionWrapper/PageWrapper";
 import Home from "../features/Home/Home";
-import Accountingandfinancialreporting from "../components/Services/Accountingandfinancialreporting";
+import AppServices from "../features/Services/AppServices";
 
 const AppRoutes = () => {
   return (
@@ -56,7 +56,7 @@ const AppRoutes = () => {
         path="/services/:servicetitle/:subServicetitle"
         element={
           <PageTransitionWrapper>
-            <Accountingandfinancialreporting />
+            <AppServices />
           </PageTransitionWrapper>
         }
       />

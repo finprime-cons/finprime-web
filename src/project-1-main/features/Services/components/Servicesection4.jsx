@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
-import { Services } from "../../data/services/Services";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Services } from "../../../data/services/Services";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from "dompurify";
 
@@ -19,17 +19,6 @@ const Servicesection4 = () => {
   const subService = service?.subtitles.find(
     (sub) => sub.keyword.replace(/\s+/g, "-") === subServicetitle
   );
-
-  // const { servicetitle, subServicetitle } = useParams();
-
-  // // Find the service based on the title
-  // const service = Services.find((s) => s.title === servicetitle);
-  // const subService = service?.subtitles.find((sub) => sub.subtitle === subServicetitle);
-  // const location = useLocation();
-  // const { service_id, subtitles_id } = location.state ?? {};
-  // const service = Services.find((s) => s.id === service_id);
-  // console.log(service);
-  // const subService = service?.subtitles.find((sub) => sub.subid === subtitles_id);
   // If service or sub-service not found, return error message
   if (!service || !subService) {
     return (
