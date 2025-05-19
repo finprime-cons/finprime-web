@@ -1,10 +1,10 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Rhero from "./Rhero/Rhero";
+import Rhero from "./components/Rhero/Rhero";
 import DropDown from "./components/DropDown/DropDown";
 import Bannerrimg from "./components/Banner/Bannerrimg";
 import Rinput from "./components/Rinput/Rinput";
-import Rtext from "./Rhero/Rtext";
+import Rtext from "./components/Rhero/Rtext";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";

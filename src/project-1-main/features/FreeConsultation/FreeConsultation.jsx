@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import CountUp from "react-countup";
-import SelectPartners from "./SelectPartners";
+import SelectPartners from "./components/SelectPartners";
 import { useInView } from "react-intersection-observer";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import backgroundImage from "../../assets/images/success/success.jpg";
-import Servicecard from "../Servicecard/Servicecard";
-import WhatsAppIcon from "../WhatsAppIcon/WhatsAppIcon";
-import BelowFooter from "../Footer/BelowFooter";
+import Servicecard from "../../components/Servicecard/Servicecard";
+import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
+import BelowFooter from "../../components/Footer/BelowFooter";
 
 const FreeConsultation = () => {
   const [hasFadedIn, setHasFadedIn] = useState(false);

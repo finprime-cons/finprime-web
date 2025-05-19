@@ -1,18 +1,18 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import bgvideo from "../../assets/video/banner_slider/hero1.mp4";
-import Ahero from "./Ahero/Ahero";
-import Footer from "../Footer/Footer";
-import Atext from "./Text/Atext";
-import Expert from "./Expert/Expert";
-import Choose from "./Choose/Choose";
-import Accounts from "./Accounts/Accounts";
-import Atext1 from "./Text/Atext1";
-import Navbar from "../Navbar/Navbar";
-import WhatsAppIcon from "../WhatsAppIcon/WhatsAppIcon";
-import Dropdown from "../dropdown/Dropdown";
-import Text3 from "../Text/Text3";
-import BelowFooter from "../Footer/BelowFooter";
+import Ahero from "./components/Ahero/Ahero";
+import Footer from "../../components/Footer/Footer";
+import Atext from "./components/Text/Atext";
+import Expert from "./components/Expert/Expert";
+import Choose from "./components/Choose/Choose";
+import Accounts from "./components/Accounts/Accounts";
+import Atext1 from "./components/Text/Atext1";
+import Navbar from "../../components/Navbar/Navbar";
+import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
+import Dropdown from "../../components/dropdown/Dropdown";
+import Text3 from "../../components/Text/Text3";
+import BelowFooter from "../../components/Footer/BelowFooter";
 
 const About = () => {
   return (

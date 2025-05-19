@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import img2 from "../../../assets/images/choose/choose.jpeg";
+import img2 from "../../../../assets/images/choose/choose.jpeg";
 import { HiOutlineArrowSmallRight } from "react-icons/hi2";
 
 const Choose = () => {

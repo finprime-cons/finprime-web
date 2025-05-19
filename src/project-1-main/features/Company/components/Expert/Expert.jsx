@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Murshina_A from "../../../assets/images/team/Murshina_A.jpg";
-import Hiba_Farook from "../../../assets/images/team/Hiba_Farook.jpg";
-import Ashker_Cv from "../../../assets/images/team/Ashker_Cv.jpg";
-import Abood_Wadi from "../../../assets/images/team/Abood_Wadi.jpg";
-import Zain_Rabab from "../../../assets/images/team/Zain_Rabab.jpg";
-import Ishmail_martin_Muga from "../../../assets/images/team/Ishmail_martin_Muga.jpg";
-import Siljo_Devassy from "../../../assets/images/team/Siljo_Devassy.jpg";
-import Mohammed_Fayyaz_Majeed from "../../../assets/images/team/Mohammed_Fayyaz_Majeed.jpg";
-import Althaf from "../../../assets/images/team/althaf.png";
+import Murshina_A from "../../../../assets/images/team/Murshina_A.jpg";
+import Hiba_Farook from "../../../../assets/images/team/Hiba_Farook.jpg";
+import Ashker_Cv from "../../../../assets/images/team/Ashker_Cv.jpg";
+import Abood_Wadi from "../../../../assets/images/team/Abood_Wadi.jpg";
+import Zain_Rabab from "../../../../assets/images/team/Zain_Rabab.jpg";
+import Ishmail_martin_Muga from "../../../../assets/images/team/Ishmail_martin_Muga.jpg";
+import Siljo_Devassy from "../../../../assets/images/team/Siljo_Devassy.jpg";
+import Mohammed_Fayyaz_Majeed from "../../../../assets/images/team/Mohammed_Fayyaz_Majeed.jpg";
+import Althaf from "../../../../assets/images/team/althaf.png";
 
 const cardsData = [
   {
