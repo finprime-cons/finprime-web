@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import img from "../../images/Navbar/finprime-logo.svg";
-import companyProfileImage from "../../images/company/company-profile.jpg";
+import img from "../../assets/images/Navbar/finprime-logo.svg";
+import companyProfileImage from "../../assets/images/company/company-profile.jpg";
 import {
   HiOutlineArrowSmallLeft,
   HiOutlineArrowSmallRight,

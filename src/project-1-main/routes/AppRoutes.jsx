@@ -60,8 +60,6 @@ const AppRoutes = () => {
           </PageTransitionWrapper>
         }
       />
-
-      {/* Admin Routes */}
       <Route path="/blogform" element={<BlogForm />} />
       <Route path="/bloglists" element={<BlogLists />} />
       <Route path="/testimonialform" element={<TestimonialsForm />} />

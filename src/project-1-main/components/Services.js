@@ -1,37 +1,37 @@
-import img1 from '../images/servicecard/audit and assurence.jpg';
-import img2 from '../images/servicecard/business set-up and advisory.jpg';
-import img3 from '../images/servicecard/finance and accountings.jpg';
-import img4 from '../images/servicecard/hr assurnce and advisory.jpg';
-import img5 from '../images/servicecard/taxations.jpg';
-import img6 from '../images/servicecard/transaction and advisory.jpg';
-import ACCOUNTING from '../images/servicecard/subservices/ACCOUNTING.jpg'
-import AML_COMPLAINCE from '../images/servicecard/subservices/AML_COMPLAINCE.jpg'
-import VAT from '../images/servicecard/subservices/VAT.jpg'
-import OUTSOURCED_COMPLAINCE_OFFICE from '../images/servicecard/subservices/OUTSOURCED_COMPLAINCE_OFFICE.jpg'
-import PAYROLL_MANAGEMENT_AND_ADMINISTRATION from '../images/servicecard/subservices/PAYROLL_MANAGEMENT_AND_ADMINISTRATION.jpg'
-import RPO_RECRUITMENT_PROCES_OUTSOURCING from '../images/servicecard/subservices/RPO_(RECRUITMENT_PROCES_OUTSOURCING).jpg'
-import TALENT_ACQUISITION from '../images/servicecard/subservices/TALENT_ACQUISITION.jpg'
-import TRANSFER_PRICING from '../images/servicecard/subservices/TRANSFER_PRICING.jpg'
-import LIQUIDATION from '../images/servicecard/subservices/LIQUIDATION.jpg'
-import MAINLAND_COMPANY_INCORPORATION from '../images/servicecard/subservices/MAINLAND_COMPANY_INCORPORATION.jpg'
-import MANAGEMENT_REPORTS from '../images/servicecard/subservices/MANAGEMENT_REPORTS.jpg'
-import INTERNATIONAL_TAXATION from '../images/servicecard/subservices/INTERNATIONAL_TAXATION.jpg'
-import IN_COUNTRY_VALUE_PROGRAM from '../images/servicecard/subservices/IN_COUNTRY_VALUE_PROGRAM.jpg'
-import FIXED_ASSET_MANAGEMENT from '../images/servicecard/subservices/FIXED_ASSET_MANAGEMENT.jpg'
-import FORENSIC_AUDIT from '../images/servicecard/subservices/FORENSIC_AUDIT.jpg'
-import FREEZONE_BUSINESS_SETUP from '../images/servicecard/subservices/FREEZONE_BUSINESS_SETUP.jpg'
-import EXCISE_TAX from '../images/servicecard/subservices/EXCISE_TAX.jpg'
-import EXTERNAL_AUDIT from '../images/servicecard/subservices/EXTERNAL_AUDIT.jpg'
-import FEASIBILITY_STUDIES_AND_PROJECT from '../images/servicecard/subservices/FEASIBILITY_STUDIES_AND_PROJECT REPORT.jpg'
-import FINANCE_OFFICER_FOR_DIFC_AND_ADGM_REGULATED_ENTITIES from '../images/servicecard/subservices/FINANCE_OFFICER_FOR_DIFC_AND_ADGM_REGULATED_ENTITIES.jpg'
-import CORPORATE_TAX from '../images/servicecard/subservices/CORPORATE_TAX.jpg'
-import CUSTOMS from '../images/servicecard/subservices/CUSTOMS.jpg'
-import DUE_DILIGENCE from '../images/servicecard/subservices/DUE_DILIGENCE.jpg'
-import BUSINESS_VALUATION from '../images/servicecard/subservices/BUSINESS_VALUATION.jpg'
-import FINANCIAL_REPORTING from '../images/servicecard/subservices/FINANCIAL_REPORTING.jpg'
-import INTERNA_AUDIT from '../images/servicecard/subservices/INTERNA_AUDIT.jpg'
-import INVENTORY_VERIFICATION from '../images/servicecard/subservices/INVENTORY_VERIFICATION.jpg'
-import HR_CONSULTING_AND_ADVISORY from '../images/servicecard/subservices/HR_CONSULTING_AND_ADVISORY.jpg'
+import img1 from '../assets/images/servicecard/audit and assurence.jpg';
+import img2 from '../assets/images/servicecard/business set-up and advisory.jpg';
+import img3 from '../assets/images/servicecard/finance and accountings.jpg';
+import img4 from '../assets/images/servicecard/hr assurnce and advisory.jpg';
+import img5 from '../assets/images/servicecard/taxations.jpg';
+import img6 from '../assets/images/servicecard/transaction and advisory.jpg';
+import ACCOUNTING from '../assets/images/servicecard/subservices/ACCOUNTING.jpg'
+import AML_COMPLAINCE from '../assets/images/servicecard/subservices/AML_COMPLAINCE.jpg'
+import VAT from '../assets/images/servicecard/subservices/VAT.jpg'
+import OUTSOURCED_COMPLAINCE_OFFICE from '../assets/images/servicecard/subservices/OUTSOURCED_COMPLAINCE_OFFICE.jpg'
+import PAYROLL_MANAGEMENT_AND_ADMINISTRATION from '../assets/images/servicecard/subservices/PAYROLL_MANAGEMENT_AND_ADMINISTRATION.jpg'
+import RPO_RECRUITMENT_PROCES_OUTSOURCING from '../assets/images/servicecard/subservices/RPO_(RECRUITMENT_PROCES_OUTSOURCING).jpg'
+import TALENT_ACQUISITION from '../assets/images/servicecard/subservices/TALENT_ACQUISITION.jpg'
+import TRANSFER_PRICING from '../assets/images/servicecard/subservices/TRANSFER_PRICING.jpg'
+import LIQUIDATION from '../assets/images/servicecard/subservices/LIQUIDATION.jpg'
+import MAINLAND_COMPANY_INCORPORATION from '../assets/images/servicecard/subservices/MAINLAND_COMPANY_INCORPORATION.jpg'
+import MANAGEMENT_REPORTS from '../assets/images/servicecard/subservices/MANAGEMENT_REPORTS.jpg'
+import INTERNATIONAL_TAXATION from '../assets/images/servicecard/subservices/INTERNATIONAL_TAXATION.jpg'
+import IN_COUNTRY_VALUE_PROGRAM from '../assets/images/servicecard/subservices/IN_COUNTRY_VALUE_PROGRAM.jpg'
+import FIXED_ASSET_MANAGEMENT from '../assets/images/servicecard/subservices/FIXED_ASSET_MANAGEMENT.jpg'
+import FORENSIC_AUDIT from '../assets/images/servicecard/subservices/FORENSIC_AUDIT.jpg'
+import FREEZONE_BUSINESS_SETUP from '../assets/images/servicecard/subservices/FREEZONE_BUSINESS_SETUP.jpg'
+import EXCISE_TAX from '../assets/images/servicecard/subservices/EXCISE_TAX.jpg'
+import EXTERNAL_AUDIT from '../assets/images/servicecard/subservices/EXTERNAL_AUDIT.jpg'
+import FEASIBILITY_STUDIES_AND_PROJECT from '../assets/images/servicecard/subservices/FEASIBILITY_STUDIES_AND_PROJECT REPORT.jpg'
+import FINANCE_OFFICER_FOR_DIFC_AND_ADGM_REGULATED_ENTITIES from '../assets/images/servicecard/subservices/FINANCE_OFFICER_FOR_DIFC_AND_ADGM_REGULATED_ENTITIES.jpg'
+import CORPORATE_TAX from '../assets/images/servicecard/subservices/CORPORATE_TAX.jpg'
+import CUSTOMS from '../assets/images/servicecard/subservices/CUSTOMS.jpg'
+import DUE_DILIGENCE from '../assets/images/servicecard/subservices/DUE_DILIGENCE.jpg'
+import BUSINESS_VALUATION from '../assets/images/servicecard/subservices/BUSINESS_VALUATION.jpg'
+import FINANCIAL_REPORTING from '../assets/images/servicecard/subservices/FINANCIAL_REPORTING.jpg'
+import INTERNA_AUDIT from '../assets/images/servicecard/subservices/INTERNA_AUDIT.jpg'
+import INVENTORY_VERIFICATION from '../assets/images/servicecard/subservices/INVENTORY_VERIFICATION.jpg'
+import HR_CONSULTING_AND_ADVISORY from '../assets/images/servicecard/subservices/HR_CONSULTING_AND_ADVISORY.jpg'
 
 export const Services = [
     {

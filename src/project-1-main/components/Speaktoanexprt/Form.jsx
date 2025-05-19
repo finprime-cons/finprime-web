@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Industries } from '../Industries';
-import img1 from '../../images/Navbar/finprime-logo.svg';
-import bgimg from '../../images/Banner/enquiry.jpg';
-import emailjs from 'emailjs-com'; // Import EmailJS
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Industries } from "../Industries";
+import img1 from "../../assets/images/Navbar/finprime-logo.svg";
+import bgimg from "../../assets/images/Banner/enquiry.jpg";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 const Form = () => {
   const { industryId, subIndustryId } = useParams();
@@ -13,29 +13,33 @@ const Form = () => {
 
   // Form state
   const [formData, setFormData] = useState({
-    companyName: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    industry: industry?.title || '',
-    subIndustry: '',
-    comments: '',
+    companyName: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    industry: industry?.title || "",
+    subIndustry: "",
+    comments: "",
   });
 
-  const [subIndustries, setSubIndustries] = useState(industry ? industry.subindustries : []);
+  const [subIndustries, setSubIndustries] = useState(
+    industry ? industry.subindustries : []
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormData((prevData) => {
-      if (name === 'industry') {
+      if (name === "industry") {
         const selectedIndustry = Industries.find((ind) => ind.title === value);
-        setSubIndustries(selectedIndustry ? selectedIndustry.subindustries : []);
+        setSubIndustries(
+          selectedIndustry ? selectedIndustry.subindustries : []
+        );
         return {
           ...prevData,
           industry: value,
-          subIndustry: '', // Reset subIndustry when changing industry
+          subIndustry: "", // Reset subIndustry when changing industry
         };
       }
       return { ...prevData, [name]: value };
@@ -44,7 +48,9 @@ const Form = () => {
 
   useEffect(() => {
     if (subIndustryId) {
-      const selectedSubIndustry = subIndustries.find((sub) => sub.id === parseInt(subIndustryId));
+      const selectedSubIndustry = subIndustries.find(
+        (sub) => sub.id === parseInt(subIndustryId)
+      );
       if (selectedSubIndustry) {
         setFormData((prevData) => ({
           ...prevData,
@@ -57,7 +63,7 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Form Data:', formData);  // Log form data to see if it's populated
+    console.log("Form Data:", formData); // Log form data to see if it's populated
 
     // If any field is empty, return error
     if (
@@ -70,20 +76,37 @@ const Form = () => {
       !formData.subIndustry ||
       !formData.comments
     ) {
-      alert('All fields are required');
+      alert("All fields are required");
       return; // Stop further execution if any field is missing
     }
 
     // Destructure form data
-    const { companyName, firstName, lastName, email, phone, industry, subIndustry, comments } = formData;
+    const {
+      companyName,
+      firstName,
+      lastName,
+      email,
+      phone,
+      industry,
+      subIndustry,
+      comments,
+    } = formData;
 
     // Submit form data to API
-    fetch('https://finprimeconsulting.com/api/submit-form2', {
-      method: 'POST',
+    fetch("https://finprimeconsulting.com/api/submit-form2", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ companyName, firstName, lastName, email, phone, industry, subIndustry }),
+      body: JSON.stringify({
+        companyName,
+        firstName,
+        lastName,
+        email,
+        phone,
+        industry,
+        subIndustry,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -92,14 +115,14 @@ const Form = () => {
 
         // Reset form data after successful submission
         setFormData({
-          companyName: '',
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          industry: '',
-          subIndustry: '',
-          comments: '',
+          companyName: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          industry: "",
+          subIndustry: "",
+          comments: "",
         });
 
         // After the form submission, send the data via EmailJS
@@ -117,41 +140,49 @@ const Form = () => {
         // Send email using EmailJS
         emailjs
           .send(
-            'service_m92dk5v', // Replace with your Service ID
-            'template_nhk2mx3', // Replace with your Template ID
+            "service_m92dk5v", // Replace with your Service ID
+            "template_nhk2mx3", // Replace with your Template ID
             templateParams,
-            '_zGtLeC1_fmp56KY0' // Replace with your User ID
+            "_zGtLeC1_fmp56KY0" // Replace with your User ID
           )
           .then(
             (response) => {
-              alert('Your enquiry has been submitted successfully!');
+              alert("Your enquiry has been submitted successfully!");
 
               // Send the auto-reply email
               const autoReplyParams = {
-                  to_name: formData.firstName,
-                  to_name2: formData.lastName,
-                  to_email: formData.email,
+                to_name: formData.firstName,
+                to_name2: formData.lastName,
+                to_email: formData.email,
               };
-  
+
               emailjs
-                  .send('service_m92dk5v', 'template_x05occf', autoReplyParams, '_zGtLeC1_fmp56KY0')
-                  .then(
-                      (autoReplyResponse) => {
-                          console.log('Auto-reply email sent successfully!');
-                      },
-                      (autoReplyError) => {
-                          console.error('Failed to send the auto-reply email:', autoReplyError);
-                      }
-                  );
-          },
+                .send(
+                  "service_m92dk5v",
+                  "template_x05occf",
+                  autoReplyParams,
+                  "_zGtLeC1_fmp56KY0"
+                )
+                .then(
+                  (autoReplyResponse) => {
+                    console.log("Auto-reply email sent successfully!");
+                  },
+                  (autoReplyError) => {
+                    console.error(
+                      "Failed to send the auto-reply email:",
+                      autoReplyError
+                    );
+                  }
+                );
+            },
             (error) => {
-                alert('Failed to send the enquiry email.');
+              alert("Failed to send the enquiry email.");
             }
-        );
+          );
       })
       .catch((error) => {
-        console.error('Error submitting form:', error);
-        alert('Failed to submit the form. Please try again.');
+        console.error("Error submitting form:", error);
+        alert("Failed to submit the form. Please try again.");
       });
   };
 
@@ -159,16 +190,16 @@ const Form = () => {
     <div
       style={{
         backgroundImage: `url(${bgimg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
       }}
     >
       <div className="absolute flex items-center space-x-2 top-4 left-5">
         <button
           onClick={() => navigate(-1)}
           className=" px-5  text-white bg-brandBlue py-3 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 text-sm sm:text-[16px] tracking-[1px] font-raleway rounded-[5px]"
-          >
+        >
           Back
         </button>
         <span className="text-black text-md tracking-[1px] font-raleway sm:text-[16px]">
@@ -177,7 +208,11 @@ const Form = () => {
       </div>
 
       <div className="relative max-w-2xl p-8 pb-10 mx-5 border rounded-lg shadow-lg sm:mx-auto top-20 bg-brandBlue">
-        <img src={img1} alt="Logo" className="h-20 mx-auto mt-5 mb-12 sm:h-32 lg:h-20" />
+        <img
+          src={img1}
+          alt="Logo"
+          className="h-20 mx-auto mt-5 mb-12 sm:h-32 lg:h-20"
+        />
         {/* <h2 className="mb-2 text-2xl font-bold text-center ">Enquiry Form</h2>
         <div className="mb-12 border border-gray-400"></div> */}
 
@@ -277,14 +312,14 @@ const Form = () => {
           </div>
 
           <div className="mb-4">
-          <textarea
-            name="comments"
-            placeholder="Add your comments"
-            value={formData.comments || ''} // Default value if undefined
-            onChange={handleChange}
-            className="w-full border-b-2 border-white text-white p-2 bg-brandBlue rounded-[5px] placeholder:uppercase placeholder:text-white h-32"
-          />
-        </div>
+            <textarea
+              name="comments"
+              placeholder="Add your comments"
+              value={formData.comments || ""} // Default value if undefined
+              onChange={handleChange}
+              className="w-full border-b-2 border-white text-white p-2 bg-brandBlue rounded-[5px] placeholder:uppercase placeholder:text-white h-32"
+            />
+          </div>
 
           <button
             type="submit"

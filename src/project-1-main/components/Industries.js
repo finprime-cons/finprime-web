@@ -1,57 +1,57 @@
-import img7 from '../images/industries/customer.jpg';
-import img6 from '../images/industries/financial services.jpg';
-import img5 from '../images/industries/manufacturing.jpg';
-import img4 from '../images/industries/startup.jpg';
-import img3 from '../images/industries/education.jpg';
-import img2 from '../images/industries/healthcare.jpg';
-import img1 from '../images/industries/technology.jpg';
+import img7 from '../assets/images/industries/customer.jpg';
+import img6 from '../assets/images/industries/financial services.jpg';
+import img5 from '../assets/images/industries/manufacturing.jpg';
+import img4 from '../assets/images/industries/startup.jpg';
+import img3 from '../assets/images/industries/education.jpg';
+import img2 from '../assets/images/industries/healthcare.jpg';
+import img1 from '../assets/images/industries/technology.jpg';
 
-import imge11 from '../images/industries/technology/Software Development.jpg';
-import imge12 from '../images/industries/technology/IT Services & Consulting.jpg';
-import imge13 from '../images/industries/technology/Cybersecurity.jpg';
-import imge14 from '../images/industries/technology/E-commerce.jpg';
-import imge15 from '../images/industries/technology/Telecommunications.jpg';
-import imge16 from '../images/industries/technology/Artificial Intelligence & Machine Learning.jpg';
+import imge11 from '../assets/images/industries/technology/Software Development.jpg';
+import imge12 from '../assets/images/industries/technology/IT Services & Consulting.jpg';
+import imge13 from '../assets/images/industries/technology/Cybersecurity.jpg';
+import imge14 from '../assets/images/industries/technology/E-commerce.jpg';
+import imge15 from '../assets/images/industries/technology/Telecommunications.jpg';
+import imge16 from '../assets/images/industries/technology/Artificial Intelligence & Machine Learning.jpg';
 
-import imge21 from '../images/industries/healthcare/Hospitals & Clinics.jpg';
-import imge22 from '../images/industries/healthcare/Pharmaceuticals.jpg';
-import imge23 from '../images/industries/healthcare/Biotechnology.jpg';
-import imge24 from '../images/industries/healthcare/Medical Devices.jpg';
-import imge25 from '../images/industries/healthcare/Health Insurance.jpg';
-import imge26 from '../images/industries/healthcare/Telehealth Services.jpg';
+import imge21 from '../assets/images/industries/healthcare/Hospitals & Clinics.jpg';
+import imge22 from '../assets/images/industries/healthcare/Pharmaceuticals.jpg';
+import imge23 from '../assets/images/industries/healthcare/Biotechnology.jpg';
+import imge24 from '../assets/images/industries/healthcare/Medical Devices.jpg';
+import imge25 from '../assets/images/industries/healthcare/Health Insurance.jpg';
+import imge26 from '../assets/images/industries/healthcare/Telehealth Services.jpg';
 
-import imge31 from '../images/industries/education/K-12 Schools.jpg';
-import imge32 from '../images/industries/education/Higher Education Institutions.jpg';
-import imge33 from '../images/industries/education/Online Education Platforms.jpg';
-import imge34 from '../images/industries/education/Vocational Training Centers.jpg';
-import imge35 from '../images/industries/education/Educational Technology (EdTech).jpg';
-import imge36 from '../images/industries/education/Tutoring Services.jpg';
+import imge31 from '../assets/images/industries/education/K-12 Schools.jpg';
+import imge32 from '../assets/images/industries/education/Higher Education Institutions.jpg';
+import imge33 from '../assets/images/industries/education/Online Education Platforms.jpg';
+import imge34 from '../assets/images/industries/education/Vocational Training Centers.jpg';
+import imge35 from '../assets/images/industries/education/Educational Technology (EdTech).jpg';
+import imge36 from '../assets/images/industries/education/Tutoring Services.jpg';
 
-import imge41 from '../images/industries/startup/Tech Startups.jpg';
-import imge42 from '../images/industries/startup/E-commerce Ventures.jpg';
-import imge43 from '../images/industries/startup/Health Tech Startups.jpg';
-import imge44 from '../images/industries/startup/FinTech Startups.jpg';
-import imge45 from '../images/industries/startup/Social Enterprises.jpg';
-import imge46 from '../images/industries/startup/Creative & Media Startups.jpg';
+import imge41 from '../assets/images/industries/startup/Tech Startups.jpg';
+import imge42 from '../assets/images/industries/startup/E-commerce Ventures.jpg';
+import imge43 from '../assets/images/industries/startup/Health Tech Startups.jpg';
+import imge44 from '../assets/images/industries/startup/FinTech Startups.jpg';
+import imge45 from '../assets/images/industries/startup/Social Enterprises.jpg';
+import imge46 from '../assets/images/industries/startup/Creative & Media Startups.jpg';
 
-import imge51 from '../images/industries/manufacturing/Food & Beverage.jpg';
-import imge52 from '../images/industries/manufacturing/Automotive.jpg';
-import imge53 from '../images/industries/manufacturing/Electronics.jpg';
-import imge54 from '../images/industries/manufacturing/Textiles & Apparel.jpg';
-import imge55 from '../images/industries/manufacturing/Machinery & Equipment.jpg';
-import imge56 from '../images/industries/manufacturing/Chemicals.jpg';
+import imge51 from '../assets/images/industries/manufacturing/Food & Beverage.jpg';
+import imge52 from '../assets/images/industries/manufacturing/Automotive.jpg';
+import imge53 from '../assets/images/industries/manufacturing/Electronics.jpg';
+import imge54 from '../assets/images/industries/manufacturing/Textiles & Apparel.jpg';
+import imge55 from '../assets/images/industries/manufacturing/Machinery & Equipment.jpg';
+import imge56 from '../assets/images/industries/manufacturing/Chemicals.jpg';
 
-import imge61 from '../images/industries/financial services/Banking.jpg';
-import imge62 from '../images/industries/financial services/Investment Management.jpg';
-import imge63 from '../images/industries/financial services/Insurance.jpg';
-import imge64 from '../images/industries/financial services/Real Estate Finance.jpg';
+import imge61 from '../assets/images/industries/financial services/Banking.jpg';
+import imge62 from '../assets/images/industries/financial services/Investment Management.jpg';
+import imge63 from '../assets/images/industries/financial services/Insurance.jpg';
+import imge64 from '../assets/images/industries/financial services/Real Estate Finance.jpg';
 
-import imge71 from '../images/industries/customer/Retail.jpg';
-import imge72 from '../images/industries/customer/Consumer Goods.jpg';
-import imge73 from '../images/industries/customer/E-commerce & Online Retail.jpg';
-import imge74 from '../images/industries/customer/Food & Beverage.jpg';
-import imge75 from '../images/industries/customer/Personal Care & Cosmetics.jpg';
-import imge76 from '../images/industries/customer/Home Goods & Furnishings.jpg';
+import imge71 from '../assets/images/industries/customer/Retail.jpg';
+import imge72 from '../assets/images/industries/customer/Consumer Goods.jpg';
+import imge73 from '../assets/images/industries/customer/E-commerce & Online Retail.jpg';
+import imge74 from '../assets/images/industries/customer/Food & Beverage.jpg';
+import imge75 from '../assets/images/industries/customer/Personal Care & Cosmetics.jpg';
+import imge76 from '../assets/images/industries/customer/Home Goods & Furnishings.jpg';
 
 
 

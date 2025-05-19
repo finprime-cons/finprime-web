@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import protectorsofpublicinterest from "../../../images/7 helps/protectorsofpublicinterest.jpeg";
-import ensuringthequalityoffinancialreporting from "../../../images/7 helps/ensuringthequalityoffinancialreporting.jpeg";
-import helpscutdowncost from "../../../images/7 helps/helpscutdowncost.jpeg";
-import helpmanageexpenses from "../../../images/7 helps/helpmanageexpenses.jpeg";
-import willsaveyourtime from "../../../images/7 helps/willsaveyourtime.jpeg";
-import givesprofessionaladvice from "../../../images/7 helps/givesprofessionaladvice.jpeg";
-import helpsyouinlegalmatters from "../../../images/7 helps/helpsyouinlegalmatters.jpeg";
+import protectorsofpublicinterest from "../../../assets/images/7 helps/protectorsofpublicinterest.jpeg";
+import ensuringthequalityoffinancialreporting from "../../../assets/images/7 helps/ensuringthequalityoffinancialreporting.jpeg";
+import helpscutdowncost from "../../../assets/images/7 helps/helpscutdowncost.jpeg";
+import helpmanageexpenses from "../../../assets/images/7 helps/helpmanageexpenses.jpeg";
+import willsaveyourtime from "../../../assets/images/7 helps/willsaveyourtime.jpeg";
+import givesprofessionaladvice from "../../../assets/images/7 helps/givesprofessionaladvice.jpeg";
+import helpsyouinlegalmatters from "../../../assets/images/7 helps/helpsyouinlegalmatters.jpeg";
 
 const Accounts = () => {
   const [hasFadedIn, setHasFadedIn] = useState(false);

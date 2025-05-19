@@ -1,16 +1,16 @@
 import React from "react";
 import "./PartnersCarousel.css";
-import impex from "../../images/partners/impex.png";
-import lims_group from "../../images/partners/lims_group.png";
-import pinklineinteriors from "../../images/partners/pinklineinteriors.png";
-import SS_LOOTH from "../../images/partners/SS_LOOTH.png";
-import Careem from "../../images/partners/Careem.png";
-import DARKEN_SWEETS from "../../images/partners/DARKEN_SWEETS.png";
-import GARNER from "../../images/partners/GARNER.png";
-import image1 from '../../images/partners/partner1.png';
-import image2 from '../../images/partners/partner2.png';
-import image3 from '../../images/partners/partner3.png';
-import image4 from '../../images/partners/partner4.png';
+import impex from "../../assets/images/partners/impex.png";
+import lims_group from "../../assets/images/partners/lims_group.png";
+import pinklineinteriors from "../../assets/images/partners/pinklineinteriors.png";
+import SS_LOOTH from "../../assets/images/partners/SS_LOOTH.png";
+import Careem from "../../assets/images/partners/Careem.png";
+import DARKEN_SWEETS from "../../assets/images/partners/DARKEN_SWEETS.png";
+import GARNER from "../../assets/images/partners/GARNER.png";
+import image1 from "../../assets/images/partners/partner1.png";
+import image2 from "../../assets/images/partners/partner2.png";
+import image3 from "../../assets/images/partners/partner3.png";
+import image4 from "../../assets/images/partners/partner4.png";
 
 const PartnersCarousel = () => {
   const images = [
@@ -24,12 +24,14 @@ const PartnersCarousel = () => {
     image1,
     image2,
     image3,
-    image4
+    image4,
   ];
 
   // Duplicate the images multiple times for infinite scroll
   const duplicateCount = 200; // Number of times to duplicate images
-  const carouselImages = Array(duplicateCount).fill([...images]).flat();
+  const carouselImages = Array(duplicateCount)
+    .fill([...images])
+    .flat();
 
   return (
     <div className="overflow-hidden bg-white">
