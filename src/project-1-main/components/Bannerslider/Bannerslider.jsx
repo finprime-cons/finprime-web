@@ -1,39 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { FaFacebookF, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { RiLinkedinFill } from "react-icons/ri";
 import { FaInstagramSquare } from "react-icons/fa";
 // import { IoIosClose } from 'react-icons/io';
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 import { HiOutlineArrowSmallRight } from "react-icons/hi2";
-import Audit_and_Assurance from '../../video/Audit_and_Assurance.mp4';
-import Company_formation_Business_Consultancy from '../../video/Company_formation_Business_Consultancy.mp4';
-import HR_Consulting_Advisory from '../../video/HR_Consulting_Advisory.mp4';
-import Regulatory_and_Compliance from '../../video/Regulatory_and_Compliance.mp4';
-import Taxation from '../../video/Taxation.mp4';
-import Accounting_Finance from '../../video/Accounting_Finance.mp4';
-import { Services } from '../Services';
-import { Link } from 'react-router-dom';
-
+import Audit_and_Assurance from "../../assets/video/Audit_and_Assurance.mp4";
+import Company_formation_Business_Consultancy from "../../assets/video/Company_formation_Business_Consultancy.mp4";
+import HR_Consulting_Advisory from "../../assets/video/HR_Consulting_Advisory.mp4";
+import Regulatory_and_Compliance from "../../assets/video/Regulatory_and_Compliance.mp4";
+import Taxation from "../../assets/video/Taxation.mp4";
+import Accounting_Finance from "../../assets/video/Accounting_Finance.mp4";
+import { Services } from "../Services";
+import { Link } from "react-router-dom";
 
 const Bannerslider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(0);
 
   // Array of video sources
-  const videos = [Audit_and_Assurance, Accounting_Finance, Taxation, Regulatory_and_Compliance, Company_formation_Business_Consultancy, HR_Consulting_Advisory];
+  const videos = [
+    Audit_and_Assurance,
+    Accounting_Finance,
+    Taxation,
+    Regulatory_and_Compliance,
+    Company_formation_Business_Consultancy,
+    HR_Consulting_Advisory,
+  ];
 
   const CurrentTitle = Services[currentSlide];
   const CurrentSubtitles = CurrentTitle.subtitles || [];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide(prevSlide => (prevSlide + 1) % videos.length);
-      setCurrentSubtitleIndex(0);  // Auto-slide for 6 videos
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % videos.length);
+      setCurrentSubtitleIndex(0); // Auto-slide for 6 videos
     }, 14000); // Change slide every 10 seconds
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [videos.length]);
-
 
   useEffect(() => {
     // Change subtitle every 10 seconds
@@ -47,7 +52,9 @@ const Bannerslider = () => {
   }, [currentSubtitleIndex, CurrentSubtitles.length]);
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === 0 ? videos.length - 1 : prevSlide - 1)); // Go to previous slide
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? videos.length - 1 : prevSlide - 1
+    ); // Go to previous slide
     setCurrentSubtitleIndex(0); // Reset subtitle index to 0 when changing slide
   };
 
@@ -55,8 +62,6 @@ const Bannerslider = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % videos.length); // Go to next slide
     setCurrentSubtitleIndex(0); // Reset subtitle index to 0 when changing slide
   };
-
-
 
   //   const [isSpeakExpert, setIsSpeakExpert] = useState(false);
 
@@ -66,15 +71,14 @@ const Bannerslider = () => {
 
   //   useEffect(() => {
   //     if (isSpeakExpert) {
-  //         document.body.style.overflow = 'hidden';  
+  //         document.body.style.overflow = 'hidden';
   //     } else {
-  //         document.body.style.overflow = '';  
+  //         document.body.style.overflow = '';
   //     }
   //     return () => {
-  //         document.body.style.overflow = '';  
+  //         document.body.style.overflow = '';
   //     };
   // }, [isSpeakExpert]);
-
 
   // const [selectedService, setSelectedService] = useState("");  // State for selected service
   // const [selectedSubtitle, setSelectedSubtitle] = useState(""); // State for selected subtitle
@@ -93,8 +97,6 @@ const Bannerslider = () => {
   // const handleSubtitleChange = (e) => {
   //   setSelectedSubtitle(e.target.value);
   // };
-
-
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -115,19 +117,25 @@ const Bannerslider = () => {
       <div className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full text-white ">
         <div className="absolute left-0 justify-center pl-6 mt-52 lg:pl-10 xl:pl-12 md:pl-8">
           <h3
-            className='sm:ml-20 w-50%  text-left text-[26px] leading-7 sm:leading-none font-khula lg:text-4xl  xl:text-5xl text-white 
+            className="sm:ml-20 w-50%  text-left text-[26px] leading-7 sm:leading-none font-khula lg:text-4xl  xl:text-5xl text-white 
               font-semibold mb-3 
-              z-20 duration-100  pr-6 '>
-
+              z-20 duration-100  pr-6 "
+          >
             {CurrentTitle.headtitle}
           </h3>
-          <div className='z-20 flex sm:ml-20'>
+          <div className="z-20 flex sm:ml-20">
             <Link
               state={{
                 service_id: CurrentTitle.id,
-                subtitles_id: CurrentSubtitles[currentSubtitleIndex]?.subid
+                subtitles_id: CurrentSubtitles[currentSubtitleIndex]?.subid,
               }}
-              to={`/services/${CurrentTitle.title.replace(/\s+/g, '-')}/${CurrentSubtitles[currentSubtitleIndex]?.keyword.replace(/\s+/g, '-')}`}
+              to={`/services/${CurrentTitle.title.replace(
+                /\s+/g,
+                "-"
+              )}/${CurrentSubtitles[currentSubtitleIndex]?.keyword.replace(
+                /\s+/g,
+                "-"
+              )}`}
               className="font-raleway cursor-pointer leading-6 text-left font-medium  text-lg sm:text-lg lg:text-[24px] tracking-[2px] text-white"
             >
               <span className="relative inline-block pr-10">
@@ -140,12 +148,10 @@ const Bannerslider = () => {
                 </span>
               </span>
             </Link>
-
-
           </div>
           <div>
-            <div className='flex mt-36'>
-              <div >
+            <div className="flex mt-36">
+              <div>
                 <button
                   onClick={handlePrevSlide}
                   className="px-2 py-2 mr-2 text-4xl text-black transition-all duration-300 ease-in-out bg-white rounded-full sm:px-3 sm:py-3 sm:mr-2 hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:bg-opacity-40 hover:text-white"
@@ -162,9 +168,10 @@ const Bannerslider = () => {
               <Link
                 to={`/form2/$${CurrentTitle.id}/${CurrentSubtitles[currentSubtitleIndex]?.subid}`}
                 // onClick={toggleSpeakExpert}
-                className='text-center sm:text-left   cursor-pointer text-[15px] bg-brandBlue sm:text-[16px] sm:tracking-[2px] tracking-[1px] text-white border border-cyan-700 rounded-[5px]
+                className="text-center sm:text-left   cursor-pointer text-[15px] bg-brandBlue sm:text-[16px] sm:tracking-[2px] tracking-[1px] text-white border border-cyan-700 rounded-[5px]
              transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 
-           mb-10 sm:mb-20 sm:py-3 px-3 py-2 sm:px-5 sm:ml-2'>
+           mb-10 sm:mb-20 sm:py-3 px-3 py-2 sm:px-5 sm:ml-2"
+              >
                 <p>Make an Appointment</p>
               </Link>
               {/* {isSpeakExpert && (
@@ -271,25 +278,48 @@ const Bannerslider = () => {
         {/* Icons on the right */}
         <div className="absolute flex-col justify-center hidden gap-4 text-3xl md:block sm:right-8 bottom-52 sm:flex sm:mb-3 lg:mb-0 pb-72 sm:pb-0">
           <div className="flex space-x-2 bg-white bg-opacity-55 rounded-[5px] border border-opacity-20  p-1 xl:p-3 -mb-1 ">
-            <button className="   pl-4 pr-4 rounded-sm   shadow-black  text-[16px] tracking-[1px]
-            transition-all duration-300 ease-out bg-gradient-to-r from-brandBlue to-cyan-500 text-white">Follow</button>
-            <a href="https://www.facebook.com/finprimeconsulting" aria-label="Facebook" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:border-opacity-10 hover:from-brandBlue hover:to-cyan-500 hover:text-white">
+            <button
+              className="   pl-4 pr-4 rounded-sm   shadow-black  text-[16px] tracking-[1px]
+            transition-all duration-300 ease-out bg-gradient-to-r from-brandBlue to-cyan-500 text-white"
+            >
+              Follow
+            </button>
+            <a
+              href="https://www.facebook.com/finprimeconsulting"
+              aria-label="Facebook"
+              className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:border-opacity-10 hover:from-brandBlue hover:to-cyan-500 hover:text-white"
+            >
               <FaFacebookF size={20} />
             </a>
-            <a href="https://x.com/FinPrimeConsult" aria-label="Twitter" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:border-opacity-10 hover:to-cyan-500 hover:text-white ">
+            <a
+              href="https://x.com/FinPrimeConsult"
+              aria-label="Twitter"
+              className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:border-opacity-10 hover:to-cyan-500 hover:text-white "
+            >
               <FaXTwitter size={20} />
             </a>
-            <a href="https://www.linkedin.com/company/finprimeconsulting/" aria-label="LinkedIn" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:border-opacity-10 hover:text-white ">
+            <a
+              href="https://www.linkedin.com/company/finprimeconsulting/"
+              aria-label="LinkedIn"
+              className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:border-opacity-10 hover:text-white "
+            >
               <RiLinkedinFill size={20} />
             </a>
-            <a href="https://www.instagram.com/finprimeconsulting/" aria-label="WhatsApp" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10">
+            <a
+              href="https://www.instagram.com/finprimeconsulting/"
+              aria-label="WhatsApp"
+              className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10"
+            >
               <FaInstagramSquare size={20} />
             </a>
-            <a href="https://www.youtube.com/@FinPrimeConsulting" aria-label="WhatsApp" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10">
+            <a
+              href="https://www.youtube.com/@FinPrimeConsulting"
+              aria-label="WhatsApp"
+              className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10"
+            >
               <FaYoutube size={20} />
             </a>
-
-          </div >
+          </div>
         </div>
 
         {/* Slider Controls */}
@@ -298,37 +328,38 @@ const Bannerslider = () => {
             <button
               key={index}
               onClick={() => handleSlideChange(index)}
-              className={` ${currentSlide === index ? '' : ''} `}
+              className={` ${currentSlide === index ? "" : ""} `}
             />
           ))}
         </div>
 
-
-
-
         {/* Paragraph at the bottom */}
         <div className="absolute bottom-0 flex flex-col w-full text-center sm:pl-0 sm:pr-0 ">
-          <div className={`flex flex-wrap justify-between font-raleway text-[10px] md:text-[14px] tracking-[2px]   `}>
+          <div
+            className={`flex flex-wrap justify-between font-raleway text-[10px] md:text-[14px] tracking-[2px]   `}
+          >
             <button className="relative flex-1 px-3 py-2 overflow-hidden text-white uppercase transition-all duration-300 ease-out bg-black lg:py-6 group hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500">
-              <span className="absolute right-0 w-10 h-32 -mt-12 transition-all duration-1000 
-        transform translate-x-12  bg-white opacity-5 rotate-12 group-hover:-translate-x-[500px] ease ">
-              </span>
+              <span
+                className="absolute right-0 w-10 h-32 -mt-12 transition-all duration-1000 
+        transform translate-x-12  bg-white opacity-5 rotate-12 group-hover:-translate-x-[500px] ease "
+              ></span>
               Giving smartness to your business accounting
             </button>
             <button className="relative flex-1 px-3 py-2 overflow-hidden text-white uppercase transition-all duration-300 ease-out bg-black border-l border-white lg:py-6 hover:border-l-0 group hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 ">
-              <span className="absolute right-0 w-10 h-32 -mt-12 transition-all duration-1000 
-        transform translate-x-12 bg-white opacity-5 rotate-12 group-hover:-translate-x-[500px] ease">
-              </span>
+              <span
+                className="absolute right-0 w-10 h-32 -mt-12 transition-all duration-1000 
+        transform translate-x-12 bg-white opacity-5 rotate-12 group-hover:-translate-x-[500px] ease"
+              ></span>
               Best Accounting Companies
             </button>
             <button className="relative flex-1 px-3 py-2 overflow-hidden text-white uppercase transition-all duration-300 ease-out bg-black border-l border-white lg:py-6 hover:border-l-0 group hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 ">
-              <span className="absolute right-0 w-10 h-32 -mt-12 transition-all duration-1000 
-        transform translate-x-12 bg-white opacity-5 rotate-12 group-hover:-translate-x-[500px] ease">
-              </span>
+              <span
+                className="absolute right-0 w-10 h-32 -mt-12 transition-all duration-1000 
+        transform translate-x-12 bg-white opacity-5 rotate-12 group-hover:-translate-x-[500px] ease"
+              ></span>
               Corporate Tax Services
             </button>
           </div>
-
         </div>
       </div>
     </div>
