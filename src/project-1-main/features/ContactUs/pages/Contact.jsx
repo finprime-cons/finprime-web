@@ -1,17 +1,15 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-import Bbanner from "./components/Bbanner/Bbanner";
-import Btext from "./components/Btext/Btext";
-import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
-import BList from "./components/BlogList/BList";
-import BelowFooter from "../../components/Footer/BelowFooter";
+import Navbar from "../../../components/Navbar/Navbar";
+import ContactUs from "../components/ContactUs";
+import Footer from "../../../components/Footer/Footer";
+import WhatsAppIcon from "../../../components/WhatsAppIcon/WhatsAppIcon";
+import BelowFooter from "../../../components/Footer/BelowFooter";
 
-const Blog = () => {
+const Contact = () => {
   return (
     <HelmetProvider>
-      <div className="relative overflow-hidden ">
+      <div>
         <Helmet>
           <title>Finframe Business and Tax Consultancy</title>
           <meta
@@ -46,9 +44,7 @@ const Blog = () => {
           />
         </Helmet>
         <Navbar />
-        <Bbanner />
-        <Btext />
-        <BList />
+        <ContactUs />
         <Footer />
         <BelowFooter />
         <WhatsAppIcon />
@@ -57,4 +53,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Contact;

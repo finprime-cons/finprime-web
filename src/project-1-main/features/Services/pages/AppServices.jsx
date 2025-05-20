@@ -1,20 +1,20 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useParams } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-import Servicesection2 from "./components/Servicesection2";
-import Servicesection3 from "./components/Servicesection3";
-import Servicesection4 from "./components/Servicesection4";
-import Servicesection5 from "./components/Servicesection5";
-import Servicesection6 from "./components/Servicesection6";
-import Servicesection7 from "./components/Servicesection7";
-import Servicesection8 from "./components/Servicesection8";
-import Servicesection9 from "./components/Servicesection9";
-import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
-import BelowFooter from "../../components/Footer/BelowFooter";
-import Servicesectionnew from "./components/ServicesectionNewtext";
-import { metaDetails } from "../../constants/data/services/ServicesData";
+import Navbar from "../../../components/Navbar/Navbar";
+import Footer from "../../../components/Footer/Footer";
+import Servicesection2 from "../components/Servicesection2";
+import Servicesection3 from "../components/Servicesection3";
+import Servicesection4 from "../components/Servicesection4";
+import Servicesection5 from "../components/Servicesection5";
+import Servicesection6 from "../components/Servicesection6";
+import Servicesection7 from "../components/Servicesection7";
+import Servicesection8 from "../components/Servicesection8";
+import Servicesection9 from "../components/Servicesection9";
+import WhatsAppIcon from "../../../components/WhatsAppIcon/WhatsAppIcon";
+import BelowFooter from "../../../components/Footer/BelowFooter";
+import Servicesectionnew from "../components/ServicesectionNewtext";
+import { metaDetails } from "../../../constants/data/services/ServicesData";
 
 const AppServices = () => {
   const { servicetitle, subServicetitle } = useParams();

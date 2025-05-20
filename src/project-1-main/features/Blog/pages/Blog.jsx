@@ -1,23 +1,17 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import bgvideo from "../../assets/video/banner_slider/hero1.mp4";
-import Ahero from "./components/Ahero/Ahero";
-import Footer from "../../components/Footer/Footer";
-import Atext from "./components/Text/Atext";
-import Expert from "./components/Expert/Expert";
-import Choose from "./components/Choose/Choose";
-import Accounts from "./components/Accounts/Accounts";
-import Atext1 from "./components/Text/Atext1";
-import Navbar from "../../components/Navbar/Navbar";
-import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
-import Dropdown from "../../components/dropdown/Dropdown";
-import Text3 from "../../components/Text/Text3";
-import BelowFooter from "../../components/Footer/BelowFooter";
+import Navbar from "../../../components/Navbar/Navbar";
+import Footer from "../../../components/Footer/Footer";
+import Bbanner from "../components/Bbanner/Bbanner";
+import Btext from "../components/Btext/Btext";
+import WhatsAppIcon from "../../../components/WhatsAppIcon/WhatsAppIcon";
+import BList from "../components/BlogList/BList";
+import BelowFooter from "../../../components/Footer/BelowFooter";
 
-const About = () => {
+const Blog = () => {
   return (
     <HelmetProvider>
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden ">
         <Helmet>
           <title>Finframe Business and Tax Consultancy</title>
           <meta
@@ -51,28 +45,10 @@ const About = () => {
             content="https://yourwebsite.com/images/about-page-image.jpg"
           />
         </Helmet>
-
-        <div className="h-[700px] xl:h-[520px] relative overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute right-0 top-0 h-[680px] xl:h-[500px] w-full object-cover pointer-events-none z-[-1]"
-          >
-            <source src={bgvideo} type="video/mp4" />
-          </video>
-          <Navbar />
-          <Ahero />
-        </div>
-        <Atext1 />
-        <Atext />
-        <Text3 />
-        <Dropdown />
-        <Expert />
-        <Text3 />
-        <Choose />
-        {/* <Accounts/> */}
+        <Navbar />
+        <Bbanner />
+        <Btext />
+        <BList />
         <Footer />
         <BelowFooter />
         <WhatsAppIcon />
@@ -81,4 +57,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Blog;

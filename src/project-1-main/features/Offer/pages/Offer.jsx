@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
+import Navbar from "../../../components/Navbar/Navbar";
+import Footer from "../../../components/Footer/Footer";
+import WhatsAppIcon from "../../../components/WhatsAppIcon/WhatsAppIcon";
 import { Link } from "react-router-dom";
-import { Services } from "../../constants/data/services/ServicesData";
-import BelowFooter from "../../components/Footer/BelowFooter";
+import { Services } from "../../../constants/data/services/ServicesData";
+import BelowFooter from "../../../components/Footer/BelowFooter";
 
 const Offer = () => {
   const [price, setPrice] = useState(100000);

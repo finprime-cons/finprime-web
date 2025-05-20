@@ -1,15 +1,20 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Navbar from "../../components/Navbar/Navbar";
-import ContactUs from "./components/ContactUs";
-import Footer from "../../components/Footer/Footer";
-import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
-import BelowFooter from "../../components/Footer/BelowFooter";
+import Rhero from "../components/Rhero/Rhero";
+import DropDown from "../components/DropDown/DropDown";
+import Bannerrimg from "../components/Banner/Bannerrimg";
+import Rinput from "../components/Rinput/Rinput";
+import Rtext from "../components/Rhero/Rtext";
+import Footer from "../../../components/Footer/Footer";
+import Navbar from "../../../components/Navbar/Navbar";
+import WhatsAppIcon from "../../../components/WhatsAppIcon/WhatsAppIcon";
+import BelowFooter from "../../../components/Footer/BelowFooter";
+import BottomDropDown from "../components/BottomDropDown/BottomDropDown";
 
-const Contact = () => {
+const RightSolutions = () => {
   return (
     <HelmetProvider>
-      <div>
+      <div className="relative overflow-hidden ">
         <Helmet>
           <title>Finframe Business and Tax Consultancy</title>
           <meta
@@ -44,13 +49,20 @@ const Contact = () => {
           />
         </Helmet>
         <Navbar />
-        <ContactUs />
-        <Footer />
-        <BelowFooter />
-        <WhatsAppIcon />
+        <Rhero />
+        <Rtext />
+        <DropDown />
+        <Bannerrimg />
+        <BottomDropDown />
+        <div className="bg-black">
+          <Rinput />
+          <Footer />
+          <BelowFooter />
+          <WhatsAppIcon />
+        </div>
       </div>
     </HelmetProvider>
   );
 };
 
-export default Contact;
+export default RightSolutions;

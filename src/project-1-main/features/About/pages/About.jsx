@@ -1,20 +1,23 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Rhero from "./components/Rhero/Rhero";
-import DropDown from "./components/DropDown/DropDown";
-import Bannerrimg from "./components/Banner/Bannerrimg";
-import Rinput from "./components/Rinput/Rinput";
-import Rtext from "./components/Rhero/Rtext";
-import Footer from "../../components/Footer/Footer";
-import Navbar from "../../components/Navbar/Navbar";
-import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
-import BelowFooter from "../../components/Footer/BelowFooter";
-import BottomDropDown from "./components/BottomDropDown/BottomDropDown";
+import bgvideo from "../../../assets/video/banner_slider/hero1.mp4";
+import Ahero from "../components/Ahero/Ahero";
+import Footer from "../../../components/Footer/Footer";
+import Atext from "../components/Text/Atext";
+import Expert from "../components/Expert/Expert";
+import Choose from "../components/Choose/Choose";
+import Accounts from "../components/Accounts/Accounts";
+import Atext1 from "../components/Text/Atext1";
+import Navbar from "../../../components/Navbar/Navbar";
+import WhatsAppIcon from "../../../components/WhatsAppIcon/WhatsAppIcon";
+import Dropdown from "../../../components/dropdown/Dropdown";
+import Text3 from "../../../components/Text/Text3";
+import BelowFooter from "../../../components/Footer/BelowFooter";
 
-const RightSolutions = () => {
+const About = () => {
   return (
     <HelmetProvider>
-      <div className="relative overflow-hidden ">
+      <div className="relative overflow-hidden">
         <Helmet>
           <title>Finframe Business and Tax Consultancy</title>
           <meta
@@ -48,21 +51,34 @@ const RightSolutions = () => {
             content="https://yourwebsite.com/images/about-page-image.jpg"
           />
         </Helmet>
-        <Navbar />
-        <Rhero />
-        <Rtext />
-        <DropDown />
-        <Bannerrimg />
-        <BottomDropDown />
-        <div className="bg-black">
-          <Rinput />
-          <Footer />
-          <BelowFooter />
-          <WhatsAppIcon />
+
+        <div className="h-[700px] xl:h-[520px] relative overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute right-0 top-0 h-[680px] xl:h-[500px] w-full object-cover pointer-events-none z-[-1]"
+          >
+            <source src={bgvideo} type="video/mp4" />
+          </video>
+          <Navbar />
+          <Ahero />
         </div>
+        <Atext1 />
+        <Atext />
+        <Text3 />
+        <Dropdown />
+        <Expert />
+        <Text3 />
+        <Choose />
+        {/* <Accounts/> */}
+        <Footer />
+        <BelowFooter />
+        <WhatsAppIcon />
       </div>
     </HelmetProvider>
   );
 };
 
-export default RightSolutions;
+export default About;
