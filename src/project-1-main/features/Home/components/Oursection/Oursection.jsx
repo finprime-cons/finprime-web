@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import img1 from "../../assets/images/oursection/section1.jpg";
-import img2 from "../../assets/images/team/Ashker.jpg";
-import img3 from "../../assets/images/oursection/unique_brand_experince.jpg";
+import img1 from "../../../../assets/images/oursection/section1.jpg";
+import img2 from "../../../../assets/images/team/Ashker.jpg";
+import img3 from "../../../../assets/images/oursection/unique_brand_experince.jpg";
 import { Link, useLocation } from "react-router-dom";
 
 const Card = ({ title, image, alt }) => {
