@@ -1,82 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import Murshina_A from '../../../images/team/Murshina_A.jpg';
-import Hiba_Farook from '../../../images/team/Hiba_Farook.jpg';
-import Ashker_Cv from '../../../images/team/Ashker_Cv.jpg';
-import Abood_Wadi from '../../../images/team/Abood_Wadi.jpg';
-import Zain_Rabab from '../../../images/team/Zain_Rabab.jpg';
-import Ishmail_martin_Muga from '../../../images/team/Ishmail_martin_Muga.jpg';
-import Siljo_Devassy from '../../../images/team/Siljo_Devassy.jpg';
-import Mohammed_Fayyaz_Majeed from '../../../images/team/Mohammed_Fayyaz_Majeed.jpg';
-import Althaf from '../../../images/team/althaf.png';
+import React, { useState, useEffect } from "react";
+import Murshina_A from "../../../images/team/Murshina_A.jpg";
+import Hiba_Farook from "../../../images/team/Hiba_Farook.jpg";
+import Ashker_Cv from "../../../images/team/Ashker_Cv.jpg";
+import Abood_Wadi from "../../../images/team/Abood_Wadi.jpg";
+import Zain_Rabab from "../../../images/team/Zain_Rabab.jpg";
+import Ishmail_martin_Muga from "../../../images/team/Ishmail_martin_Muga.jpg";
+import Siljo_Devassy from "../../../images/team/Siljo_Devassy.jpg";
+import Mohammed_Fayyaz_Majeed from "../../../images/team/Mohammed_Fayyaz_Majeed.jpg";
+import Althaf from "../../../images/team/althaf.png";
 
 const cardsData = [
   {
     image: Ashker_Cv,
-    alt: 'C.A Ashker Kareem',
-    name: 'C.A Ashker Kareem',
-    position: (
-      <>
-        CEO & Founder
-      </>
-    ),
+    alt: "C.A Ashker Kareem",
+    name: "C.A Ashker Kareem",
+    position: <>CEO & Founder</>,
     number: 1,
   },
 
   {
     image: Abood_Wadi,
-    alt: 'Abdul Rahman AA Wadi',
-    name: 'Abdul Rahman AA Wadi',
-    position: 'Business Development Manager',
+    alt: "Abdul Rahman AA Wadi",
+    name: "Abdul Rahman AA Wadi",
+    position: "Business Development Manager",
     number: 2,
   },
   {
     image: Althaf,
-    alt: 'Mohamed Althaf',
-    name: 'Mohamed Althaf',
-    position: 'Head of Business Development & Operations Excellence',
+    alt: "Mohamed Althaf",
+    name: "Mohamed Althaf",
+    position: "General Manager - Operations and Business Development",
     number: 3,
   },
   {
     image: Zain_Rabab,
-    alt: 'C.A Zain Rabab',
-    name: 'C.A Zain Rabab',
-    position: 'Audit Manager - Audit and Assurance',
+    alt: "C.A Zain Rabab",
+    name: "C.A Zain Rabab",
+    position: "Audit Manager - Audit and Assurance",
     number: 4,
   },
   {
     image: Ishmail_martin_Muga,
-    alt: 'Ishmail Martin Muga',
-    name: 'Ishmail Martin Muga',
-    position: 'Accounting Manager - Taxation',
+    alt: "Ishmail Martin Muga",
+    name: "Ishmail Martin Muga",
+    position: "Accounting Manager - Taxation",
     number: 5,
   },
   {
     image: Siljo_Devassy,
-    alt: 'Siljo Devassy',
-    name: 'Siljo Devassy',
-    position: 'Manager - Finance and Tax',
+    alt: "Siljo Devassy",
+    name: "Siljo Devassy",
+    position: "Manager - Finance and Tax",
     number: 6,
   },
 
   {
     image: Hiba_Farook,
-    alt: 'Hiba Farook',
-    name: 'Hiba Farook',
-    position: 'HR and Recruitment Manager',
+    alt: "Hiba Farook",
+    name: "Hiba Farook",
+    position: "HR and Recruitment Manager",
     number: 7,
   },
   {
     image: Murshina_A,
-    alt: 'Murshina A',
-    name: 'Murshina A',
-    position: 'Account Manager - Accounting Service',
+    alt: "Murshina A",
+    name: "Murshina A",
+    position: "Account Manager - Accounting Service",
     number: 8,
   },
   {
     image: Mohammed_Fayyaz_Majeed,
-    alt: 'Mohammed Fayyaz Majeed',
-    name: 'Mohammed Fayyaz Majeed',
-    position: 'Digital Marketing Manager',
+    alt: "Mohammed Fayyaz Majeed",
+    name: "Mohammed Fayyaz Majeed",
+    position: "Digital Marketing Manager",
     number: 9,
   },
 ];
@@ -87,13 +83,13 @@ const Expert = () => {
 
   useEffect(() => {
     if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isModalOpen]);
 
@@ -116,8 +112,10 @@ const Expert = () => {
         <h5 className="text-4xl md:text-4xl font-semibold mb-4 md:mb-0 text-center md:text-left">
           Our Team
         </h5>
-        <button className="bg-gray-950 text-white px-5 py-3 rounded-[5px] transition-all font-raleway font-medium tracking-[1px] duration-300 text-xs md:text-[16px] 
-        ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 mt-4 md:mt-0">
+        <button
+          className="bg-gray-950 text-white px-5 py-3 rounded-[5px] transition-all font-raleway font-medium tracking-[1px] duration-300 text-xs md:text-[16px] 
+        ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 mt-4 md:mt-0"
+        >
           All Access Articles
         </button>
       </div>
@@ -135,8 +133,12 @@ const Expert = () => {
                 className="w-full h-[350px] md:h-[400px] lg:h-[400px] object-top object-cover rounded-6xl"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/50 to-transparent text-white p-4 rounded-b-6xl">
-                <p className="text-center text-lg lg:text-2xl uppercase font-semibold">{card.name}</p>
-                <p className="text-center text-sm font-light">{card.position}</p>
+                <p className="text-center text-lg lg:text-2xl uppercase font-semibold">
+                  {card.name}
+                </p>
+                <p className="text-center text-sm font-light">
+                  {card.position}
+                </p>
                 <button
                   onClick={() => handleEnquiryClick(card)}
                   className="relative mt-4 text-xs lg:text-[16px] font-raleway font-medium tracking-[1px] px-6 py-3 rounded-[5px] bg-gray-950 text-white hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 transition-all duration-300 ease-out block mx-auto"
@@ -149,7 +151,6 @@ const Expert = () => {
           </div>
         ))}
       </div>
-
 
       {isModalOpen && selectedCard && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-5 md:mx-0">
@@ -173,18 +174,23 @@ const Expert = () => {
 
               {/* Text content below the image for mobile screens */}
               <div className="flex flex-col text-white justify-start text-center lg:pl-4 lg:text-left">
-                <h3 className="text-[20px] sm:text-2xl font-semibold text-white uppercase mb-2">{selectedCard.name}</h3>
-                <p className="text-[16px] sm:text-[16px] tracking-[1px] text-white mb-10">{selectedCard.position}</p>
+                <h3 className="text-[20px] sm:text-2xl font-semibold text-white uppercase mb-2">
+                  {selectedCard.name}
+                </h3>
+                <p className="text-[16px] sm:text-[16px] tracking-[1px] text-white mb-10">
+                  {selectedCard.position}
+                </p>
                 <p className="text-[14px] sm:text-[16px] tracking-[1px] text-white mb-1">
                   info@finprimeconsulting.com
                 </p>
-                <p className="text-white text-[14px] sm:text-[16px] tracking-[1px] mb-3">+971 58 259 3543</p>
+                <p className="text-white text-[14px] sm:text-[16px] tracking-[1px] mb-3">
+                  +971 58 259 3543
+                </p>
               </div>
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 };
