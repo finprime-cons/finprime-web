@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
-import { Services } from "../../../data/services/Services";
+import { Services } from "../../../constants/data/services/ServicesData";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from "dompurify";

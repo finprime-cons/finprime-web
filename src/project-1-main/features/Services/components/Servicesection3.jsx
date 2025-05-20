@@ -1,5 +1,5 @@
 import React from "react";
-import { Services } from "../../../data/services/Services";
+import { Services } from "../../../constants/data/services/ServicesData";
 import { useParams } from "react-router-dom";
 
 const Servicesection3 = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Services } from "../../data/services/Services";
+import { Services } from "../../constants/data/services/ServicesData";
 import img1 from "../../assets/images/Navbar/finprime-logo.svg";
 import bgimg from "../../assets/images/Banner/enquiry.jpg";
 import emailjs from "emailjs-com"; // Import EmailJS

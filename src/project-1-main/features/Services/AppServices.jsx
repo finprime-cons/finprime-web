@@ -14,7 +14,7 @@ import Servicesection9 from "./components/Servicesection9";
 import WhatsAppIcon from "../../components/WhatsAppIcon/WhatsAppIcon";
 import BelowFooter from "../../components/Footer/BelowFooter";
 import Servicesectionnew from "./components/ServicesectionNewtext";
-import { metaDetails } from "../../data/services/Services";
+import { metaDetails } from "../../constants/data/services/ServicesData";
 
 const AppServices = () => {
   const { servicetitle, subServicetitle } = useParams();

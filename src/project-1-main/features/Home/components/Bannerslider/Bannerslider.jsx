@@ -11,7 +11,7 @@ import HR_Consulting_Advisory from "../../../../assets/video/banner_slider/HR_Co
 import Regulatory_and_Compliance from "../../../../assets/video/banner_slider/Regulatory_and_Compliance.mp4";
 import Taxation from "../../../../assets/video/banner_slider/Taxation.mp4";
 import Accounting_Finance from "../../../../assets/video/banner_slider/Accounting_Finance.mp4";
-import { Services } from "../../../../data/services/Services";
+import { Services } from "../../../../constants/data/services/ServicesData";
 import { Link } from "react-router-dom";
 
 const Bannerslider = () => {

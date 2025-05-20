@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Services } from "../../../data/services/Services";
+import { Services } from "../../../constants/data/services/ServicesData";
 import { useEffect } from "react";
 const ServicesectionNewText = () => {
   const { servicetitle, subServicetitle } = useParams();

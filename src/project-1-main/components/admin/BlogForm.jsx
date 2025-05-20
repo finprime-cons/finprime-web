@@ -4,7 +4,7 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import DOMPurify from "dompurify";
 import SideNavbar from "../adminregister/SideNavbar";
-import { Services } from "../../data/services/Services";
+import { Services } from "../../constants/data/services/ServicesData";
 
 const BlogForm = ({ fetchBlogs }) => {
   const [formData, setFormData] = useState({

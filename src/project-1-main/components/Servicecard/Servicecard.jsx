@@ -5,7 +5,7 @@ import {
   HiOutlineArrowSmallLeft,
   HiOutlineArrowSmallRight,
 } from "react-icons/hi2";
-import { Services } from "../../data/services/Services";
+import { Services } from "../../constants/data/services/ServicesData";
 import { Link, useLocation } from "react-router-dom";
 
 const Servicecard = () => {

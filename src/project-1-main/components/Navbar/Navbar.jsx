@@ -16,9 +16,8 @@ import { HiMiniUserGroup } from "react-icons/hi2";
 import { FaMessage } from "react-icons/fa6";
 import { BiSolidOffer } from "react-icons/bi";
 import { IoIosContact } from "react-icons/io";
-import { Services } from "../../data/services/Services";
+import { Services } from "../../constants/data/services/ServicesData";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import axios from "axios";
 import emailjs from "emailjs-com";
 
 const Navbar = () => {

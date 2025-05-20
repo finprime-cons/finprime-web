@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Services } from "../../../data/services/Services";
+import { Services } from "../../../constants/data/services/ServicesData";
 import { Link } from "react-router-dom";
 
 const Servicesection6 = () => {
