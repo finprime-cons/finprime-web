@@ -6,21 +6,21 @@ import "swiper/css/autoplay";
 import "./partnerwith.css";
 
 // Import images
-import ajmanFreeZone from "../../assets/images/partner/ajman-free-zone.jpg";
-import ajmanMediaFreeZone from "../../assets/images/partner/ajman-media-free-zone.jpg";
-import dubaiHealthcareCity from "../../assets/images/partner/dubai-healthcare-city.jpg";
-import difc from "../../assets/images/partner/dubai-international-financial-centre.jpg";
-import dubaiMediaCity from "../../assets/images/partner/dubai-media-city.jpg";
-import dmcc from "../../assets/images/partner/dubai-multi-commodities-centre.jpg";
-import ifza from "../../assets/images/partner/dubai-silicon-oasis-ifza.jpg";
-import dwtc from "../../assets/images/partner/dubai-world-trade-centre.jpg";
-import jafza from "../../assets/images/partner/jebel-ali-free-zone.jpg";
-import meydanFreeZone from "../../assets/images/partner/meydan-free-zone.jpg";
-import rakFreeZone from "../../assets/images/partner/rak-free-zone.jpg";
-import sharjahAirportFreeZone from "../../assets/images/partner/sharjah-airport-free-zone.jpg";
-import sharjahMediaCity from "../../assets/images/partner/sharjah-media-city.jpg";
-import sharjahPublishingCity from "../../assets/images/partner/sharjah-publishing-city-free-zone.jpg";
-import uaqFreeZone from "../../assets/images/partner/uaq-free-trade-zone.jpg";
+import ajmanFreeZone from "../../../../assets/images/partner/ajman-free-zone.jpg";
+import ajmanMediaFreeZone from "../../../../assets/images/partner/ajman-media-free-zone.jpg";
+import dubaiHealthcareCity from "../../../../assets/images/partner/dubai-healthcare-city.jpg";
+import difc from "../../../../assets/images/partner/dubai-international-financial-centre.jpg";
+import dubaiMediaCity from "../../../../assets/images/partner/dubai-media-city.jpg";
+import dmcc from "../../../../assets/images/partner/dubai-multi-commodities-centre.jpg";
+import ifza from "../../../../assets/images/partner/dubai-silicon-oasis-ifza.jpg";
+import dwtc from "../../../../assets/images/partner/dubai-world-trade-centre.jpg";
+import jafza from "../../../../assets/images/partner/jebel-ali-free-zone.jpg";
+import meydanFreeZone from "../../../../assets/images/partner/meydan-free-zone.jpg";
+import rakFreeZone from "../../../../assets/images/partner/rak-free-zone.jpg";
+import sharjahAirportFreeZone from "../../../../assets/images/partner/sharjah-airport-free-zone.jpg";
+import sharjahMediaCity from "../../../../assets/images/partner/sharjah-media-city.jpg";
+import sharjahPublishingCity from "../../../../assets/images/partner/sharjah-publishing-city-free-zone.jpg";
+import uaqFreeZone from "../../../../assets/images/partner/uaq-free-trade-zone.jpg";
 
 const PartnerWithItem = () => {
   const imageList = [
