@@ -29,7 +29,7 @@ const cardsData = [
     image: Althaf,
     alt: "Mohamed Althaf",
     name: "Mohamed Althaf",
-    position: "Head of Business Development & Operations Excellence",
+    position: "General Manager- Operations and Business Development",
     number: 3,
   },
   {
