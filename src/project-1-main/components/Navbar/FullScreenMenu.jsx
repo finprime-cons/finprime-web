@@ -1,12 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
-
-const FullScreenMenu = ({ barmenu = [] }) => {
+import { menuBarItems } from "../../constants/data/menu/menuBarItems";
+const FullScreenMenu = () => {
   return (
     <div className="absolute top-0 right-0 z-40 w-full h-screen bg-center bg-cover bg-brandBlue">
       <div className="flex items-center justify-center h-full">
         <ul className="grid w-full grid-cols-5 text-center">
-          {barmenu.map((item) => (
+          {menuBarItems.map((item) => (
             <Link
               to={item.links}
               key={item.MenuId}
