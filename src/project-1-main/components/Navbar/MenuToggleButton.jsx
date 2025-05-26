@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const MenuToggleButton = ({ isOpen, toggleDropdown, isNotHomePage }) => {
   return (
     <button className="relative pb-1 group" onClick={toggleDropdown}>

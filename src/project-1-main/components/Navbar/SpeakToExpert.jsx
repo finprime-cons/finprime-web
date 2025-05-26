@@ -1,14 +1,100 @@
-import React from "react";
+import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
-const SpeakToExpertForm = ({
-  toggleSpeakExpert,
-  formData,
-  handleChange,
-  handleSubmit,
-  loading,
-  message,
-}) => {
+const SpeakToExpertForm = ({ toggleSpeakExpert }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    mobile: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (
+      !formData.name ||
+      !formData.company ||
+      !formData.email ||
+      !formData.mobile
+    ) {
+      alert("All fields are required");
+      return;
+    }
+
+    setLoading(true);
+    fetch("https://finprimeconsulting.com/api/sendemail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert(data.message || "Form submitted successfully!");
+        setMessage(data.message);
+        setFormData({ name: "", company: "", email: "", mobile: "" });
+
+        const templateParams = {
+          companyName: formData.company,
+          firstName: formData.name,
+          email: formData.email,
+          phone: formData.mobile,
+        };
+
+        emailjs
+          .send(
+            "service_m92dk5v",
+            "template_nhk2mx3",
+            templateParams,
+            "_zGtLeC1_fmp56KY0"
+          )
+          .then(
+            (response) => {
+              alert("Your enquiry has been submitted successfully!");
+
+              // Send the auto-reply email
+              const autoReplyParams = {
+                to_name: formData.name,
+                to_email: formData.email,
+              };
+
+              emailjs
+                .send(
+                  "service_m92dk5v",
+                  "template_x05occf",
+                  autoReplyParams,
+                  "_zGtLeC1_fmp56KY0"
+                )
+                .then(
+                  (autoReplyResponse) => {
+                    console.log("Auto-reply email sent successfully!");
+                  },
+                  (autoReplyError) => {
+                    console.error(
+                      "Failed to send the auto-reply email:",
+                      autoReplyError
+                    );
+                  }
+                );
+            },
+            (error) => {
+              alert("Failed to send the enquiry email.");
+            }
+          );
+      })
+      .catch((error) => {
+        alert("Failed to submit the form.");
+      })
+      .finally(() => setLoading(false));
+  };
+
   return (
     <div
       className="fixed inset-0 w-screen h-[100vh] bg-black bg-opacity-60 z-50 flex justify-center items-center"

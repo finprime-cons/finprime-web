@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import logodark from "../../assets/images/Navbar/finprime-logo-dark.svg";
 import logo from "../../assets/images/Navbar/finprime-logo.svg";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosClose } from "react-icons/io";
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { HiX } from "react-icons/hi";
-import { FaArrowRight } from "react-icons/fa6";
 import img1 from "../../assets/images/menubar/contact.jpg";
 import img2 from "../../assets/images/menubar/blog.jpg";
 import img3 from "../../assets/images/menubar/home.jpg";
@@ -18,7 +17,6 @@ import { BiSolidOffer } from "react-icons/bi";
 import { IoIosContact } from "react-icons/io";
 import { Services } from "../../constants/data/services/ServicesData";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import emailjs from "emailjs-com";
 import FullScreenMenu from "../Navbar/FullScreenMenu";
 import MenuToggleButton from "../Navbar/MenuToggleButton";
 import ServicesDropDown from "../Navbar/ServicesDropDown";
@@ -35,11 +33,7 @@ const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
   const dropdownRef = useRef(null);
   const lastScrollY = useRef(0);
-  const [selectedItem, setSelectedItem] = useState(null); // Track selected item
 
-  const handleClick = (item) => {
-    setSelectedItem(item); // Mark clicked item as selected
-  };
   const barmenu = [
     { MenuId: 1, title: "Home", links: "/", icon: <IoMdHome />, bgImage: img3 },
     {
@@ -76,8 +70,6 @@ const Navbar = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const [selectedIndexOpen, setSelectedIndexOpen] = useState(null);
-  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   const [isServiceOpen, setIsServiceOpen] = useState(false);
 
   const handleMouseEnter = () => {
@@ -86,22 +78,6 @@ const Navbar = () => {
 
   const handleMouseLeave = () => {
     setIsServiceOpen(false);
-    handleCloseAnswer();
-  };
-
-  const handleQuestionClick = (index) => {
-    if (selectedIndexOpen === index) {
-      setIsAnswerVisible(false);
-      setTimeout(() => setSelectedIndexOpen(null), 500);
-    } else {
-      setSelectedIndexOpen(index);
-      setIsAnswerVisible(true);
-    }
-  };
-
-  const handleCloseAnswer = () => {
-    setIsAnswerVisible(false);
-    setTimeout(() => setSelectedIndexOpen(null), 500);
   };
 
   useEffect(() => {
@@ -209,7 +185,6 @@ const Navbar = () => {
       ? logo
       : logodark;
 
-  const [isHovered, setIsHovered] = useState(false);
   const isNotHomePage =
     location.pathname !== "/" &&
     location.pathname !== "/blog" &&
@@ -231,99 +206,6 @@ const Navbar = () => {
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
-  };
-
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    mobile: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (
-      !formData.name ||
-      !formData.company ||
-      !formData.email ||
-      !formData.mobile
-    ) {
-      alert("All fields are required");
-      return;
-    }
-
-    setLoading(true);
-    fetch("https://finprimeconsulting.com/api/sendemail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        alert(data.message || "Form submitted successfully!");
-        setMessage(data.message);
-        setFormData({ name: "", company: "", email: "", mobile: "" });
-
-        const templateParams = {
-          companyName: formData.company,
-          firstName: formData.name,
-          email: formData.email,
-          phone: formData.mobile,
-        };
-
-        emailjs
-          .send(
-            "service_m92dk5v",
-            "template_nhk2mx3",
-            templateParams,
-            "_zGtLeC1_fmp56KY0"
-          )
-          .then(
-            (response) => {
-              alert("Your enquiry has been submitted successfully!");
-
-              // Send the auto-reply email
-              const autoReplyParams = {
-                to_name: formData.name,
-                to_email: formData.email,
-              };
-
-              emailjs
-                .send(
-                  "service_m92dk5v",
-                  "template_x05occf",
-                  autoReplyParams,
-                  "_zGtLeC1_fmp56KY0"
-                )
-                .then(
-                  (autoReplyResponse) => {
-                    console.log("Auto-reply email sent successfully!");
-                  },
-                  (autoReplyError) => {
-                    console.error(
-                      "Failed to send the auto-reply email:",
-                      autoReplyError
-                    );
-                  }
-                );
-            },
-            (error) => {
-              alert("Failed to send the enquiry email.");
-            }
-          );
-      })
-      .catch((error) => {
-        alert("Failed to submit the form.");
-      })
-      .finally(() => setLoading(false));
   };
 
   return (
@@ -385,14 +267,7 @@ const Navbar = () => {
                   }`}
                 >
                   <ServicesDropDown
-                    title="Accounting Services"
-                    description="Our accounting services ensure your business complies with regulations and maintains financial health."
-                    buttonText="Explore More"
                     Services={Services}
-                    selectedIndexOpen={selectedIndexOpen}
-                    isAnswerVisible={isAnswerVisible}
-                    handleQuestionClick={handleQuestionClick}
-                    handleCloseAnswer={handleCloseAnswer}
                     handleLinkClick={handleLinkClick}
                   />
                 </div>
@@ -473,14 +348,7 @@ const Navbar = () => {
                 </div>
 
                 {isSpeakExpert && (
-                  <SpeakToExpertForm
-                    toggleSpeakExpert={toggleSpeakExpert}
-                    formData={formData}
-                    handleChange={handleChange}
-                    handleSubmit={handleSubmit}
-                    loading={loading}
-                    message={message}
-                  />
+                  <SpeakToExpertForm toggleSpeakExpert={toggleSpeakExpert} />
                 )}
               </li>
 

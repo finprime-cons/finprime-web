@@ -1,31 +1,42 @@
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { RiArrowLeftSLine } from "react-icons/ri";
+import { useState } from "react";
+const ServicesDropDown = ({ Services, handleLinkClick }) => {
+  const [selectedIndexOpen, setSelectedIndexOpen] = useState(null);
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
-const ServicesDropDown = ({
-  title,
-  description,
-  buttonText,
-  Services,
-  selectedIndexOpen,
-  isAnswerVisible,
-  handleQuestionClick,
-  handleCloseAnswer,
-  handleLinkClick,
-}) => {
+  const handleQuestionClick = (index) => {
+    if (selectedIndexOpen === index) {
+      setIsAnswerVisible(false);
+      setTimeout(() => setSelectedIndexOpen(null), 500);
+    } else {
+      setSelectedIndexOpen(index);
+      setIsAnswerVisible(true);
+    }
+  };
+
+  const handleCloseAnswer = () => {
+    setIsAnswerVisible(false);
+    setTimeout(() => setSelectedIndexOpen(null), 500);
+  };
+
   return (
     <div className="flex flex-col w-full h-full md:flex-row">
       {/* Column 1: Overview */}
       <div className="flex flex-col py-16 px-4 md:px-14 w-full md:w-[20%]">
-        <h4 className="mb-2 text-2xl font-bold font-khula">{title}</h4>
+        <h4 className="mb-2 text-2xl font-bold font-khula">
+          Accounting Services
+        </h4>
         <p className="text-sm text-left text-gray-600 font-raleway">
-          {description}
+          Our accounting services ensure your business complies with regulations
+          and maintains financial health.
         </p>
         <button
           className="border font-raleway border-black w-[70%] text-sm mt-4 py-1 px-2 transition-all duration-300 ease-out 
           hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white text-black"
         >
-          {buttonText}
+          Explore More"
         </button>
       </div>
 
