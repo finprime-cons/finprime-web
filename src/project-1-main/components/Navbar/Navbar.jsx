@@ -19,7 +19,8 @@ import { IoIosContact } from "react-icons/io";
 import { Services } from "../../constants/data/services/ServicesData";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import emailjs from "emailjs-com";
-
+import FullScreenMenu from "../Navbar/FullScreenMenu";
+import MenuToggleButton from "../Navbar/MenuToggleButton";
 const Navbar = () => {
   // Get current route
 
@@ -658,62 +659,16 @@ const Navbar = () => {
               {/* -------------------------------------------------------bar menu---------------------------------------------------------*/}
 
               <li ref={dropdownRef} className="py-4 pl-2 font-khula">
-                <button
-                  className="relative pb-1 group"
-                  onClick={toggleDropdown}
-                >
-                  <div
-                    className="relative flex z-50 mt-1 rounded-full overflow-hidden items-center justify-center
-                                                py-[15px] px-[11px] border-l border-dashed  transform transition-all bg-transparent duration-300 
-                                                ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 shadow-lg"
-                  >
-                    <span
-                      className="text-white  tracking-[1px] xl:font-raleway transition-all duration-300"
-                      style={{
-                        color: isHovered
-                          ? ""
-                          : isNotHomePage
-                          ? "black"
-                          : "white",
-                      }}
-                      onMouseEnter={() => setIsHovered(false)}
-                      onMouseLeave={() => setIsHovered(false)}
-                    >
-                      {isOpen ? "Close" : "Menu"}
-                    </span>
-                  </div>
-                </button>
+                <div>
+                  <MenuToggleButton
+                    isOpen={isOpen}
+                    toggleDropdown={toggleDropdown}
+                    isNotHomePage={isNotHomePage}
+                  />
+                </div>
                 {isOpen && (
-                  <div className="absolute top-0 right-0 z-40 w-full h-screen bg-center bg-cover bg-brandBlue">
-                    <div className="flex items-center justify-center h-full">
-                      <ul className="grid w-full grid-cols-5 text-center">
-                        {barmenu.map((item) => (
-                          <Link
-                            to={item.links}
-                            key={item.MenuId}
-                            className="relative transition duration-200 bg-center bg-cover shadow-md group hover:shadow-lg"
-                            style={{
-                              backgroundImage: `url(${item.bgImage})`,
-                              height: "100vh",
-                            }}
-                          >
-                            <div className="absolute top-0 left-0 z-10 w-full h-full transition-all duration-300 bg-black bg-opacity-60 group-hover:bg-opacity-0"></div>
-
-                            <span
-                              className="z-20 flex flex-col items-center justify-center h-full p-4 pb-10 text-white"
-                              aria-label={item.title}
-                            >
-                              <span className="z-10 text-4xl font-bold text-white ">
-                                {item.title}
-                              </span>
-                              <span className="invisible text-5xl text-white transition duration-500 group-hover:visible">
-                                {item.icon}
-                              </span>
-                            </span>
-                          </Link>
-                        ))}
-                      </ul>
-                    </div>
+                  <div>
+                    <FullScreenMenu barmenu={barmenu} />
                   </div>
                 )}
               </li>
