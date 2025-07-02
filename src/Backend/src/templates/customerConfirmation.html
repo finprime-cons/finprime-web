@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Your Submission</title>
+  <style>
+    {{css}}
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <header class="header">
+      <img src="{{logoUrl}}" alt="Logo" style="max-width:180px; margin-bottom:20px;" />
+      <h1>Thank You, {{firstName}}!</h1>
+      <p>We've received your inquiry and will contact you soon.</p>
+    </header>
+    
+    <div class="content">
+      <div class="details-card">
+        <h2>Your Submission Details</h2>
+        <div class="detail-row">
+          <span class="label">Company:</span>
+          <span class="value">{{companyName}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Name:</span>
+          <span class="value">{{firstName}} {{lastName}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Email:</span>
+          <span class="value">{{email}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Phone:</span>
+          <span class="value">{{phone}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Service:</span>
+          <span class="value">{{service}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Subservice:</span>
+          <span class="value">{{subService}}</span>
+        </div>
+      </div>
+      
+      <div class="next-steps">
+        <h3>What Happens Next?</h3>
+        <p>Our team will review your request and contact you within 1-2 business days.</p>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>© {{currentYear}} Your Company Name. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Unsubscribe</a></p>
+    </footer>
+  </div>
+</body>
+</html>
