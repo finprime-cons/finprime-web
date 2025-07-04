@@ -123,7 +123,7 @@ const ServingSection = () => {
               <div className='absolute left-0 w-full transition-all duration-300 transform translate-y-6 group-hover:pb-48 md:group-hover:pb-60 lg:group-hover:pb-60 group-hover:translate-y-0 group-hover:opacity-100'>
                 
                 <div className='flex justify-center sm:justify-between sm:pl-24 '>
-                  <h3 className='text-xl sm:text-[22px] text-white font-khula uppercase mb-5  sm:px-0  sm:mr-5 '>
+                  <h3 className='text-xl sm:text-[22px] text-white font-inter uppercase mb-5  sm:px-0  sm:mr-5 '>
                     {industry.headtitle}
                   </h3>
                 </div>

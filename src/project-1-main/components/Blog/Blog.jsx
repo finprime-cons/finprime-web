@@ -6,10 +6,10 @@ import Bbanner from './Bbanner/Bbanner';
 import Btext from './Btext/Btext';
 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon';
 import BList from './BlogList/BList';
-import BelowFooter from '../Footer/BelowFooter';
+import CookieBanner from '../Cookies/CookieBanner';
 
 
-const Blog = () => {
+const Blog = ({ toggleSpeakExpert }) => {
   return (
     <HelmetProvider>
     <div className='relative overflow-hidden '>
@@ -28,13 +28,13 @@ const Blog = () => {
                   <meta name="twitter:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />
                   <meta name="twitter:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
            </Helmet>
-      <Navbar/>  
+      <Navbar toggleSpeakExpert={toggleSpeakExpert} />  
       <Bbanner/> 
       <Btext/>
       <BList/>
       <Footer/>
-      <BelowFooter/>
       <WhatsAppIcon/>
+      <CookieBanner/>
     </div>
     </HelmetProvider>
   )

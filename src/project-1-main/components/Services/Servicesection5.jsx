@@ -22,16 +22,16 @@ const Servicesection5 = () => {
 
       <div>
         <h4 className="text-lg text-white md:text-3xl lg:text-4xl pb-2 font-bold">Direct Your Inbox</h4>
-        <p className="text-xs text-white tracking-[1px] font-raleway sm:text-[16px]">Stay up to date with our Editor's picks newsletter.</p>
+        <p className="text-xs text-white tracking-[1px] font-inter sm:text-[16px]">Stay up to date with our Editor's picks newsletter.</p>
       </div>
       <div>
-        <Link to={`/form2/${service.id}/${subService.subid}`} className="bg-transparent text-xs md:text-[16px] tracking-[1px] text-white border border-white font-semibold py-2 sm:py-3 font-raleway px-3 sm:px-10 transition-all duration-300 
+        <Link to={`/form2/${service.id}/${subService.subid}`} className="bg-transparent text-xs md:text-[16px] tracking-[1px] text-white border border-white font-semibold py-2 sm:py-3 font-inter px-3 sm:px-10 transition-all duration-300 
         ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white">
           Enquiry
         </Link>
       </div>
       {/* <div>
-        <Link to="/contactus#subscribe"  className="bg-transparent text-xs md:text-[16px] tracking-[1px] text-white border border-white font-semibold py-2 sm:py-3 font-raleway px-3 sm:px-10 transition-all duration-300 
+        <Link to="/contactus#subscribe"  className="bg-transparent text-xs md:text-[16px] tracking-[1px] text-white border border-white font-semibold py-2 sm:py-3 font-inter px-3 sm:px-10 transition-all duration-300 
         ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white">
           Subscribe
         </Link>

@@ -8,7 +8,7 @@ import Industriessection4 from './Industriessection4'
 import Industriessection5 from './Industriessection5'
 import Industriessection6 from './Industriessection6'
 import WhatsAppIcon from '../../WhatsAppIcon/WhatsAppIcon';
-import BelowFooter from '../../Footer/BelowFooter'
+import CookieBanner from '../../Cookies/CookieBanner';
 
 const Industries = () => {
   return (
@@ -36,8 +36,8 @@ const Industries = () => {
         <Industriessection5/>
         <Industriessection6/>
         <Footer/>
-        <BelowFooter/>
         <WhatsAppIcon/>
+        <CookieBanner/>
     </div>
     </HelmetProvider>
   )

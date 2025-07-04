@@ -76,13 +76,18 @@ const Choose = () => {
         
         <div className="w-full lg:w-2/3 ">
           <h3
-            className='text-2xl md:text-3xl font-medium pb-5 pl-5'
+            className='text-2xl md:text-3xl font-medium pb-5 pl-5 border-l-4 border-gray-800'
           >
             Why Choose Us
           </h3>
 
-          <div className="bg-gray-100 pt-20 pl-5 sm:pl-14 lg:pl-16  pb-10 pr-5">
-            <h3 className="text-xl lg:text-4xl font-semibold mb-8">We Provide World Class Financial Service</h3>
+          <div className="pt-20 pl-5 sm:pl-14 lg:pl-16  pb-10 pr-5">
+            <h3 
+              className="text-xl lg:text-3xl font-kulim-park mb-8 text-white py-3 px-5 inline-block"
+              style={{ background: 'linear-gradient(to right, #1e293b, #06b6d4)' }}
+            >
+              We Make World Class Financial Service
+            </h3>
             <div className="space-y-5">
               {faqs.map((faq, index) => (
                 <div key={faq.id} 
@@ -91,7 +96,7 @@ const Choose = () => {
                     className="flex justify-between items-center  cursor-pointer group transition duration-200"
                     onClick={() => toggleOpen(index)}
                   >
-                    <h3 className=" text-sm sm:text-[24px] tracking-[1px]  font-raleway font-medium">{faq.question}</h3>
+                    <h3 className=" text-sm sm:text-[24px] tracking-[1px]  font-kulim-park font-medium">{faq.question}</h3>
                     <HiOutlineArrowSmallRight
                       className={`text-4xl lg:text-5xl rounded-full border  border-black p-2 group-hover:bg-black group-hover:text-white
                          transition-transform transform ${openIndex === index ? 'rotate-90' : ''}`}
@@ -101,7 +106,7 @@ const Choose = () => {
                   
                     {openIndex === index && (
                       <p 
-                        className="px-4 sm:px-16 leading-7 text-sm sm:text-[16px] font-raleway tracking-[1px] mb-5 text-gray-600 mt-2"
+                        className="px-4 sm:px-16 leading-7 text-sm sm:text-[16px] font-inter tracking-[1px] mb-5 text-gray-600 mt-2"
                       >
                         {faq.answer}
                       </p>

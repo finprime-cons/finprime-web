@@ -9,7 +9,7 @@ const Industriessection5 = () => {
    
       <div>
         <h4 className="text-lg text-white md:text-3xl tracking-[1px] lg:text-4xl pb-2 font-bold">Direct Your Inbox</h4>
-        <p className="text-xs text-white tracking-[1px] font-raleway sm:text-[16px]">Stay up to date with our Editor's picks newsletter.</p>
+        <p className="text-xs text-white tracking-[1px] font-inter sm:text-[16px]">Stay up to date with our Editor's picks newsletter.</p>
       </div>
 
       <div>

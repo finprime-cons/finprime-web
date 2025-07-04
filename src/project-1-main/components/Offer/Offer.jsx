@@ -5,7 +5,7 @@
                 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon';
                 import { Link} from 'react-router-dom';
                 import { Services } from '../Services';
-import BelowFooter from '../Footer/BelowFooter';
+import CookieBanner from '../Cookies/CookieBanner';
 
 
 
@@ -58,7 +58,7 @@ import BelowFooter from '../Footer/BelowFooter';
                                           <meta name="twitter:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
                                    </Helmet>
                         <Navbar/>
-                    <div className="p-8 mt-40 mb-10 font-cinzel">
+                    <div className="p-8 mt-40 mb-10 font-inter">
 
 
 
@@ -266,7 +266,7 @@ import BelowFooter from '../Footer/BelowFooter';
                     
                     </div>
                     <Footer/>
-                    <BelowFooter/>
+                    <CookieBanner/>
                     <WhatsAppIcon/>
                     </div>
                     </HelmetProvider>

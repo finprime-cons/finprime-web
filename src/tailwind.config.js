@@ -3,7 +3,7 @@ import aspectRatio from '@tailwindcss/aspect-ratio';
 
 export default {
   content: [
-    "./index.html",
+    "./project-1-/index.html",
     "./project-1-main/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -20,10 +20,14 @@ export default {
         '7xl': '5rem',
       },
       fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
         cinzel: ['Cinzel', 'serif'],
         lato: ['"Lato"', 'sans-serif'],
         khula: ['Khula', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],
+        'kulim-park': ['"Kulim Park"', 'sans-serif'],
       },
       keyframes: {
         rotate: {

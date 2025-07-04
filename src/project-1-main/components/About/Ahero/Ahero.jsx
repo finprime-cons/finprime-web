@@ -47,18 +47,6 @@ const Hero = () => {
             Fin Prime-Accounting Services
           </h4>
         </div>
-
-
-
-
-        
-
-        {/* Social Media Icons Box */}
-
-
-
-
-
         <div className="flex flex-col items-center md:items-end xl:pr-10  md:pr-6 pr-4 pl-6 sm:pl-0 md:pt-[400px] pt-16 xl:pt-0 lg:pr-8 lg:pt-80 justify-center w-full md:w-1/3  
         ">
           <div className="flex space-x-2 bg-white bg-opacity-55 rounded-[5px] border border-opacity-20  p-3 -mb-1 ">
@@ -76,7 +64,7 @@ const Hero = () => {
             </a>
             <a href="https://www.linkedin.com/company/finprimeconsulting/" aria-label="LinkedIn" className="p-2 
              bg-white rounded-full text-black shadow-black
-             transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:border-opacity-10 hover:text-white ">
+             transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white ">
               <RiLinkedinFill size={20} />
             </a>
             <a href="https://www.instagram.com/finprimeconsulting/" aria-label="WhatsApp" className="p-2 

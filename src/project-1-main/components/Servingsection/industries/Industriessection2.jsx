@@ -44,11 +44,11 @@ const Industriessection2 = () => {
     <div 
     className='bg-white mt-[300px] sm:mt-[400px] mb-[150px]   xl:pl-12 xl:pr-10 lg:pl-10 lg:pr-8 md:pl-8 md:pr-6 pr-4 pl-6'>
       <div id='service-two' >
-        <div className='flex pb-10 text-3xl font-semibold text-black sm:text-5xl font-khula'><div className='text-6xl sm:text-8xl font-extralight '>|</div> <div className='pb-5'>{subIndustry.headtitle}</div></div>
+        <div className='flex pb-10 text-3xl font-semibold text-black sm:text-5xl font-inter'><div className='text-6xl sm:text-8xl font-extralight '>|</div> <div className='pb-5'>{subIndustry.headtitle}</div></div>
       </div>
       <div className="flex flex-col ">
 
-        <div className='w-full  font-raleway sm:px-2 text-md md:text-[16px] tracking-[1px] leading-7  text-black'>
+        <div className='w-full  font-inter sm:px-2 text-md md:text-[16px] tracking-[1px] leading-7  text-black'>
           <p className='mb-12 '>
             {subIndustry.content}
           </p>

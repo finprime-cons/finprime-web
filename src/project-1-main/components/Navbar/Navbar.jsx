@@ -1,76 +1,97 @@
-import React, { useState, useEffect, useRef } from 'react';
-import logodark from '../../images/Navbar/finprime-logo-dark.svg';
-import logo from '../../images/Navbar/finprime-logo.svg';
-import { Link, useLocation } from 'react-router-dom';
-import { IoIosClose } from "react-icons/io";
-import { HiBars3CenterLeft } from 'react-icons/hi2';
-import { HiX } from 'react-icons/hi';
-import { FaArrowRight } from "react-icons/fa6";
+import React, { useState, useRef, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { HiXMark } from 'react-icons/hi2';
+import logoWhite from '../../images/Navbar/finprime-logo.svg';
+import logoDark from '../../images/Navbar/white-dark.png';
 import img1 from '../../images/menubar/contact.jpg';
 import img2 from '../../images/menubar/blog.jpg';
 import img3 from '../../images/menubar/home.jpg';
-import img4 from '../../images/menubar/about.jpg';
+import img4 from '../../images/menubar/about.png';
 import img5 from '../../images/menubar/offer.jpg';
 import { IoMdHome } from "react-icons/io";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { FaMessage } from "react-icons/fa6";
 import { BiSolidOffer } from "react-icons/bi";
 import { IoIosContact } from "react-icons/io";
+import { FaArrowRight } from "react-icons/fa6";
 import { Services } from '../Services';
-import { RiArrowLeftSLine } from "react-icons/ri";
-import axios from "axios";
+import { RiArrowLeftSLine } from 'react-icons/ri';
+import companyProImg from '../../images/company-pro.png';
+import { IoIosClose } from 'react-icons/io';
 import emailjs from "emailjs-com";
-
-
+import companyProfileImage from '../../images/company-pro.png';
+import { MdCenterFocusStrong } from 'react-icons/md';
+import finLogo from '../../images/Navbar/fin.png';
+import logoLanding from '../../images/Navbar/p.svg';
 
 const Navbar = () => {
-
-    // Get current route
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isLogoHovered, setIsLogoHovered] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const [isOpen, setIsOpen] = useState(false);
-    const [activeServiceMenuIndex, setActiveServiceMenuIndex] = useState(null);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isMobileMenuFirstOpen, setIsMobileMenuFirstOpen] = useState(false);
-    const [isSpeakExpert, setIsSpeakExpert] = useState(false);
-    const [showNavbar, setShowNavbar] = useState(true);
-    const [scrolling, setScrolling] = useState(false);
     const dropdownRef = useRef(null);
-    const lastScrollY = useRef(0);
-    const [selectedItem, setSelectedItem] = useState(null); // Track selected item
+    const closeTimeout = useRef(null);
+    
+    // Determine which logo to show based on the current route
+    const shouldShowDarkLogo = location.pathname === '/rightsolutions' || 
+                               location.pathname === '/refer-and-earn' || 
+                               location.pathname === '/freeconsultation' ||
+                               location.pathname.includes('external-audit');
+    const logoSrc =
+        location.pathname === '/' || location.pathname === '/about'
+            ? logoLanding
+            : logoDark;
 
-
-    const handleClick = (item) => {
-        setSelectedItem(item); // Mark clicked item as selected
-    };
-    const barmenu = [
-        { MenuId: 1, title: "Home", links: "/", icon: <IoMdHome />, bgImage: img3 },
-        { MenuId: 2, title: "About", links: "/about", icon: <HiMiniUserGroup />, bgImage: img4 },
-        { MenuId: 3, title: "Blog", links: "/blog", icon: <FaMessage />, bgImage: img2 },
-        { MenuId: 4, title: "Offer", links: "/offer", icon: <BiSolidOffer />, bgImage: img5 },
-        { MenuId: 5, title: "Contact Us", links: "/contactus", icon: <IoIosContact />, bgImage: img1 },
-    ];
-
-
-
+    // Toggle overlay menu
     const toggleDropdown = () => {
         setIsOpen((prev) => !prev);
     };
 
+    // Close overlay menu when clicking outside
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsOpen(false);
+        }
+    };
 
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
+    const barmenu = [
+        { MenuId: 1, title: "FINPRIME", links: "/", icon: <IoMdHome />, bgImage: img3 },
+        { MenuId: 2, title: "ABOUT US", links: "/about", icon: <HiMiniUserGroup />, bgImage: img4 },
+        { MenuId: 3, title: "INSIGHTS", links: "/blog", icon: <FaMessage />, bgImage: img2 },
+        { MenuId: 4, title: "REFER & EARN", links: "/refer-and-earn", icon: <BiSolidOffer />, bgImage: img5 },
+        { MenuId: 5, title: "CONTACT US", links: "/contactus", icon: <IoIosContact />, bgImage: img1 }
+    ];
 
+    // Add state and handlers for the Services mega menu
     const [selectedIndexOpen, setSelectedIndexOpen] = useState(null);
     const [isAnswerVisible, setIsAnswerVisible] = useState(false);
     const [isServiceOpen, setIsServiceOpen] = useState(false);
-
-
+    const [hoveredIndex, setHoveredIndex] = useState(null);
     const handleMouseEnter = () => {
+        if (closeTimeout.current) {
+            clearTimeout(closeTimeout.current);
+            closeTimeout.current = null;
+        }
         setIsServiceOpen(true);
     };
 
     const handleMouseLeave = () => {
-        setIsServiceOpen(false);
-        handleCloseAnswer();
+        if (closeTimeout.current) {
+            clearTimeout(closeTimeout.current);
+        }
+        closeTimeout.current = setTimeout(() => {
+            setIsServiceOpen(false);
+            setHoveredIndex(null);
+        }, 500); // Increased delay to give more time
     };
 
     const handleQuestionClick = (index) => {
@@ -82,50 +103,39 @@ const Navbar = () => {
             setIsAnswerVisible(true);
         }
     };
+    const handleCloseAnswer = () => { setIsAnswerVisible(false); setTimeout(() => setSelectedIndexOpen(null), 500); };
+    const handleLinkClick = () => setIsServiceOpen(false);
 
-    const handleCloseAnswer = () => {
-        setIsAnswerVisible(false);
-        setTimeout(() => setSelectedIndexOpen(null), 500);
-    };
+    // Build a single menuItems array for correct index alignment
+    const menuItems = [
+        ...Services.slice(0, 3),
+        {
+            headtitle: 'Banking Operations Excellence',
+            subtitles: [
+                { subid: 1, headsubtitle: 'Retail Banking' },
+                { subid: 2, headsubtitle: 'Corporate & SME Banking' },
+                { subid: 3, headsubtitle: 'Risk and Compliance' },
+                { subid: 4, headsubtitle: 'Digital Banking' },
+                { subid: 5, headsubtitle: 'Customer Services and Relationship Management' }
+            ]
+        },
+        ...Services.slice(3)
+    ];
 
-
-
-
-
-    useEffect(() => {
-
-        const hasVisited = localStorage.getItem('hasVisited');
-
-        if (!hasVisited) {
-
-            setIsOpen(true);
-            localStorage.setItem('hasVisited', 'true');
-        }
-    }, []);
-
-
-
-
-
-
-
-
+    // Speak to an Expert Modal State & Logic
+    const [isSpeakExpert, setIsSpeakExpert] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        company: '',
+        email: '',
+        mobile: '',
+    });
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
 
     const toggleSpeakExpert = () => {
         setIsSpeakExpert(prev => !prev);
     };
-
-
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.classList.add('overflow-hidden');
-        } else {
-            document.body.classList.remove('overflow-hidden');
-        }
-        return () => {
-            document.body.classList.remove('overflow-hidden');
-        };
-    }, [isMobileMenuOpen]);
 
     useEffect(() => {
         if (isSpeakExpert) {
@@ -138,109 +148,6 @@ const Navbar = () => {
         };
     }, [isSpeakExpert]);
 
-    const toggleServiceMenuVisibility = (index) => {
-        setActiveServiceMenuIndex(prevIndex => (prevIndex === index ? null : index));
-    };
-
-
-    const toggleMobileMenuFirst = (index) => {
-        setIsMobileMenuFirstOpen(prevIndex => (prevIndex === index ? null : index));
-    };
-
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(prev => !prev);
-
-    };
-
-    const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-            setIsOpen(false);
-        }
-    };
-
-    const handleScroll = () => {
-        if (typeof window !== 'undefined') {
-            const currentScrollY = window.scrollY;
-            setShowNavbar(currentScrollY < lastScrollY.current);
-            lastScrollY.current = currentScrollY;
-            setScrolling(currentScrollY > 50);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-    useEffect(() => {
-        if (isOpen) {
-            document.body.classList.add('overflow-hidden');
-        } else {
-            document.body.classList.remove('overflow-hidden');
-        }
-
-        return () => {
-            document.body.classList.remove('overflow-hidden');
-        };
-    }, [isOpen]);
-
-    const handleLinkClick = () => {
-        setIsServiceOpen(false);
-
-    };
-
-
-
-    const location = useLocation();
-    const currentPath = location.pathname;
-
-    const logos = location.pathname === '/' || location.pathname === '/blog' || location.pathname === '/about' ? logo : logodark;
-
-    const [isHovered, setIsHovered] = useState(false);
-    const isNotHomePage = location.pathname !== '/' && location.pathname !== '/blog' && location.pathname !== '/about';
-
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [isModalOpen]);
-
-    const handleModalToggle = () => {
-        setIsModalOpen(!isModalOpen);
-    };
-
-
-
-
-
-
-
-    const [formData, setFormData] = useState({
-        name: '',
-        company: '',
-        email: '',
-        mobile: '',
-    });
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('');
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -248,731 +155,493 @@ const Navbar = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (!formData.name || !formData.company || !formData.email || !formData.mobile) {
             alert('All fields are required');
             return;
         }
-
         setLoading(true);
+        // ... (rest of handleSubmit logic from Banner.jsx)
         fetch('https://finprimeconsulting.com/api/sendemail', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         })
-            .then((response) => response.json())
-            .then((data) => {
-                alert(data.message || 'Form submitted successfully!');
-                setMessage(data.message);
-                setFormData({ name: '', company: '', email: '', mobile: '' });
-
-                const templateParams = {
-                    companyName: formData.company,
-                    firstName: formData.name,
-                    email: formData.email,
-                    phone: formData.mobile,
-                };
-
-                emailjs
-                    .send('service_m92dk5v', 'template_nhk2mx3', templateParams, '_zGtLeC1_fmp56KY0')
-                    .then(
-                        (response) => {
-                            alert('Your enquiry has been submitted successfully!');
-
-                            // Send the auto-reply email
-                            const autoReplyParams = {
-                                to_name: formData.name,
-                                to_email: formData.email,
-                            };
-
-                            emailjs
-                                .send('service_m92dk5v', 'template_x05occf', autoReplyParams, '_zGtLeC1_fmp56KY0')
-                                .then(
-                                    (autoReplyResponse) => {
-                                        console.log('Auto-reply email sent successfully!');
-                                    },
-                                    (autoReplyError) => {
-                                        console.error('Failed to send the auto-reply email:', autoReplyError);
-                                    }
-                                );
-                        },
-                        (error) => {
-                            alert('Failed to send the enquiry email.');
-                        }
-                    );
-            })
-            .catch((error) => {
-                alert('Failed to submit the form.');
-            })
-            .finally(() => setLoading(false));
+        .then((response) => response.json())
+        .then((data) => {
+            alert(data.message || 'Form submitted successfully!');
+            setMessage(data.message);
+            setFormData({ name: '', company: '', email: '', mobile: '' });
+            const templateParams = {
+                companyName: formData.company,
+                firstName: formData.name,
+                email: formData.email,
+                phone: formData.mobile,
+            };
+            emailjs
+                .send('service_m92dk5v', 'template_nhk2mx3', templateParams, '_zGtLeC1_fmp56KY0')
+                .then(
+                    (response) => {
+                        console.log('Enquiry email sent successfully!');
+                        const autoReplyParams = { to_name: formData.name, to_email: formData.email };
+                        emailjs.send('service_m92dk5v', 'template_x05occf', autoReplyParams, '_zGtLeC1_fmp56KY0')
+                            .then(
+                                (autoReplyResponse) => console.log('Auto-reply email sent successfully!'),
+                                (autoReplyError) => console.error('Failed to send the auto-reply email:', autoReplyError)
+                            );
+                    },
+                    (error) => console.error('Failed to send the enquiry email:', error)
+                );
+        })
+        .catch((error) => alert('Failed to submit the form.'))
+        .finally(() => {
+            setLoading(false);
+            setIsSpeakExpert(false); // Close modal
+        });
     };
 
-
-
-
-
     return (
-        <div className={`fixed xl:pr-10 xl:pl-8 lg:pr-8 lg:pl-6 md:pr-6 md:pl-4 pl-2 pr-4  top-0 right-0 w-full z-50  
-             transition-transform duration-300 
-            ${showNavbar ? 'sm:translate-y-0 ' : 'sm:-translate-y-full'} 
-            ${scrolling ? 'bg-black bg-opacity-40 pt-4 sm:pt-10' : ' pt-4 sm:pt-10'}`}>
-            <div className=''>
-                <div className='flex items-center justify-between'>
-                    <div className='flex'>
-                        <Link to="/">
-                            <img src={logos} alt="Logo" className="h-16 sm:h-20 " />
-                        </Link>
-                    </div>
-                    <div className='flex gap-2 text-white'>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {/* -------------------------------------------------------service Menu---------------------------------------------------------*/}
-                        <ul className='items-center hidden py-2 lg:flex'>
-                            <li
-                                className="py-6"
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
-                            >
-                                <button className={`font-raleway hover:text-cyan-500 font-medium pb-2 tracking-[1px] text-sm lg:text-[20px] xl:text-[16px]
-                                     ${currentPath !== '/rightsolutions' &&
-                                        currentPath !== '/freeconsultation' &&
-                                        currentPath !== '/about' &&
-                                        currentPath !== '/' &&
-                                        currentPath !== '/blog' &&
-                                        currentPath !== '/offer' &&
-                                        currentPath !== '/contactus' &&
-                                        !currentPath.startsWith('/blog') ? 'link-115  font-bold' : null} ${(isNotHomePage ? 'text-black' : 'text-white')}
-                                     transition-colors duration-300`}
-                                    style={{
-                                        padding: "4px",
-                                        color: isNotHomePage ? 'black' : 'white',
-                                    }}>
-                                    Services
-                                </button>
-
-                                <div
-                                    className={`absolute left-0 w-full text-black bg-white mt-3 shadow-xl transition-opacity duration-300 ease-in-out transform ${isServiceOpen ? 'animate-fadeinrightsmall visible' : 'opacity-0 -translate-y-4 invisible'
-                                        }`}
-                                >
-
-                                    <div className="flex flex-col w-full h-full md:flex-row">
-
-                                        <div className='flex flex-col py-16 px-4 md:px-14 w-full  md:w-[20%]'>
-                                            <h4 className="mb-2 text-2xl font-bold font-khula">Accounting Services</h4>
-                                            <p className="text-sm text-left text-gray-600 font-raleway">
-                                                Our accounting services ensure your business complies with regulations and maintains financial health.
-                                            </p>
-                                            <button className='border font-raleway border-black w-[70%] text-sm mt-4 py-1 px-2 transition-all duration-300 ease-out 
-                                            hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white text-black'>
-                                                Explore More
-                                            </button>
-                                        </div>
-
-                                        <div className='flex flex-col py-4 pl-4 w-full md:w-[40%]'>
-                                            <ul>
-                                                {Services.map((service, index) => (
-                                                    <li key={index} className="group">
-                                                        <button
-                                                            onClick={() => handleQuestionClick(index)}
-                                                            className={`text-black font-khula text-lg flex justify-between w-full pl-8 py-5 border-b ${selectedIndexOpen === index
-                                                                ? 'bg-brandBlue text-white border-l-8 border-cyan-500'
-                                                                : 'group-hover:bg-brandBlue group-hover:text-white group-hover:border-l-8 group-hover:border-cyan-500'
-                                                                }`}
-                                                        >
-                                                            {service.headtitle}
-                                                            <FaArrowRight className={`right-0 text-2xl mr-5 ${selectedIndexOpen === index ? 'hidden' : 'group-hover:animate-fadeinleftsmall'}`} />
-                                                        </button>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        {/* Column 3: Answers */}
-                                        <div className='flex flex-col w-full md:w-[40%] h-full relative'>
-                                            {selectedIndexOpen !== null && isAnswerVisible ? (
-                                                <div className={`inset-0 w-full h-[445px] transition-opacity duration-500 ease-in-out animate-fadeinleftsmall bg-brandBlue px-4 md:px-28 py-4`}>
-                                                    <div className='flex items-center'>
-                                                        <button
-                                                            onClick={handleCloseAnswer}
-                                                            className={`mt-6 -ml-5 mr-5 text-cyan-500 hover:text-cyan-700`}
-                                                        >
-                                                            <RiArrowLeftSLine className='text-2xl' />
-                                                        </button>
-                                                        <h4 className="pt-10 mb-3 text-2xl font-bold text-white font-khula">
-                                                            {Services[selectedIndexOpen].headtitle}
-                                                        </h4>
-                                                    </div>
-                                                    <ul>
-                                                        {Services[selectedIndexOpen].subtitles.map((sub) => (
-                                                            <li key={sub.subid}>
-                                                                <Link
-                                                                    to={`/services/${Services[selectedIndexOpen].title.replace(/\s+/g, '-')}/${sub.keyword.replace(/\s+/g, '-')}`}
-                                                                    state={{
-                                                                        service_id: Services[selectedIndexOpen].id,
-                                                                        subtitles_id: sub.subid
-                                                                    }}
-                                                                    className="mb-1 ml-8 text-lg text-white hover-underline-animation"
-                                                                    onClick={handleLinkClick}
-                                                                >
-                                                                    {sub.headsubtitle}
-                                                                </Link>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-
-                                                </div>
-                                            ) : (
-                                                <ul className="px-4 py-4 text-black md:px-28 md:py-16">
-                                                    <h4 className='font-semibold md:text-3xl font-khula'>Services</h4>
-                                                    {Services.map((index) => (
-                                                        <p
-                                                            // to={index.link} 
-                                                            key={index.title} className='flex w-full py-2 cursor-pointer text-md font-raleway'>
-                                                            <span className='hover-underline-animation'>{index.headtitle}</span>
-                                                        </p>
-                                                    ))}
-                                                </ul>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className='xl:pr-10 xl:pl-10'>
-                                <Link
-                                    to="/rightsolutions"
-                                    className={`font-raleway hover:text-cyan-500 font-medium pb-2 tracking-[1px] text-sm lg:text-[20px] xl:text-[16px]
-                                     ${currentPath === '/rightsolutions' ? 'link-115  font-bold' : null} ${(isNotHomePage ? 'text-black' : 'text-white')}
-                                     transition-colors duration-300`}
-                                    style={{
-                                        padding: "4px",
-                                        color: isNotHomePage ? 'black' : 'white',
-                                    }}
-                                >
-                                    Right Solutions
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    to="/freeconsultation"
-                                    className={`font-raleway hover:text-cyan-500 font-medium pb-2 tracking-[1px] text-sm lg:text-[20px] xl:text-[16px]
-                                  ${currentPath === '/freeconsultation' ? 'link-115  font-bold' : null} ${(isNotHomePage ? 'text-black' : 'text-white')}
-                                    transition-colors duration-300`}
-                                    style={{
-                                        padding: "4px",
-                                        color: isNotHomePage ? 'black' : 'white',
-                                    }}
-
-                                >
-                                    Free Consultation
-                                </Link>
-                            </li>
-
-                            <li className='xl:pr-10 xl:pl-10'>
-                                <Link
-                                    to="/about"
-                                    className={`font-raleway hover:text-cyan-500 font-medium pb-2 tracking-[1px] text-sm lg:text-[20px] xl:text-[16px]
-                                ${currentPath === '/about' ? 'link-115  font-bold' : null} ${(isNotHomePage ? 'text-black' : 'text-white')}
-                                   transition-colors duration-300`}
-                                    style={{
-                                        padding: "4px",
-                                        color: isNotHomePage ? 'black' : 'white',
-                                    }}
-                                >
-
-                                    Company
-                                </Link>
-                            </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            {/* -------------------------------------------------------speak to an expert--------------------------------------------------------*/}
-                            <li>
-                                <div
-                                    onClick={toggleSpeakExpert}
-                                    className="relative z-10">
-                                    <button className="group relative overflow-hidden rounded-[5px] text-[15px] font-raleway xl:ml-36 bg-brandBlue px-4 xl:px-8 tracking-[2px]
-                                    py-[10px] border border-cyan-700
-                                     text-white transition-all duration-300 ease-out hover:bg-gradient-to-r
-                                     hover:from-brandBlue hover:to-cyan-500 ">
-                                        <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-700 transform translate-x-12 bg-white ease rotate-12 opacity-10 group-hover:-translate-x-40"></span>
-                                        <span className="relative">Speak to an Expert</span>
-                                    </button>
-                                </div>
-
-
-
-                                {isSpeakExpert && (
-                                    <div
-                                        className="fixed inset-0 w-screen h-[100vh] bg-black
-                                         bg-opacity-60 z-50 flex justify-center items-center"
-                                        onClick={toggleSpeakExpert}
-                                    >
-                                        <div
-                                            className="relative bg-brandBlue w-[600px] h-[400px] shadow-md p-6"
-                                            onClick={(e) => e.stopPropagation()}
-
-                                        >
-                                            <button
-                                                className="absolute font-bold text-white top-2 right-2"
-                                                onClick={toggleSpeakExpert}
-                                            >
-                                                <IoIosClose size={28} className='transition-colors duration-500 hover:text-brandBlue' />
-                                            </button>
-                                            <form onSubmit={handleSubmit} className="z-50 space-y-4">
-                                                <div className="w-[90%] mx-auto">
-                                                    <h5 className='py-6 text-2xl font-semibold text-white font-khula sm:text-4xl'>Speak to an Expert </h5>
-                                                    <div className="grid grid-cols-2 gap-6 pt-8">
-                                                        <input
-                                                            type="text"
-                                                            name="name"
-                                                            value={formData.name}
-                                                            onChange={handleChange}
-                                                            placeholder="Name"
-                                                            className="w-full text-sm font-semibold text-white transition-colors duration-300 ease-in-out bg-transparent border-b-2 border-white font-raleway focus:outline-none focus:border-brandBlue placeholder:text-gray-600 placeholder:font-raleway"
-                                                        />
-
-                                                        <input
-                                                            type="text"
-                                                            name="company"
-                                                            value={formData.company}
-                                                            onChange={handleChange}
-                                                            placeholder="Company"
-                                                            className="w-full text-sm font-semibold text-white transition-colors bg-transparent border-b-2 border-white focus:outline-none placeholder:font-raleway placeholder:text-gray-600 focus:border-brandBlue"
-                                                        />
-                                                    </div>
-                                                    <div className="grid grid-cols-2 gap-6 pt-8">
-                                                        <input
-                                                            type="email"
-                                                            name="email"
-                                                            value={formData.email}
-                                                            onChange={handleChange}
-                                                            placeholder="e-mail"
-                                                            className="w-full text-sm font-semibold text-white transition-colors bg-transparent border-b-2 border-white placeholder:font-raleway placeholder:text-gray-600 focus:outline-none focus:border-brandBlue"
-                                                        />
-                                                        <input
-                                                            type="text"
-                                                            name="mobile"
-                                                            value={formData.mobile}
-                                                            onChange={handleChange}
-                                                            placeholder="Mobile"
-                                                            className="w-full text-sm font-semibold text-white transition-colors bg-transparent border-b-2 border-white focus:outline-none placeholder:text-gray-600 placeholder:font-raleway focus:border-brandBlue"
-                                                        />
-                                                        <label htmlFor="privacy-policy" className="block ml-1 text-xs text-gray-300 font-raleway">
-                                                            I agree to the Privacy Policy <span className='text-red-900 underline font-raleway'>required</span>
-                                                        </label>
-                                                    </div>
-                                                    <div className="mt-4">
-                                                        <button
-                                                            type="submit"
-                                                            disabled={loading}
-                                                            className="px-16 py-2 text-sm text-white transition-colors duration-300 bg-transparent border border-white font-raleway hover:bg-black hover:text-white"
-                                                        >
-                                                            {loading ? "Sending..." : "Send"}
-                                                        </button>
-                                                    </div>
-                                                    {message && <p className="mt-4 text-center text-white font-raleway">{message}</p>}
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                )}
-
-                            </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            {/* -------------------------------------------------------bar menu---------------------------------------------------------*/}
-
-                            <li ref={dropdownRef} className='py-4 pl-2 font-khula'>
-                                <button
-                                    className="relative pb-1 group"
-                                    onClick={toggleDropdown}
-                                >
-                                    <div
-                                        className="relative flex z-50 mt-1 rounded-full overflow-hidden items-center justify-center
-                                                py-[15px] px-[11px] border-l border-dashed  transform transition-all bg-transparent duration-300 
-                                                ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 shadow-lg"
-                                    >
-                                        <span
-                                            className="text-white  tracking-[1px] xl:font-raleway transition-all duration-300"
-                                            style={{
-                                                color: isHovered ? '' : isNotHomePage ? 'black' : 'white',
-                                            }}
-                                            onMouseEnter={() => setIsHovered(false)}
-                                            onMouseLeave={() => setIsHovered(false)}
-                                        >
-                                            {isOpen ? 'Close' : 'Menu'}
-                                        </span>
-                                    </div>
-                                </button>
-                                {isOpen && (
-                                    <div className="absolute top-0 right-0 z-40 w-full h-screen bg-center bg-cover bg-brandBlue">
-                                        <div className="flex items-center justify-center h-full">
-                                            <ul className="grid w-full grid-cols-5 text-center">
-                                                {barmenu.map(item => (
-                                                    <Link
-                                                        to={item.links}
-                                                        key={item.MenuId}
-                                                        className="relative transition duration-200 bg-center bg-cover shadow-md group hover:shadow-lg"
-                                                        style={{ backgroundImage: `url(${item.bgImage})`, height: '100vh' }}
-                                                    >
-
-                                                        <div className="absolute top-0 left-0 z-10 w-full h-full transition-all duration-300 bg-black bg-opacity-60 group-hover:bg-opacity-0"></div>
-
-                                                        <span
-
-                                                            className="z-20 flex flex-col items-center justify-center h-full p-4 pb-10 text-white"
-                                                            aria-label={item.title}
-                                                        >
-                                                            <span
-                                                                className="z-10 text-4xl font-bold text-white "
-                                                            >
-                                                                {item.title}
-                                                            </span>
-                                                            <span className="invisible text-5xl text-white transition duration-500 group-hover:visible">{item.icon}</span>
-                                                        </span>
-                                                    </Link>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                )}
-
-                            </li>
-                        </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {/* -------------------------------------------------------Mobile Menu---------------------------------------------------------*/}
-
-
-                        <div className='z-50 pb-3 pl-2 lg:hidden'>
-                            <button onClick={toggleMobileMenu}>
-                                {isMobileMenuOpen ? (
-                                    <HiX className="text-4xl text-black bg-white rounded-full" />
-                                ) : (
-                                    <HiBars3CenterLeft className="text-4xl text-black bg-white rounded-full" />
-                                )}
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <>
+            {/* Logo with Accenture-style animation: main logo moves to top right and shrinks, text logo animates in */}
+            <div className="fixed z-[9999] top-8 left-8">
+                <Link
+                    to="/"
+                    className="relative inline-block h-14 w-[180px] border-none outline-none"
+                    style={{ minWidth: 140, border: 'none', outline: 'none' }}
+                    onMouseEnter={() => setIsLogoHovered(true)}
+                    onMouseLeave={() => setIsLogoHovered(false)}
+                    onTouchStart={() => setIsLogoHovered(true)}
+                    onTouchEnd={() => setIsLogoHovered(false)}
+                >
+                    <img
+                        src={logoSrc}
+                        alt="Finprime Logo"
+                        className={`
+                            absolute  top-0
+                            transition-all duration-500 ease-in-out
+                            h-16 w-auto border-none outline-none
+                            ${isLogoHovered
+                                ? 'transform scale-50 left-8 -translate-y-9 z-20'
+                                : 'transform scale-100 translate-x-0 translate-y-0 z-10'}
+                        `}
+                        style={{ pointerEvents: 'none', border: 'none', outline: 'none' }}
+                    />
+                    {isLogoHovered && (
+                        <span
+                            className={`
+                                absolute left-0 top-0
+                                transition-all duration-500 ease-in-out
+                                h-12 w-auto
+                                flex items-center
+                                opacity-100 translate-x-0 z-10
+                            `}
+                            style={{ pointerEvents: 'none', height: '48px' }}
+                        >
+                            <img
+                                src={finLogo}
+                                alt="Finprime Text Logo"
+                                style={{ height: '48px', width: 'auto', border: 'none', outline: 'none' }}
+                                className="border-none outline-none"
+                            />
+                        </span>
+                    )}
+                </Link>
             </div>
 
-            <div
-                className={`lg:hidden fixed inset-0 z-20   ${isMobileMenuOpen ? 'animate-fadeinrightsmall' : 'translate-x-full'
-                    } w-[100%]  h-screen top-0 left-[0%] bg-gray-950  py-8 px-4 overflow-hidden`}
-            >
-                <ul className='flex flex-col gap-5 pt-24 text-left text-white md:gap-7'>
-                    <li className='mx-10 '>
-                        <Link to="/rightsolutions" className='mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation hover:scale-110 md:text-2xl font-khula lg:text-lg'>
-                            Right Solutions
-                        </Link>
-                    </li>
-                    <li className='mx-10 '>
-                        <Link to="/freeconsultation" className='mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg'>
-                            Free Consultation
-                        </Link>
-                    </li>
-                    <li className="mx-10">
-                        <button
-                            onClick={() => toggleServiceMenuVisibility(0)}
-                            className="mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg"
-                        >
-                            Services
-                        </button>
+            {/* Hamburger Menu - Mobile */}
+            <div className="fixed z-[9999] top-8 right-8 block md:hidden">
+                <button
+                    onClick={() => setIsMobileMenuOpen(true)}
+                    className={`${shouldShowDarkLogo ? 'text-black' : 'text-white'} focus:outline-none flex items-center gap-2`}
+                >
+                    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke={shouldShowDarkLogo ? 'black' : 'white'}>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <span>Menu</span>
+                </button>
+            </div>
+            {/* Hamburger Menu - Desktop */}
+            <div className="fixed z-[9999] top-8 right-8 hidden md:flex">
+                <button
+                    onClick={toggleDropdown}
+                    className={`${shouldShowDarkLogo ? 'text-black' : 'text-white'} focus:outline-none flex items-center gap-2`}
+                >
+                    <span className="flex flex-col justify-center items-start w-6 h-6 mr-2">
+                        <span className={`block w-6 h-0.5 ${shouldShowDarkLogo ? 'bg-black' : 'bg-white'} mb-1`}></span>
+                        <span className={`block w-6 h-0.5 ${shouldShowDarkLogo ? 'bg-black' : 'bg-white'} mb-1`}></span>
+                        <span className={`block w-6 h-0.5 ${shouldShowDarkLogo ? 'bg-black' : 'bg-white'}`}></span>
+                    </span>
+                    <span>Menu</span>
+                </button>
+            </div>
 
-                        {activeServiceMenuIndex === 0 && (
-                            <div
-                                className={`lg:hidden fixed inset-0 z-40 transition-transform duration-300 ease-in-out ${activeServiceMenuIndex === 0 ? 'animate-fadeinrightsmall' : 'translate-x-full'
-                                    } w-full h-screen top-0 left-0 bg-gray-950 py-8 px-4 overflow-hidden`}
-                            >
-                                <button
-                                    onClick={() => toggleServiceMenuVisibility(-1)}
-                                    className="absolute top-[22px] md:top-[53px] right-[60px] md:right-[68px] text-black text-4xl bg-white  border rounded-full "
+            {/* Mobile Menu Overlay */}
+            {isMobileMenuOpen && (
+                <div 
+                    ref={dropdownRef}
+                    className="fixed inset-0 bg-black bg-opacity-90 z-[10000] flex flex-col items-center justify-center"
+                >
+                    <button 
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="absolute top-8 right-8 text-white"
+                    >
+                        <HiXMark className="h-10 w-10" />
+                    </button>
+                    <ul className="text-center">
+                        {barmenu.map(item => (
+                            <li key={item.MenuId} className="my-6">
+                                <Link
+                                    to={item.links}
+                                    className="text-white text-3xl font-light hover:text-cyan-400 transition-colors duration-300"
+                                    onClick={() => setIsMobileMenuOpen(false)}
                                 >
-                                    <RiArrowLeftSLine />
-                                </button>
-
-                                {/* Service List */}
-                                <ul className="flex flex-col py-2 space-y-8 text-left mt-28">
-                                    {Services.map((service, index) => (
-                                        <li
-                                            key={index}
-                                            className="mx-10"
-                                        >
-                                            <button
-                                                onClick={() => toggleMobileMenuFirst(index)}
-                                                className="mb-2 text-xl text-left text-white uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation font-khula"
-                                            >
-                                                {service.title}
-                                            </button>
-
-                                            {/* Sub-Service Dropdown */}
-                                            {isMobileMenuFirstOpen === index && (
-                                                <div
-                                                    className={`lg:hidden fixed inset-0 z-30 transition-transform duration-300 ease-in-out ${isMobileMenuFirstOpen === index ? 'animate-fadeinrightsmall' : 'translate-x-full'
-                                                        } w-full h-screen top-0 left-0 bg-gray-950 py-8 px-4 overflow-hidden`}
-                                                >
-                                                    {/* Close Button for Sub-Service Menu */}
-                                                    <button
-                                                        onClick={() => toggleMobileMenuFirst(-1)}
-                                                        className="absolute top-[22px] md:top-[53px] right-[60px] md:right-[68px] text-black text-4xl bg-white  border rounded-full"
-                                                    >
-                                                        <RiArrowLeftSLine />
-                                                    </button>
-
-                                                    {/* Sub-Service List */}
-                                                    <ul className="px-10 ml-4 space-y-6 mt-28">
-                                                        {service.subtitles?.map((subservice, subIndex) => (
-                                                            <li
-                                                                key={subIndex}
-                                                                className=""
-                                                            >
-                                                                <Link
-
-
-                                                                    to={`/services/${service.title.replace(/\s+/g, '-')}/${subservice.keyword.replace(/\s+/g, '-')}`}
-                                                                    state={{ "service_id": service.id, "subtitles_id": subservice.subid }}
-                                                                    className="mb-2 text-lg font-medium text-left text-white uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation font-khula lg:text-lg"
-                                                                    onClick={() => {
-
-                                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                                                        toggleMobileMenuFirst(-1);
-                                                                        console.log("wdwebfigg===")
-                                                                        toggleServiceMenuVisibility(-1);
-                                                                        setIsMobileMenuOpen(false)
-
-                                                                    }}
-                                                                >
-                                                                    {subservice.subtitle}
-                                                                </Link>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                    </li>
-
-
-                    <li className='mx-10 '>
-                        <Link to="/" className='mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg'>
-                            Home
-                        </Link>
-                    </li>
-                    <li className='mx-10 '>
-                        <Link to="/about" className='mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg'>
-                            About
-                        </Link>
-                    </li >
-                    <li className='mx-10 '>
-                        <Link to="/blog" className='mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg'>
-                            Blog
-                        </Link>
-                    </li>
-                    <li className='mx-10'>
-                        <Link to="/offer" className='mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg'>
-                            Offer
-                        </Link>
-                    </li>
-                    <li className='mx-10 '>
-                        <Link to="/contactus" className='mb-2 text-xl font-medium uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg'>
-                            Contact Us
-                        </Link>
-                    </li>
-                    <li className='mx-10'>
-                        <button
-                            onClick={handleModalToggle}
-                            className="mb-2 text-xl font-medium text-left uppercase transition-all duration-500 hover:text-cyan-500 hover-underline-animation md:text-2xl font-khula lg:text-lg">
-
-                            Speak To An Expert
-                        </button>
-                        {isModalOpen && (
-                            <div
-                                className="fixed inset-0 w-screen h-[100vh] bg-black bg-opacity-60 z-50 flex justify-center items-center"
-                                onClick={handleModalToggle}
+                                    {item.title}
+                                </Link>
+                            </li>
+                        ))}
+                         <li className="my-6">
+                            <button
+                                onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    handleMouseEnter();
+                                }}
+                                className="text-white text-3xl font-light hover:text-cyan-400 transition-colors duration-300"
                             >
-                                <div
-                                    className="relative bg-brandBlue mx-6 mt-16 md:mt-0 md:mx-0 w-[600px] h-[500px] md:h-[400px] shadow-md p-6"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
+                                Services
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            )}
 
-                                    <button
-                                        className="absolute font-bold text-white top-2 right-2"
-                                        onClick={handleModalToggle}
+            {/* Main Navbar - Centered */}
+            <nav className="fixed z-[9999] top-6 left-1/2 -translate-x-1/2 hidden md:block">
+                <div className="w-[860px] h-[47px] bg-gradient-to-r from-[#1A1F39] to-[#06B6D4] rounded-[26px] px-8">
+                    <div className="flex items-center justify-between h-full">
+                    {/* Desktop Navigation */}
+                        <ul className="flex items-center justify-between w-full">
+                            {/* Regular nav items */}
+                            <div className="flex items-center space-x-8">
+                                <li className="relative">
+                                    <div
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                        className="h-[47px] flex items-center"
                                     >
-                                        <IoIosClose size={28} className='transition-colors duration-500 hover:text-brandBlue' />
-                                    </button>
+                                        <button className="text-white hover:text-opacity-80 text-[15px] font-normal transition-colors px-0 bg-transparent border-none outline-none cursor-pointer">
+                                            Services
+                                        </button>
+                                    </div>
+                                </li>
 
+                                <Link to="/rightsolutions" 
+                                    className="text-white hover:text-opacity-80 text-[15px] font-normal transition-colors"
+                                >
+                                    Right solutions
+                        </Link>
+                        
+                                <Link to="/freeconsultation" 
+                                    className="text-white hover:text-opacity-80 text-[15px] font-normal transition-colors"
+                                >
+                                    Free consultation
+                        </Link>
+                        
+                                <Link to="/about" 
+                                    className="text-white hover:text-opacity-80 text-[15px] font-normal transition-colors"
+                                >
+                            Company
+                        </Link>
 
-                                    <form action="" className="z-50 space-y-4">
-                                        <div className="w-[90%] mx-auto">
-                                            <h1 className='py-6 text-4xl font-semibold text-white font-khula'>Speak to an Expert</h1>
+                                <Link to="/refer-and-earn" 
+                                    className="text-white hover:text-opacity-80 text-[15px] font-normal transition-colors"
+                                >
+                                    Refer & earn
+                                </Link>
+                            </div>
 
-                                            <div className="grid gap-6 pt-8 md:grid-cols-2">
-                                                <input
-                                                    type="text"
-                                                    placeholder="Name"
-                                                    className="w-full text-sm font-semibold text-white transition-colors duration-300 ease-in-out bg-transparent border-b-2 border-white font-raleway focus:outline-none focus:border-brandBlue placeholder:text-gray-600 placeholder:font-raleway"
-                                                />
-                                                <input
-                                                    type="text"
-                                                    placeholder="Company"
-                                                    className="w-full text-sm font-semibold text-white transition-colors bg-transparent border-b-2 border-white focus:outline-none placeholder:font-raleway placeholder:text-gray-600 focus:border-brandBlue"
-                                                />
+                            {/* Expert button */}
+                            <div className="flex items-center ml-8">
+                                <button onClick={toggleSpeakExpert}
+                                    className="bg-white/10 backdrop-blur-sm text-white font-normal 
+                                        px-6 py-1.5 rounded-full hover:bg-white/20 
+                                        transition-all duration-300 text-[15px]"
+                                >
+                                    Speak to an expert
+                                </button>
+                    </div>
+                        </ul>
+                </div>
+            </div>
+            </nav>
+
+            {/* Mega menu dropdown rendered outside nav/flex for true full width */}
+            {isServiceOpen && (
+                <ul className='items-center hidden py-2 lg:flex'>
+                    <li
+                        className="py-6"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <button className={`font-raleway hover:text-cyan-500 font-medium pb-2 tracking-[1px] text-sm lg:text-[20px] xl:text-[16px]
+                             ${location.pathname !== '/rightsolutions' &&
+                                location.pathname !== '/freeconsultation' &&
+                                location.pathname !== '/about' &&
+                                location.pathname !== '/' &&
+                                location.pathname !== '/blog' &&
+                                location.pathname !== '/offer' &&
+                                location.pathname !== '/contactus' &&
+                                !location.pathname.startsWith('/blog') ? 'link-115  font-bold' : null} ${(location.pathname !== '/' ? 'text-black' : 'text-white')}
+                             transition-colors duration-300`}
+                            style={{
+                                padding: "4px",
+                                color: location.pathname !== '/' ? 'black' : 'white',
+                            }}>
+                            
+                        </button>
+
+                        <div
+                            className={`fixed left-0 w-full text-black bg-white mt-3 shadow-xl transition-opacity duration-300 ease-in-out transform ${isServiceOpen ? 'animate-fadeinrightsmall visible' : 'opacity-0 -translate-y-4 invisible'} font-roboto font-semibold z-[10001] top-[70px]`}
+                        >
+                            <div className="flex flex-col w-full h-full md:flex-row">
+                                {/* Column 1: Company Profile Card with heading and button overlay */}
+                                <div className="flex flex-col items-start justify-start pt-2 px-4 md:px-10 w-full md:w-[28%] min-w-[320px] max-w-[440px]">
+                                    <h4 className="mb-3 mt-1 text-xl font-bold font-roboto text-left w-full leading-snug">
+                                        Working with you,<br/>
+                                        not just for you
+                                    </h4>
+                                    <div className="relative w-[340px] h-[380px] mt-2">
+                                        <img src={companyProfileImage} alt="Company Profile" className="w-full h-full object-contain" />
+                                        <button
+                                            onClick={() => window.open('/pdf/finprime-company-profile.pdf', '_blank')}
+                                            className="absolute left-1/2 -translate-x-1/2 bottom-8 w-[230px] h-[48px] rounded-[24px] flex items-center justify-between px-8 text-white font-roboto text-base transition-all hover:shadow-lg"
+                                            style={{
+                                                background: 'linear-gradient(90deg, #1A1F39 0%, #06B6D4 100%)',
+                                                height: '48px',
+                                            }}
+                                        >
+                                            <span className="pl-2 font-semibold">FinPrime Profile</span>
+                                            <div className="flex items-center justify-center ml-4">
+                                                <MdCenterFocusStrong size={24} />
                                             </div>
+                                        </button>
+                                    </div>
+                                </div>
 
-                                            <div className="grid gap-6 pt-8 md:grid-cols-2">
-                                                <input
-                                                    type="email"
-                                                    placeholder="E-mail"
-                                                    className="w-full text-sm font-semibold text-white transition-colors bg-transparent border-b-2 border-white placeholder:font-raleway placeholder:text-gray-600 focus:outline-none focus:border-brandBlue"
-                                                />
-                                                <input
-                                                    type="text"
-                                                    placeholder="Mobile"
-                                                    className="w-full text-sm font-semibold text-white transition-colors bg-transparent border-b-2 border-white focus:outline-none placeholder:text-gray-600 placeholder:font-raleway focus:border-brandBlue"
-                                                />
-                                                <label htmlFor="privacy-policy" className="block ml-1 text-xs text-gray-300 font-raleway">
-                                                    I agree to the Privacy Policy <span className='text-red-900 underline font-raleway'>required</span>
-                                                </label>
-                                            </div>
-
-                                            <div className="mt-4">
-                                                <button
-                                                    type="submit"
-                                                    className="px-16 py-2 text-sm text-white transition-colors duration-300 bg-transparent border border-white font-raleway hover:bg-black hover:text-white"
+                                {/* Column 2: Service List */}
+                                <div className='flex flex-col py-4 pl-4 w-full md:w-[40%]'>
+                                    <ul>
+                                        {Services.map((service, index) => (
+                                            <li key={index} className="group">
+                              <button
+                                                    onClick={() => handleQuestionClick(index)}
+                                                    className={`text-black font-khula text-lg flex justify-between w-full pl-8 py-5 border-b ${selectedIndexOpen === index
+                                                        ? 'bg-brandBlue text-white border-l-8 border-cyan-500'
+                                                        : 'group-hover:bg-brandBlue group-hover:text-white group-hover:border-l-8 group-hover:border-cyan-500'
+                                                        }`}
                                                 >
-                                                    Send
+                                                    {service.headtitle}
+                                                    <FaArrowRight className={`right-0 text-2xl mr-5 ${selectedIndexOpen === index ? 'hidden' : 'group-hover:animate-fadeinleftsmall'}`} />
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                                {/* Column 3: Sub-services Display */}
+                                <div className='flex flex-col w-full md:w-[40%] h-full relative'>
+                                    {selectedIndexOpen !== null && isAnswerVisible ? (
+                                        <div className={`inset-0 w-full h-[445px] transition-opacity duration-500 ease-in-out animate-fadeinleftsmall bg-brandBlue px-4 md:px-28 py-4`}>
+                                            <div className='flex items-center'>
+                                                <button
+                                                    onClick={handleCloseAnswer}
+                                                    className={`mt-6 -ml-5 mr-5 text-cyan-500 hover:text-cyan-700`}
+                                                >
+                                                    <RiArrowLeftSLine className='text-2xl' />
                                                 </button>
+                                                <h4 className="pt-10 mb-3 text-2xl font-bold text-white font-khula">
+                                                    {Services[selectedIndexOpen].headtitle}
+                            </h4>
+                                            </div>
+                                            <ul>
+                                                {Services[selectedIndexOpen].subtitles.map((sub) => (
+                                                    <li key={sub.subid}>
+                                  <Link
+                                                            to={`/services/${Services[selectedIndexOpen].title.replace(/\s+/g, '-')}/${sub.keyword.replace(/\s+/g, '-')}`}
+                                                            state={{
+                                                                service_id: Services[selectedIndexOpen].id,
+                                                                subtitles_id: sub.subid
+                                                            }}
+                                                            className="mb-1 ml-8 text-lg text-white hover-underline-animation"
+                                                            onClick={handleLinkClick}
+                                                        >
+                                    {sub.headsubtitle}
+                                  </Link>
+                                                    </li>
+                                                ))}
+                            </ul>
+                                        </div>
+                                    ) : (
+                                        <ul className="px-4 py-4 text-black md:px-28 md:py-16">
+                                            <h4 className='font-semibold md:text-3xl font-khula'>Who We Serve</h4>
+                              {[
+                                'Technology',
+                                'Healthcare',
+                                'Education',
+                                'Startups',
+                                'Manufacturing',
+                                'Financial Services',
+                                'Consumer',
+                              ].map((item) => (
+                                                <p
+                                                    key={item} className='flex w-full py-2 cursor-pointer text-md font-raleway items-center'>
+                                                    <span className='mr-2 text-lg font-bold'>&gt;</span>
+                                                    <span className='hover-underline-animation'>{item}</span>
+                                                </p>
+                              ))}
+                            </ul>
+                        )}
+                      </div>
+                    </div>
+                </div>
+                    </li>
+                </ul>
+            )}
+
+            {/* Overlay menu */}
+            {isOpen && (
+                <div className="fixed z-[9999] top-0 left-0 w-full h-full bg-brandBlue bg-center bg-cover" ref={dropdownRef}>
+                    <span
+                        className="absolute top-8 right-12 text-white text-xl font-bold cursor-pointer z-50"
+                        onClick={toggleDropdown}
+                    >
+                        Close
+                    </span>
+                    <div className="flex items-center justify-center h-full">
+                        <ul className="grid w-full h-full grid-cols-5 text-center">
+                            {barmenu.map((item, idx) => (
+                                <Link
+                                    to={item.links}
+                                    key={item.MenuId}
+                                    className="relative transition duration-200 bg-center bg-cover shadow-md group hover:shadow-lg"
+                                    style={{ backgroundImage: `url(${item.bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh' }}
+                                >
+                                    <div className="absolute top-0 left-0 z-10 w-full h-full transition-all duration-300 bg-black bg-opacity-60 group-hover:bg-opacity-0"></div>
+                                    <div className="z-20 flex flex-col items-start justify-start h-full p-2 text-white">
+                                        <div style={{ marginTop: '480px', marginLeft: '20px' }}>
+                                            <div 
+                                                className="flex items-center justify-center gap-2"
+                                                style={{
+                                                    background: 'linear-gradient(90deg, #1A1F39 35.58%, #06B6D4 100%)',
+                                                    width: '178px',
+                                                    height: '45px',
+                                                    borderRadius: '26.5px',
+                                                    
+                                                }}
+                                            >
+                                                {idx === 0 && (
+                                                    <span className="text-white text-xl flex items-center"><IoMdHome /></span>
+                                                )}
+                                                {idx === 1 && (
+                                                    <span className="text-white text-xl flex items-center"><HiMiniUserGroup /></span>
+                                                )}
+                                                {idx === 2 && (
+                                                    <span className="text-white text-xl flex items-center"><FaMessage /></span>
+                                                )}
+                                                {idx === 3 && (
+                                                    <span className="text-white text-xl flex items-center"><BiSolidOffer /></span>
+                                                )}
+                                                {idx === 4 && (
+                                                    <span className="text-white text-xl flex items-center"><IoIosContact /></span>
+                                                )}
+                                                <span 
+                                                    style={{
+                                                        fontFamily: 'Inter',
+                                                        fontWeight: 600,
+                                                        fontSize: '18px',
+                                                        lineHeight: 1.2,
+                                                        letterSpacing: 0,
+                                                        display: 'inline-block',
+                                                        textAlign: 'left',
+                                                    }}
+                                                    className="text-white"
+                                                >
+                                                    {item.title}
+                                                </span>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
-                            </div>
-                        )}
-                    </li>
+                                </Link>
+                            ))}
                 </ul>
             </div>
         </div>
+            )}
+
+            {/* Speak to an Expert Modal */}
+            {isSpeakExpert && (
+                <div
+                    className="fixed inset-0 w-screen h-[100vh] bg-black bg-opacity-60 z-[10000] flex justify-center items-center"
+                    onClick={toggleSpeakExpert}
+                >
+                    <div
+                        className="relative bg-[#1a233a] w-[600px] h-auto shadow-md p-6"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            className="absolute top-2 right-2 text-white font-bold"
+                            onClick={toggleSpeakExpert}
+                        >
+                            <IoIosClose size={28} className='hover:text-cyan-500 transition-colors duration-500' />
+                        </button>
+                        <form onSubmit={handleSubmit} className="space-y-4 z-50">
+                            <div className="w-[90%] mx-auto">
+                                <h5 className='text-white font-inter text-2xl sm:text-4xl font-semibold py-6'>Speak to an Expert</h5>
+                                <div className="grid grid-cols-2 gap-6 pt-8">
+                                    <input
+                                        type="text" name="name" value={formData.name} onChange={handleChange}
+                                        placeholder="Name" required
+                                        className="w-full bg-transparent border-b-2 border-white font-inter focus:outline-none focus:border-cyan-500 text-white placeholder:text-gray-400 font-semibold text-sm transition-colors placeholder:font-inter duration-300 ease-in-out"
+                                    />
+                                    <input
+                                        type="text" name="company" value={formData.company} onChange={handleChange}
+                                        placeholder="Company" required
+                                        className="w-full bg-transparent border-b-2 border-white focus:outline-none placeholder:font-inter text-white placeholder:text-gray-400 font-semibold text-sm focus:border-cyan-500 transition-colors"
+                                    />
+                                </div>
+                                <div className="grid grid-cols-2 gap-6 pt-8">
+                                    <input
+                                        type="email" name="email" value={formData.email} onChange={handleChange}
+                                        placeholder="E-mail" required
+                                        className="w-full bg-transparent border-b-2 text-white placeholder:font-inter placeholder:text-gray-400 font-semibold text-sm border-white focus:outline-none focus:border-cyan-500 transition-colors"
+                                    />
+                                    <input
+                                        type="text" name="mobile" value={formData.mobile} onChange={handleChange}
+                                        placeholder="Mobile" required
+                                        className="w-full bg-transparent border-b-2 border-white focus:outline-none text-white placeholder:text-gray-400 font-semibold text-sm placeholder:font-inter focus:border-cyan-500 transition-colors"
+                                    />
+                                </div>
+                                <div className="flex items-center mt-6">
+                                    <input type="checkbox" id="privacy-policy" required className="mr-2" />
+                                    <label htmlFor="privacy-policy" className="ml-1 block text-xs text-gray-300 font-inter">
+                                        I agree to the Privacy Policy <span className="text-red-500 font-inter underline">required</span>
+                                    </label>
+                                </div>
+                                <div className="mt-8">
+                                    <button
+                                        type="submit"
+                                        className="bg-transparent border border-white text-white py-2 px-16 text-sm font-inter transition-colors duration-300 hover:bg-black hover:text-white"
+                                        disabled={loading}
+                                    >
+                                        {loading ? 'Sending...' : 'Send'}
+                                    </button>
+                                </div>
+                                {message && <p className="text-white mt-4">{message}</p>}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </> 
     );
 };
 
 export default Navbar;
-
-

@@ -42,7 +42,7 @@ const Industriessection4 = () => {
             />
             <div className="info">
               <h4 className="text-xl font-bold mb-5 sm:text-[28px] text-white">{subIndustry.headtitle}</h4>
-              <p className="text-white font-raleway tracking-[1px] text-[16px]">{subIndustry.content.split(' ').slice(0, 10).join(' ')}{subIndustry.content.split(' ').length > 10 ? '...' : ''}</p>
+              <p className="text-white font-inter tracking-[1px] text-[16px]">{subIndustry.content.split(' ').slice(0, 10).join(' ')}{subIndustry.content.split(' ').length > 10 ? '...' : ''}</p>
             </div>
           </Link>
           
