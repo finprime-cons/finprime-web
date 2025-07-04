@@ -114,10 +114,10 @@ const handleSubmit = (e) => {
      
       <div className=" mt-72 ">
         <div className='border-b-2 xl:ml-12 xl:mr-10 lg:mr-8 lg:ml-10 md:ml-8 md:mr-6 ml-6 mr-4'>
-        <h3 className="text-3xl md:text-5xl font-raleway font-medium   pb-4 animate-fadeinright">we provide world class best financial Accounting </h3>
-        <h3 className="text-md md:text-5xl mb-8  font-medium font-raleway    pb-8 animate-fadeinright">and Auditing services in dubai</h3>
-        <h4 className='mb-8 text-gray-500 text-xs sm:text-[16px] font-raleway font-medium tracking-[1px]'>CONTACT INFO</h4>
-        <h4 className='text-2xl sm:text-5xl mb-4 font-raleway font-medium bg-gradient-to-r from-brandBlue via-cyan-500
+        <h3 className="text-3xl md:text-5xl font-inter font-medium   pb-4 animate-fadeinright">we provide world class best financial Accounting </h3>
+        <h3 className="text-md md:text-5xl mb-8  font-medium font-inter    pb-8 animate-fadeinright">and Auditing services in dubai</h3>
+        <h4 className='mb-8 text-gray-500 text-xs sm:text-[16px] font-inter font-medium tracking-[1px]'>CONTACT INFO</h4>
+        <h4 className='text-2xl sm:text-5xl mb-4 font-inter font-medium bg-gradient-to-r from-brandBlue via-cyan-500
                to-cyan-300 bg-clip-text  text-transparent'>Get in Touch</h4>
         <p className='text-gray-500 text-xs sm:text-[16px] tracking-[1px] font-medium mb-2'>Looking for a dedicated Accountant to take care of your Business. We</p>
         <p className='mb-6 text-gray-500 text-xs sm:text-[16px] font-medium tracking-[1px]'>ensure your data is secure with us. For More details, Talk to our expert</p>

@@ -98,7 +98,7 @@ const Servicecard = () => {
 
       {/* Title */}
       <div id='footerservices' className="absolute left-0 right-0 z-30 flex justify-center top-10 sm:top-16 sm:pl-6 md:pl-8 lg:pl-10 xl:pl-12 sm:justify-start">
-        <h3 className="text-4xl font-bold text-white sm:text-6xl font-khula">
+        <h3 className="text-4xl font-bold text-white sm:text-6xl font-inter">
           Our <span>Services</span>
         </h3>
       </div>
@@ -135,7 +135,7 @@ const Servicecard = () => {
               <div className='absolute left-0 w-full transition-all duration-300 transform translate-y-6 group-hover:pb-48 md:group-hover:pb-60 lg:group-hover:pb-60 md:pl-8 lg:pl-10 xl:pl-12 group-hover:translate-y-0 group-hover:opacity-100'>
 
                 <div className='flex justify-center sm:justify-between'>
-                  <h3 className='text-xl sm:text-[22px] text-white font-khula uppercase mb-5 px-5 sm:px-0  sm:mr-5'>
+                  <h3 className='text-xl sm:text-[22px] text-white font-inter uppercase mb-5 px-5 sm:px-0  sm:mr-5'>
                     {service.headtitle}
                   </h3>
                 </div>

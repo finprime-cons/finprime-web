@@ -2,51 +2,44 @@ import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Rhero from './Rhero/Rhero';
 import DropDown from './DropDown/DropDown';
-import Bannerrimg from './Banner/Bannerrimg';
-import Rinput from './Rinput/Rinput';
-import Rtext from './Rhero/Rtext';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
-import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon'
-import BelowFooter from '../Footer/BelowFooter';
-import BottomDropDown from './BottomDropDown/BottomDropDown';
-
+import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon';
+import CookieBanner from '../Cookies/CookieBanner';
+import { FiArrowRight } from 'react-icons/fi';
+import Oursection from '../Oursection/Oursection';
+import newSectionImage from '../../images/image.png';
+import Blogsection from '../Blogsection/Blogsection';
+import Faq from '../Faq/Faq';
+import Inputsection from '../inputsection/Inputsection';
 
 const RightSolutions = () => {
   return (
     <HelmetProvider>
-      <div className='relative overflow-hidden '>
+      <div>
         <Helmet>
-          <title>Finframe Business and Tax Consultancy</title>
-          <meta name="description" content="Get in touch with EpicEventz for all your corporate event planning needs. Contact us today!" />
-          <meta name="keywords" content="contact, event planning, corporate events" />
-          <meta name="author" content="EpicEventz" />
-          <meta property="og:title" content="Contact Us - EpicEventz" />
-          <meta property="og:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />
-          <meta property="og:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://yourwebsite.com/about" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Contact Us - EpicEventz" />
-          <meta name="twitter:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />
-          <meta name="twitter:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
+          <title>Right Solutions | FinPrime</title>
+          <meta
+            name="description"
+            content="Discover FinPrime's Right Solutions - Tailored financial and compliance solutions for your business success."
+          />
         </Helmet>
         <Navbar />
         <Rhero />
-        <Rtext />
         <DropDown />
-        <Bannerrimg />
-        <BottomDropDown />
-        <div className='bg-black'>
-          <Rinput />
-          <Footer />
-          <BelowFooter />
-          <WhatsAppIcon />
+        <Inputsection />
+        <Oursection />
+        <div className="flex justify-center w-full my-16">
+          <img src={newSectionImage} alt="We always try to step outside comfort zone, that's part of the reason we got here." />
         </div>
-
+        <Blogsection />
+        <Faq />
+        <Footer />
+        <WhatsAppIcon />
+        <CookieBanner />
       </div>
     </HelmetProvider>
   );
-}
+};
 
 export default RightSolutions;

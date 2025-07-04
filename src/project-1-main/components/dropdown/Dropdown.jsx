@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { HiOutlineArrowSmallRight } from "react-icons/hi2";
+import { HiOutlineArrowSmallDown } from "react-icons/hi2";
 
 const Dropdown = () => {
   // Initialize state with all dropdowns open
@@ -16,13 +15,11 @@ const Dropdown = () => {
     }
   };
 
-  
-
   const faqs = [
     {
       id: 1,
       question: "What we do",
-      answer: "Quality and timeliness’ are our core values which our team always ensures is never broken in any circumstances"
+      answer: "Quality and timeliness' are our core values which our team always ensures is never broken in any circumstances"
     },
     {
       id: 2,
@@ -32,7 +29,7 @@ const Dropdown = () => {
   ];
 
   return (
-    <div className='w-[80%] md:w-2/3 mx-auto mt-1 xs:mt-10  sm:mb-14'>
+    <div className='w-[80%] md:w-2/3 mx-auto mt-24 mb-24'>
       <div className=' '> 
         <div className='space-y-5 '>
           {faqs.map((faq, index) => (
@@ -43,17 +40,16 @@ const Dropdown = () => {
               onClick={() => toggleOpen(index)}>
                 <h3 
                 
-                className={`font-semibold font-khula text-2xl  group-hover:text-brandBlue 
+                className={`font-semibold font-inter text-2xl  group-hover:text-brandBlue 
                 md:text-4xl `}>{faq.question}</h3>
-                <HiOutlineArrowSmallRight
-                  
-                  className={`text-4xl sm:text-4xl lg:text-5xl rounded-full border border-black group-hover:bg-black group-hover:text-white
-                     p-2 transition-transform transform  ${openIndexes.includes(index) ? 'rotate-90 bg-brandBlue text-white' : ''}
-                     `}
-                />
+                <div className="bg-[#1B1B3A] rounded-full p-2">
+                  <HiOutlineArrowSmallDown
+                    className={`text-2xl sm:text-2xl lg:text-3xl text-white`}
+                  />
+                </div>
               </div>
               {openIndexes.includes(index) && (
-                <p className="md:px-20 lg:px-28 px-10 font-raleway mb-10 text-black text-md leading-7 tracking-[1px] md:text-[16px]">
+                <p className="md:px-20 lg:px-28 px-10 font-inter mb-10 text-black text-md leading-7 tracking-[1px] md:text-[16px]">
                   {faq.answer}
                 </p>
               )}

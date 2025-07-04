@@ -18,12 +18,12 @@ const Servicesection7 = () => {
       </div>
 
       <div className="w-full md:w-1/2 flex flex-col justify-center sm:px-10 lg:px-20">
-        <h4 className="text-3xl mt-5 sm:mt-0 sm:text-2xl lg:text-4xl font-semibold tracking-[1px] font-khula mb-4">Finprime professionals share their stories</h4>
-        <p className="text-sm sm:text-[16px] tracking-[1px] leading-6 font-raleway mb-6">
+        <h4 className="text-3xl mt-5 sm:mt-0 sm:text-2xl lg:text-4xl font-semibold tracking-[1px] font-inter mb-4">Finprime professionals share their stories</h4>
+        <p className="text-sm sm:text-[16px] tracking-[1px] leading-6 font-inter mb-6">
           This is a short paragraph describing the service offered in this section. It provides insights and information about the features and benefits of the service.
         </p>
         <button className="w-full text-left mt-4">
-            <span className="bg-transparent text-black border lg:text-md text-sm border-black  sm:text-[16px] tracking-[1px] leading-6 font-raleway
+            <span className="bg-transparent text-black border lg:text-md text-sm border-black  sm:text-[16px] tracking-[1px] leading-6 font-inter
              py-3 px-4  transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white">
                 Learn More
             </span>
@@ -34,14 +34,14 @@ const Servicesection7 = () => {
       <div className="flex flex-col-reverse md:flex-row h-auto">
   
   <div className="w-full md:w-1/2 flex flex-col justify-center sm:px-6 lg:px-20 py-6 lg:py-0">
-    <h2 className="text-3xl sm:text-2xl lg:text-4xl tracking-[1px] font-semibold font-khula mb-4">
+    <h2 className="text-3xl sm:text-2xl lg:text-4xl tracking-[1px] font-semibold font-inter mb-4">
     Finprime professionals share their stories
     </h2>
-    <p className="text-sm sm:text-[16px] tracking-[1px] leading-6  font-raleway mb-6">
+    <p className="text-sm sm:text-[16px] tracking-[1px] leading-6  font-inter mb-6">
       This is a short paragraph describing the service offered in this section. It provides insights and information about the features and benefits of the service.
     </p>
     <button className="w-full text-left mt-4">
-      <span className="bg-transparent text-black border lg:text-md text-sm border-black sm:text-[16px] tracking-[1px] leading-6 font-raleway
+      <span className="bg-transparent text-black border lg:text-md text-sm border-black sm:text-[16px] tracking-[1px] leading-6 font-inter
         py-2 lg:py-3 px-4 transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white">
         Learn More
       </span>

@@ -63,7 +63,7 @@ const Servicesection4 = () => {
   return (
     <div className="pl-6 pr-4 xl:pl-12 xl:pr-10 lg:pl-10 lg:pr-8 md:pl-8 md:pr-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold sm:text-5xl font-khula">Our Latest Thinking</h1>
+        <h1 className="text-3xl font-bold sm:text-5xl font-inter">Our Latest Thinking</h1>
       </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -87,9 +87,9 @@ const Servicesection4 = () => {
               />
               <Link to={`/blogs/${blog.blog_slug}`}
                 state={{ id: blog.id }}
-                className="text-xl font-khula font-semibold sm:text-[22px] tracking-[1px] ">{blog.topic}</Link>
+                className="text-xl font-inter font-semibold sm:text-[22px] tracking-[1px] ">{blog.topic}</Link>
               <p className="hidden mb-2 text-lg font-medium text-gray-700">{blog.subservices}</p> {/* Subtitle */}
-              <div className='tracking-[1px] font-raleway text-[16px] mb-5 mt-3'
+              <div className='tracking-[1px] font-inter text-[16px] mb-5 mt-3'
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(
                     blog.content.split(/\s+/).slice(0, 20).join(' '),

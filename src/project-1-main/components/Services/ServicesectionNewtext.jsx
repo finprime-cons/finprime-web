@@ -44,7 +44,7 @@ const ServicesectionNewText = () => {
 
     return (
         <div className="flex flex-col">
-            <div className="w-full font-raleway px-6 sm:px-6 md:px-10 lg:px-12 text-md md:text-lg leading-7 tracking-[1px] lg:text-xl text-black">
+            <div className="w-full font-inter px-6 sm:px-6 md:px-10 lg:px-12 text-sm md:text-base leading-relaxed tracking-wide text-black">
                 <div className="mb-12" dangerouslySetInnerHTML={{ __html: subService.subcontentbottom }}>
                 </div>
             </div>

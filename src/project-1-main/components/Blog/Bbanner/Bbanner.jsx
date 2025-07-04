@@ -49,10 +49,10 @@ const Bbanner = () => {
       
       className="absolute top-0 left-0 pt-60 xl:pl-12 lg:pl-10 md:pl-8 pl-6 pr-4 sm:pr-0 text-white ">
         <h4 className="text-4xl sm:text-4xl font-medium mb-6 animate-fadeinleft ">Blog</h4>
-        <p className="animate-fadeinbottom text-xs sm:text-[16px] tracking-[1px] font-raleway mb-2">
+        <p className="animate-fadeinbottom text-xs sm:text-[16px] tracking-[1px] font-inter mb-2">
           This is a long paraexpand on this with multiple lines of text to make it more informative.
         </p>
-        <p className='mb-6 animate-fadeinbottom text-xs sm:text-[16px] tracking-[1px] font-raleway'>underneath the heading. It can describe something important</p>
+        <p className='mb-6 animate-fadeinbottom text-xs sm:text-[16px] tracking-[1px] font-inter'>underneath the heading. It can describe something important</p>
         {/* <button className="bg-transparent border animate-fadeinbottom
          border-white text-white px-3 sm:px-6 py-1 sm:py-2 text-[10px] sm:text-sm
          htransition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white">
@@ -77,12 +77,12 @@ const Bbanner = () => {
           </div> */}
           <div className="flex flex-col items-center">
             
-            <Link to='/' className="  text-[12px] sm:text-[18px] tracking-[1px] font-medium font-raleway">Home</Link>
+            <Link to='/' className="  text-[12px] sm:text-[18px] tracking-[1px] font-medium font-inter">Home</Link>
            
           </div>
           <div className="flex flex-col items-center">
            
-            <Link to='contactus' className=" text-[12px] sm:text-[18px] tracking-[1px] font-medium font-raleway">Contact Us</Link>
+            <Link to='contactus' className=" text-[12px] sm:text-[18px] tracking-[1px] font-medium font-inter">Contact Us</Link>
           
           </div>
         </div>

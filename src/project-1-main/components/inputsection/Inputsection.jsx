@@ -1,139 +1,108 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios'; // Don't forget to import axios for the API call
+import React, { useState } from 'react';
 import emailjs from "emailjs-com";
 
 const InputSection = () => {
-  const [hasFadedIn, setHasFadedIn] = useState(false);
-  const fadeElementRef = useRef(null);
-
-  useEffect(() => {
-    const fadeInObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasFadedIn) {
-            setHasFadedIn(true);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentElement = fadeElementRef.current;
-    if (currentElement) {
-      fadeInObserver.observe(currentElement);
-    }
-
-    return () => {
-      if (currentElement) {
-        fadeInObserver.unobserve(currentElement);
-      }
-    };
-  }, [hasFadedIn]);
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-});
-const [loading, setLoading] = useState(false);
-const [message, setMessage] = useState('');
+  });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
-const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-};
+  };
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!formData.name || !formData.email) {
-        alert('All fields are required');
-        return;
+      alert('All fields are required');
+      return;
     }
-
     setLoading(true);
     fetch('http://localhost:5002/api/send2email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
     })
-        .then((response) => response.json())
-        .then((data) => {
-            alert(data.message || 'Form submitted successfully!');
-            setMessage(data.message);
-            setFormData({ name: '', email: '' });
-
-            const templateParams = {
-                firstName: formData.name,
-                email: formData.email,
-            };
-
-            emailjs
-                .send('service_m92dk5v', 'template_nhk2mx3', templateParams, '_zGtLeC1_fmp56KY0')
-                .then(
-                    (response) => {
-                        alert('Your enquiry has been submitted successfully!');
-                    },
-                    (error) => {
-                        alert('Failed to send the enquiry email.');
-                    }
-                );
-        })
-        .catch((error) => {
-            alert('Failed to submit the form.');
-        })
-        .finally(() => setLoading(false));
-      };
+      .then((response) => response.json())
+      .then((data) => {
+        alert(data.message || 'Form submitted successfully!');
+        setMessage(data.message);
+        setFormData({ name: '', email: '' });
+        const templateParams = {
+          firstName: formData.name,
+          email: formData.email,
+        };
+        emailjs
+          .send('service_m92dk5v', 'template_nhk2mx3', templateParams, '_zGtLeC1_fmp56KY0')
+          .then(
+            () => {
+              // success
+            },
+            () => {
+              // fail
+            }
+          );
+      })
+      .catch(() => {
+        alert('Failed to submit the form.');
+      })
+      .finally(() => setLoading(false));
+  };
 
   return (
-    <div
-      ref={fadeElementRef}
-      className={`w-full sm:w-[70%] lg:w-full lg:max-w-3xl sm:mx-auto pl-6 pr-4 sm:pl-0 sm:pr-0 text-center mt-16 md:mt-28 md:px-8 mb-10 sm:mb-32 ${hasFadedIn ? 'animate-fadeinbottom' : ''}`}
-    >
-      <div className="mb-6">
-        <h4 className="text-xl font-khula text-left sm:text-3xl lg:text-3xl font-semibold">
-          Be the first to know about the latest drops
-        </h4>
-      </div>
-
-      <form onSubmit={handleSubmit} className="mb-4">
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Enter your name"
-          className="border border-black border-opacity-25 rounded-sm placeholder:font-raleway px-4 py-2 w-full sm:h-[60px] mb-4 focus:outline-none placeholder:text-xs md:placeholder:text-lg"
-        />
-        <br />
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter your email"
-          className="border border-black border-opacity-25 rounded-sm mt-2 px-4 py-2 w-full sm:h-[60px] focus:outline-none placeholder:text-xs md:placeholder:text-lg placeholder:font-raleway"
-        />
-        <br />
-        <br />
-        
-        <div className="mt-6 text-left">
-          <h4 className="text-[10px] md:text-lg font-khula lg:text-lg mb-2">
-            All about experience
+    <div className="w-full flex flex-col md:flex-row justify-between items-center px-6 py-8 sm:px-16 sm:py-12 gap-8 mt-20 pr-6">
+      {/* Form on the left */}
+      <div className="md:w-1/2 w-full flex flex-col items-start justify-center mb-8 md:mb-0">
+        <form onSubmit={handleSubmit} className="w-full max-w-xl flex flex-col items-start">
+          <h5 className="text-base sm:text-lg font-inter font-semibold mb-4 text-left">Be the first to know about the latest drops</h5>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter your name"
+            className="w-full h-12 px-4 border border-black/25 rounded-sm focus:outline-none text-sm font-inter mb-3"
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            className="w-full h-12 px-4 border border-black/25 rounded-sm focus:outline-none text-sm font-inter mb-3"
+          />
+          <div className="flex items-center mt-2 w-full justify-start">
+            <span className="text-sm font-inter mr-2 font-bold">All about experience</span>
             <button
               type="submit"
-              className="bg-blue-950 ml-2 text-[8px] md:text-[12px] text-white px-2 rounded-full md:px-4 py-1 md:py-1 tracking-[1px]  duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 font-raleway sm:ml-5"
+              className="bg-blue-950 text-white px-4 py-1 rounded-full text-xs font-inter hover:bg-gradient-to-r hover:from-[#1A1F39] hover:to-[#06B6D4] transition-all duration-300"
+              style={{ minWidth: '60px' }}
             >
               {loading ? "Sending..." : "Send"}
             </button>
-          </h4>
-        </div>
-      </form>
-
-      {message && (
-        <div className="mt-4 text-lg font-semibold">
-          <p>{message}</p>
-        </div>
-      )}
+          </div>
+          {message && (
+            <div className="mt-4 text-xs font-semibold font-inter text-left w-full">
+              <p>{message}</p>
+            </div>
+          )}
+        </form>
+      </div>
+      {/* Heading/Button on the right */}
+      <div className="md:w-1/2 w-full flex flex-col items-start justify-center">
+        <h4 className="text-3xl sm:text-4xl font-inter font-semibold leading-tight text-left mb-4">
+          We Lead the AI Trend – Key Features<br />Supporting Accounting & Finance.
+        </h4>
+        <button
+          className="bg-gradient-to-r from-[#1A1F39] to-[#06B6D4] text-white font-inter font-normal text-[10px] flex items-center justify-center pl-6 self-start mt-2"
+          style={{ width: '190px', height: '35px', borderRadius: '26.5px', paddingRight: '16px' }}
+        >
+          Grow Innovative Be on top
+        </button>
+      </div>
     </div>
   );
 };

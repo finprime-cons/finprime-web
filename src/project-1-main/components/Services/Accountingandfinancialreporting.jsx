@@ -5,14 +5,8 @@ import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import Servicesection2 from './Servicesection2'
 import Servicesection3 from './Servicesection3'
-import Servicesection4 from './Servicesection4'
-import Servicesection5 from './Servicesection5'
-import Servicesection6 from './Servicesection6'
-import Servicesection7 from './Servicesection7'
-import Servicesection8 from './Servicesection8'
-import Servicesection9 from './Servicesection9'
 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon'
-import BelowFooter from '../Footer/BelowFooter'
+import CookieBanner from '../Cookies/CookieBanner'
 import Servicesectionnew from './ServicesectionNewtext'
 import { metaDetails } from '../Services';
 
@@ -50,14 +44,8 @@ const Accountingandfinancialreporting = () => {
         <Servicesection2 />
         <Servicesection3 />
         <Servicesectionnew />
-        <Servicesection4 />
-        <Servicesection5 />
-        <Servicesection6 />
-        {/* <Servicesection7/> */}
-        <Servicesection8 />
-        <Servicesection9 />
         <Footer />
-        <BelowFooter />
+        <CookieBanner />
         <WhatsAppIcon />
       </div>
     </HelmetProvider>

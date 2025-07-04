@@ -54,15 +54,15 @@ const ErrorPage = () => {
 
       {/* Error Message */}
       <h4 className="text-7xl sm:text-9xl font-extrabold text-white tracking-[1px] animate-bounce">404</h4>
-      <h4 className="mt-4 text-2xl sm:text-3xl font-raleway tracking-[1px] lg:text-4xl font-bold text-black text-center">
+      <h4 className="mt-4 text-2xl sm:text-3xl font-inter tracking-[1px] lg:text-4xl font-bold text-black text-center">
         Oops! Page Not Found
       </h4>
-      <p className="mt-2 text-base sm:text-lg lg:text-xl tracking-[1px] font-raleway text-gray-700 text-center">
+      <p className="mt-2 text-base sm:text-lg lg:text-xl tracking-[1px] font-inter text-gray-700 text-center">
         The page you're looking for doesn't exist or has been moved.
       </p>
       <button
         onClick={goHome}
-        className="mt-6 px-6 sm:px-8 py-2 sm:py-2 text-base sm:text-lg tracking-[1px] font-raleway font-medium text-white bg-transparent border border-white  shadow-lg transform transition-all hover:scale-105 "
+        className="mt-6 px-6 sm:px-8 py-2 sm:py-2 text-base sm:text-lg tracking-[1px] font-inter font-medium text-white bg-transparent border border-white  shadow-lg transform transition-all hover:scale-105 "
       >
         Go Back Home
       </button>

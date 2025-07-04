@@ -42,7 +42,7 @@ const Btext = () => {
 
 
 
-      <p className="mb-6   text-[12px] sm:text-[16px] tracking-[1px]  font-raleway">
+      <p className="mb-6   text-[12px] sm:text-[16px] tracking-[1px]  font-inter">
         This is a long paragraph related to the blog content. Here, you can discuss the blog topic in detail, providing insights, opinions, or any relevant information that engages your readers. Make sure to cover the key points and maintain a friendly tone to keep your audience interested.
       </p>
 
@@ -77,7 +77,7 @@ const Btext = () => {
       <div className="flex justify-between items-center mt-12">
 
         <div>
-          <h4 className="text-[12px] sm:text-[22px] font-semibold font-raleway tracking-[1px]">Browse All</h4>
+          <h4 className="text-[12px] sm:text-[22px] font-semibold font-inter tracking-[1px]">Browse All</h4>
         </div>
 
         <div className="text-right text-[12px] sm:text-base flex gap-4">

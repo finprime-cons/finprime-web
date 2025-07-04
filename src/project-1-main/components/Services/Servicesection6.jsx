@@ -33,15 +33,15 @@ const Servicesection6 = () => {
     <div className="pl-6 pr-4 mt-24 xl:pr-10 xl:pl-12 lg:pl-10 lg:pr-8 md:pl-8 md:pr-6">
 
       <div className="mb-14">
-        <h4 className="text-4xl sm:text-5xl font-khula tracking-[1px] font-md">Related Sub-Survices</h4>
+        <h4 className="text-4xl sm:text-5xl font-inter tracking-[1px] font-md">Related Sub-Survices</h4>
       </div>
 
       <div className="grid grid-cols-1 gap-8 mb-8 sm:grid-cols-3">
         {service.subtitles.map((sub) => (
           <div key={sub.subid} className="sm:pb-10">
-            <h4 className="text-2xl font-khula hover-underline-animation tracking-[1px] cursor-pointer font-md mb-2"> <span >{sub.headsubtitle}</span> </h4>
+            <h4 className="text-2xl font-inter hover-underline-animation tracking-[1px] cursor-pointer font-md mb-2"> <span >{sub.headsubtitle}</span> </h4>
             <p
-              className="text-md tracking-[1px] font-raleway sm:text-[16px]"
+              className="text-md tracking-[1px] font-inter sm:text-[16px]"
               dangerouslySetInnerHTML={{
                 __html: sub.subcontent
                   .replace(/<\/?[^>]+(>|$)/g, "") // Remove all HTML tags
@@ -56,11 +56,11 @@ const Servicesection6 = () => {
 
 
             {/*             
-            <p className="text-md tracking-[1px] font-raleway sm:text-[16px]">{sub.subcontent.split(' ').slice(0, 10).join(' ')}{sub.subcontent.split(' ').length > 10 ? '...' : ''}</p> */}
+            <p className="text-md tracking-[1px] font-inter sm:text-[16px]">{sub.subcontent.split(' ').slice(0, 10).join(' ')}{sub.subcontent.split(' ').length > 10 ? '...' : ''}</p> */}
 
             <Link to={`/services/${service.title.replace(/\s+/g, '-')}/${sub.keyword.replace(/\s+/g, '-')}`}
               state={{ "service_id": service.id, "subtitles_id": sub.subid }}
-              className="text-cyan-500 font-bold mt-2 cursor-pointer sm:sm:text-[16px] tracking-[1px] font-raleway "
+              className="text-cyan-500 font-bold mt-2 cursor-pointer sm:sm:text-[16px] tracking-[1px] font-inter "
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}>Read more</Link>

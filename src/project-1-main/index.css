@@ -1,16 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Global Inter font settings */
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+}
 
+/* Font weight utility classes */
+.font-inter-thin {
+  font-weight: 100;
+}
+.font-inter-extralight {
+  font-weight: 200;
+}
+.font-inter-light {
+  font-weight: 300;
+}
+.font-inter-regular {
+  font-weight: 400;
+}
+.font-inter-medium {
+  font-weight: 500;
+}
+.font-inter-semibold {
+  font-weight: 600;
+}
+.font-inter-bold {
+  font-weight: 700;
+}
+.font-inter-extrabold {
+  font-weight: 800;
+}
+.font-inter-black {
+  font-weight: 900;
+}
 
 @keyframes fadeInRightSmall {
   0% {
@@ -294,4 +336,41 @@ html {
   display: inline-flex;
   gap: 100px;
   animation: scrollImages 20s linear infinite;
+}
+
+body::before {
+    display: none;
+    content: '';
+    position: fixed;
+    width: 200px;
+    height: 550px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #06b6d4;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    z-index: -1;
+}
+
+@media (max-width: 1024px) {
+    body::before {
+        display: none;
+    }
+}
+
+/* Custom Swiper pagination bullet styles */
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  border: 2px solid #000;
+  opacity: 1;
+  margin: 0 6px !important;
+  box-shadow: none;
+  transition: background 0.2s, border 0.2s;
+}
+.swiper-pagination-bullet-active {
+  background: #000;
+  border: 2px solid #000;
 }

@@ -47,7 +47,7 @@ const BPost = () => {
             h.classList.add(
               'font-mediam',
               'sm:text-3xl',
-              'font-raleway',
+              'font-inter',
               'text-xl',
               'mb-2',
               'text-gray-900'
@@ -59,7 +59,7 @@ const BPost = () => {
             h.classList.add(
               'font-mediam',
               'sm:text-2xl',
-              'font-raleway',
+              'font-inter',
               'text-lg',
               'mb-2',
               'text-gray-900'
@@ -74,7 +74,7 @@ const BPost = () => {
               'sm:text-[18px]',
               'tracking-[1px]',
               'font-medium',
-              'font-raleway',
+              'font-inter',
               'text-gray-700'
             );
           });
@@ -90,7 +90,7 @@ const BPost = () => {
               'sm:text-[18px]',
               'tracking-[1px]',
               'font-medium',
-              'font-raleway'
+              'font-inter'
             );
           });
 
@@ -105,7 +105,7 @@ const BPost = () => {
               'sm:text-[18px]',
               'tracking-[1px]',
               'font-medium',
-              'font-raleway'
+              'font-inter'
             );
           });
 
@@ -118,7 +118,7 @@ const BPost = () => {
               'sm:text-[18px]',
               'tracking-[1px]',
               'font-medium',
-              'font-raleway'
+              'font-inter'
             );
           });
         }
@@ -186,13 +186,13 @@ const BPost = () => {
         {/* Recent Blogs */}
         <div className={`mt-16`}>
           <div className="bg-gray-300 py-5 px-5 mb-5 flex justify-between">
-            <h4 className="text-xl sm:text-3xl font-raleway font-semibold">
+            <h4 className="text-xl sm:text-3xl font-inter font-semibold">
               Recent Blogs
             </h4>
             <Link
               to="/blog"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="bg-brandBlue py-3 text-xs px-4 font-raleway transition-all duration-300 sm:text-[16px] 
+              className="bg-brandBlue py-3 text-xs px-4 font-inter transition-all duration-300 sm:text-[16px] 
               tracking-[1px] ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 text-white shadow-md"
             >
               ALL Blogs

@@ -32,12 +32,47 @@ const Rhero = () => {
 
 
   return (
-    <div className="flex  pt-20 bg-gray-200">
-      <div className=" animate-fadeinbottom  sm:ml-20 sm:mr-20 bg-gray-200 p-10
-        flex w-full justify-center">
-        <div className='text-center'>
-          <h4 className="animate-fadeinleft text-4xl sm:text-5xl md:text-8xl mt-16 mb-1">WHY WORK WITH</h4>
-          <h4 className="animate-fadeinleft text-4xl sm:text-5xl md:text-8xl md:mt-6 mb-4">FINPRIME CONSULTING?</h4>
+    <div className="flex pt-20 bg-white w-full justify-center">
+      <div className="w-full max-w-5xl px-6">
+        <div className='text-left w-full pt-24'>
+          <h1
+            style={{
+              fontFamily: 'Kulim Park, sans-serif',
+              fontWeight: 400,
+              fontSize: '40px',
+              lineHeight: '56px',
+              letterSpacing: 0,
+              marginBottom: '0',
+            }}
+          >
+            Why Work With
+          </h1>
+          <h1
+            style={{
+              fontFamily: 'Kulim Park, sans-serif',
+              fontWeight: 700,
+              fontSize: '40px',
+              lineHeight: '56px',
+              letterSpacing: 0,
+              marginBottom: '24px',
+            }}
+          >
+            FinPrime Consulting?
+          </h1>
+          <p
+            style={{
+              fontFamily: 'Kulim Park, sans-serif',
+              fontWeight: 400,
+              fontSize: '13px',
+              lineHeight: '20px',
+              color: '#222',
+              marginBottom: '0',
+              marginTop: '16px',
+              maxWidth: '880px',
+            }}
+          >
+            We believe that every client's journey is unique and hence our approach is never a one-size-fits-all. We take the time to understand your business from the ground up—its operations, goals, challenges, and the environment in which it operates—before crafting tailored financial and compliance solutions that drive sustainable value.
+          </p>
         </div>
       </div>
     </div>

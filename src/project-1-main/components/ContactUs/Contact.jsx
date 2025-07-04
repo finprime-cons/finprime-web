@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import ContactUs from './ContactUs'
 import Footer from '../Footer/Footer'
 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon'
-import BelowFooter from '../Footer/BelowFooter'
+import CookieBanner from '../Cookies/CookieBanner'
 
 const Contact = () => {
   return (
@@ -28,8 +28,8 @@ const Contact = () => {
         <Navbar/>
         <ContactUs/>
         <Footer/>
-        <BelowFooter/>
         <WhatsAppIcon/>
+        <CookieBanner/>
     </div>
     </HelmetProvider>
   )

@@ -21,6 +21,8 @@ import sharjahAirportFreeZone from '../../images/partner/sharjah-airport-free-zo
 import sharjahMediaCity from '../../images/partner/sharjah-media-city.jpg';
 import sharjahPublishingCity from '../../images/partner/sharjah-publishing-city-free-zone.jpg';
 import uaqFreeZone from '../../images/partner/uaq-free-trade-zone.jpg';
+import mbmLogo from '../../images/mbm.png';
+import abcLogo from '../../images/ABC.JPG';
 
 const PartnerWithItem = () => {
     const imageList = [
@@ -39,6 +41,8 @@ const PartnerWithItem = () => {
         sharjahPublishingCity,
         uaqFreeZone,
         ajmanFreeZone,
+        mbmLogo,
+        abcLogo,
     ];
 
     const [hasFadedIn, setHasFadedIn] = useState(false);
@@ -67,13 +71,14 @@ const PartnerWithItem = () => {
     return (
         <div
             ref={fadeElementRef}
-            className={`mb-[35px] sm:mt-44 sm:mb-44 lg:mt-54 lg:mb-64 font-khula xl:px-12 lg:px-10 md:px-8 px-6 pt-4 md:space-y-3 ${hasFadedIn ? 'animate-fadeinbottom' : ''}`}
+            className={`mb-0 sm:mt-0 sm:mb-0 lg:mt-0 lg:mb-0 font-inter xl:px-12 lg:px-10 md:px-8 px-6 pt-0`}
         >
-            <p className="mb-[35px] sm:mb-20 lg:mb-30 text-[34px] md:text-6xl leading-9  lg:text-6xl xl:text-8xl font-bold text-left leading-tight">
-                We are authorized Partners with,
+            <p className="mb-8 mt-0 sm:mb-12 lg:mb-16 text-left leading-tight pl-24"
+               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, color: '#000000', fontSize: '50px' }}>
+                Your valued channel partners
             </p>
 
-            <div className="overflow-hidden bg-white ">
+            <div className="overflow-hidden bg-white mb-14 sm:mb-34 lg:mb-32">
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={0}
