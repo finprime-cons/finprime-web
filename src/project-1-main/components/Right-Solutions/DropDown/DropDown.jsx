@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 import solutionsCardBg from '../../../images/solutions-card-bg.png';
 import strategicCardBg from '../../../images/strategic-card-bg.png';
-import beyondCardBg from '../../../images/beyond.png';
+import beyondCardBg from '../../../images/Beyond.png';
 import clientCentricCardBg from '../../../images/cliencentric.png';
 import deepDiveCardBg from '../../../images/deep.png';
 import workingCardBg from '../../../images/working.png';
