@@ -1,5 +1,7 @@
 import React from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
+import { Industries } from '../../Industries';
 import Navbar from '../../Navbar/Navbar'
 import Footer from '../../Footer/Footer'
 import Industriessection2 from './Industriessection2'
@@ -10,24 +12,33 @@ import Industriessection6 from './Industriessection6'
 import WhatsAppIcon from '../../WhatsAppIcon/WhatsAppIcon';
 import CookieBanner from '../../Cookies/CookieBanner';
 
-const Industries = () => {
+const IndustriesPage = () => {
+  const { industriestitle, subindustrytitle } = useParams();
+  
+  // Find the industry and sub-industry data
+  const industry = Industries.find((s) => s.title === industriestitle);
+  const subIndustry = industry?.subindustries.find((sub) => sub.title === subindustrytitle);
+
+  // Generate meta tags based on the page content
+  const pageTitle = subIndustry ? `${subIndustry.headtitle} Services in Dubai, UAE | FinPrime Consulting` : 'Industry Services in Dubai, UAE | FinPrime Consulting';
+  const pageDescription = subIndustry ? `${subIndustry.headtitle} services in Dubai, UAE. Expert ${industry?.headtitle} consulting and solutions by FinPrime. Get professional ${subIndustry.headtitle.toLowerCase()} services tailored for your business needs.` : 'Professional industry services in Dubai, UAE. Expert consulting and solutions by FinPrime Consulting for all your business needs.';
+  const pageKeywords = subIndustry ? `${subIndustry.headtitle.toLowerCase()}, ${industry?.headtitle.toLowerCase()}, services dubai, uae, finprime consulting, business solutions, ${industry?.headtitle.toLowerCase()} consulting, dubai ${subIndustry.headtitle.toLowerCase()} services` : 'industry services, dubai, uae, finprime consulting, business solutions, professional consulting';
+
   return (
     <HelmetProvider>
     <div>
                <Helmet>
-                  <title>Finframe Business and Tax Consultancy</title>
-                  <meta name="description" content="Get in touch with EpicEventz for all your corporate event planning needs. Contact us today!" />
-                  <meta name="keywords" content="contact, event planning, corporate events" />
-                  <meta name="author" content="EpicEventz" />
-                  <meta property="og:title" content="Contact Us - EpicEventz" />
-                  <meta property="og:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />
-                  <meta property="og:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
+                  <title>{pageTitle}</title>
+                  <meta name="description" content={pageDescription} />
+                  <meta name="keywords" content={pageKeywords} />
+                  <meta name="author" content="FinPrime Consulting" />
+                  <meta property="og:title" content={pageTitle} />
+                  <meta property="og:description" content={pageDescription} />
                   <meta property="og:type" content="website" />
-                  <meta property="og:url" content="https://yourwebsite.com/about" />
+                  <meta property="og:url" content={`https://finprimeconsulting.com/${industriestitle}/${subindustrytitle}`} />
                   <meta name="twitter:card" content="summary_large_image" />
-                  <meta name="twitter:title" content="Contact Us - EpicEventz" />
-                  <meta name="twitter:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />
-                  <meta name="twitter:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
+                  <meta name="twitter:title" content={pageTitle} />
+                  <meta name="twitter:description" content={pageDescription} />
               </Helmet>
         <Navbar/>
         <Industriessection2/>
@@ -43,4 +54,4 @@ const Industries = () => {
   )
 }
 
-export default Industries
+export default IndustriesPage

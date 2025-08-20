@@ -171,7 +171,7 @@ const BPost = () => {
           <img
             src={`${selectedBlog.image_path}`}
             alt={selectedBlog.title}
-            className="w-full h-80 object-cover shadow-md animate-fadeinbottom"
+            className="w-full h-auto object-inherit shadow-md animate-fadeinbottom"
           />
           {/* Blog Content */}
           <div

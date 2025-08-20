@@ -24,7 +24,7 @@ const Industriessection6 = () => {
       <div className="w-full md:w-1/2">
         <img
           src={subIndustry.image} 
-          alt="Service Image"
+          alt={`${subIndustry.headtitle} - ${industry.headtitle} Industry Services`}
           className="object-cover w-full h-full"
         />
       </div>
@@ -64,7 +64,7 @@ const Industriessection6 = () => {
   <div className="w-full md:w-1/2 ">
     <img
       src={industry.image} 
-      alt="Service Image"
+      alt={`${industry.headtitle} Industry Services - FinPrime Consulting`}
       className="object-cover w-full h-full"
     />
   </div>

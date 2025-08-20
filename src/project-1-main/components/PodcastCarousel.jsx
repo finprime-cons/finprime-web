@@ -86,7 +86,7 @@ const PodcastCarousel = () => {
   return (
     <>
       <style>{swiperPaginationStyles}</style>
-      <div className="w-full max-w-[1400px] mx-auto px-4">
+      <div className="px-8 w-full max-w-[1700px] mx-auto px-4">
         <Swiper
           modules={[Pagination]}
           spaceBetween={32}
@@ -103,17 +103,17 @@ const PodcastCarousel = () => {
         >
           {podcastList.map((podcast) => (
             <SwiperSlide key={podcast.id}>
-              <div className="bg-white shadow-md overflow-hidden flex flex-row items-stretch w-[500px] h-[300px]">
-                <div className="relative w-[40%] h-full flex-shrink-0 flex items-center justify-center">
+              <div className="bg-white shadow-md overflow-hidden flex flex-col md:flex-row items-stretch w-full md:w-[500px] h-auto md:h-[300px]">
+                <div className="relative w-full md:w-[40%] h-[200px] md:h-full flex-shrink-0 flex items-center justify-center">
                   <img src={podcast.image} alt={podcast.title} className="w-full h-full object-cover rounded-none" />
                   <div className="absolute top-3 right-3 bg-white bg-opacity-80 rounded-full p-2">
-                    <FaHeadphones className="text-gray-700 text-lg" />
+                    <FaHeadphones className="text-gray-700 text-md" />
                   </div>
                 </div>
-                <div className="w-[60%] h-full flex flex-col justify-center px-8">
-                  <div className="text-xs text-gray-400 mb-1">{podcast.episode} • {podcast.category}</div>
-                  <div className="text-2xl font-semibold text-gray-900 mb-4">{podcast.title}</div>
-                  <a href={podcast.link} className="text-base text-black hover:text-brandBlue font-semibold font-inter mt-auto flex items-center gap-1">
+                <div className="w-full md:w-[60%] h-auto md:h-full flex flex-col justify-center px-4 md:px-8 py-4 md:py-0">
+                  <div className="text-xs text-gray-400 mb-1 whitespace-normal break-words">{podcast.episode} • {podcast.category}</div>
+                  <div className="text-lg md:text-2xl font-semibold text-gray-900 mb-4 whitespace-normal break-words">{podcast.title}</div>
+                  <a href={podcast.link} className="text-sm text-base text-black hover:text-brandBlue font-semibold font-inter mt-auto flex items-center gap-1 whitespace-normal break-words">
                     Episode page <span>&rarr;</span>
                   </a>
                 </div>
@@ -123,29 +123,35 @@ const PodcastCarousel = () => {
         </Swiper>
       </div>
       {/* Custom pagination container below the Swiper section */}
-      <div className="custom-swiper-pagination flex justify-center mt-6" ref={paginationRef} />
+      <div className="custom-swiper-pagination flex justify-center mt-6 " ref={paginationRef} />
 
       {/* Meet your hosts section */}
-      <div className="w-full max-w-[1400px] mx-auto px-4 mt-16 flex pl-24 justify-between" style={{ fontFamily: 'Lato, sans-serif' }}>
-        <h2 className="text-5xl font-bold">Meet your hosts:</h2>
-        <a href="#" className="text-base font-semibold flex items-center gap-2 hover:text-brandBlue transition-colors">
-          View all of them <span>&rarr;</span>
-        </a>
-      </div>
+      <div className="w-full max-w-[1400px] mx-auto px-4 mt-16 flex flex-col sm:flex-row sm:pl-24 sm:justify-between gap-4 sm:gap-0" style={{ fontFamily: 'Lato, sans-serif' }}>
+  <h2 className="px-8 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+    Meet your hosts:
+  </h2>
+  <a
+    href="#"
+    className="px-8 text-sm sm:text-base font-semibold flex items-center gap-2 hover:text-brandBlue transition-colors"
+  >
+    View all of them <span>&rarr;</span>
+  </a>
+</div>
+
 
       
 
       {/* Headquarters and social/contact row (from Footer.jsx) at the very end */}
-      <div className="w-full bg-black text-white mt-16 py-8 px-4">
-        <div className="mb-6 font-inter text-center md:text-left">
-          <h4 className="text-base font-semibold mb-2">Headquarters</h4>
-          <p className="text-white text-xs mb-1">Suite 1203, Floor 12A, DAMAC Executive Bay, Business Bay, Dubai, UAE</p>
-          <p className="text-white text-xs">Phone: +971 58 259 3543</p>
+      <div className="w-full bg-black text-white mt-16 py-10 px-4 ">
+        <div className="mb-6 font-inter text-center md:text-left pl-6 px-8">
+          <h4 className=" text-base xl:text-xl font-normal mb-2">Headquarters</h4>
+          <p className=" text-white  xl:text-xl  text-xs mb-1">Suite 1203, Floor 12A, DAMAC Executive Bay, Business Bay, Dubai, UAE</p>
+          <p className=" text-white xl:text-xl text-xs">Phone: +971 58 259 3543</p>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-end gap-4 mb-8">
           <ul className='flex space-x-2'>
-            <div className="flex items-center space-x-2 bg-white bg-opacity-55 rounded-xl border border-opacity-20 px-4 py-2">
-              <button className="hidden xl:block px-3 py-1 rounded-sm shadow-black text-[14px] tracking-[1px] transition-all duration-300 ease-out bg-gradient-to-r from-brandBlue to-cyan-500 text-white">Follow</button>
+            <div className="flex items-center space-x-2 bg-white bg-opacity-55 rounded-md border border-opacity-20 px-4 py-2">
+              <button className="hidden xl:block px-5 py-3 rounded-sm shadow-black text-[14px] tracking-[1px] transition-all duration-300 ease-out bg-gradient-to-r from-brandBlue to-cyan-500 text-white">Follow</button>
               <a href="https://www.facebook.com/finprimeconsulting" aria-label="Facebook" className="p-1.5 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:border-opacity-10 hover:from-brandBlue hover:to-cyan-500 hover:text-white"><FaFacebookF size={16} /></a>
               <a href="https://x.com/FinPrimeConsult" aria-label="Twitter" className="p-1.5 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:border-opacity-10 hover:to-cyan-500 hover:text-white"><FaTwitter size={16} /></a>
               <a href="https://www.linkedin.com/company/finprimeconsulting/" aria-label="LinkedIn" className="p-1.5 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:border-opacity-10 hover:to-cyan-500 hover:text-white"><RiLinkedinFill size={16} /></a>
@@ -154,25 +160,25 @@ const PodcastCarousel = () => {
             </div>
           </ul>
           <a href="mailto:info@finprimeconsulting.com" 
-             className="px-6 py-2 text-base bg-gradient-to-r from-[#1A1F39] to-[#06B6D4] rounded-full text-white hover:shadow-lg transition-all">
+             className="px-7 py-3 text-base bg-gradient-to-r from-[#1A1F39] to-[#06B6D4] rounded-full text-white hover:shadow-lg transition-all">
              info@finprimeconsulting.com
           </a>
         </div>
       </div>
       {/* Footer navigation links and copyright section */}
       <div className="w-full bg-black text-white px-4">
-        <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-6 text-xs">
+        <div className="flex flex-wrap justify-center md:justify-start gap-6 xl:gap-8 mb-6 xl:text-lg text-xs xl:pl-6">
           <a href="/" className="text-white hover:text-cyan-500">Home</a>
           <a href="/about" className="text-white hover:text-cyan-500">About</a>
-          <a href="/blogs" className="text-white hover:text-cyan-500">Blogs</a>
-          <a href="/contact-us" className="text-white hover:text-cyan-500">Contact Us</a>
+          <a href="/blog" className="text-white hover:text-cyan-500">Blogs</a>
+          <a href="/contactus" className="text-white hover:text-cyan-500">Contact Us</a>
           <a href="/terms-of-use" className="text-white hover:text-cyan-500">Terms of use</a>
           <a href="/privacy" className="text-white hover:text-cyan-500">Privacy</a>
           <a href="/cookie-policy" className="text-white hover:text-cyan-500">Cookie Policy</a>
           <a href="/sitemap" className="text-white hover:text-cyan-500">Sitemap</a>
         </div>
         <hr className="border-t border-gray-800 mb-8" />
-        <div className="text-xs text-center md:text-left text-gray-400 pb-8">
+        <div className="text-xs xl:text-lg text-center md:text-left xl:pl-6 text-gray-400 pb-8">
           © 2019 - 2025 Finprime Consulting, Presented by <a href="https://zorroemirates.com/" className="text-yellow-400 font-semibold underline hover:text-yellow-300" target="_blank" rel="noopener noreferrer">Zorro Arab Emirates</a>
         </div>
       </div>

@@ -5,16 +5,17 @@ import DOMPurify from 'dompurify';
 
 const BlogCard = ({ title, image, description, id, date, blog_slug }) => {
   return (
-    <div className="relative pt-6 sm:px-0 overflow-hidden w-full flex flex-col lg:h-full">
-      <img
-        src={image || 'path/to/default/image.jpg'} // Default image fallback
-        alt={title}
-        className="w-full h-[200px] lg:h-60 xl:h-72 rounded-[10px] object-cover transition-transform duration-300 transform hover:scale-90"
-      />
-      <div className="py-4 px-4 relative flex-grow text-left">
-        <h3 className="text-black text-xl xl:text-[22px] tracking-[1px] font-semibold font-raleway body pb-4 px-1 lg:px-3">{title}</h3>
+    <div className="relative pt-6 sm:px-0 w-full flex flex-col bg-white rounded-[10px] shadow-md ">
+    
+        <img
+          src={image || 'path/to/default/image.jpg'} // Default image fallback
+          alt={title}
+          className="w-full h-auto rounded-t-[10px] object-inherit transition-transform duration-300 transform hover:scale-90"
+        />
+       <div className="py-4 px-4 flex-grow text-left">
+        <h3 className="text-black text-xl xl:text-[22px] tracking-[1px] font-semibold font-raleway body pb-4 px-1 lg:px-3 break-words whitespace-normal w-full text-left">{title}</h3>
         <div
-          className="text-black text-sm xl:text-[16px]  mb-16 leading-relaxed px-1 lg:px-3"
+          className="text-black text-sm xl:text-[16px] mb-16 leading-relaxed px-1 lg:px-3 "
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(description, {
               ALLOWED_TAGS: ['b', 'i', 'u', 'ol', 'ul', 'li', 'h1', 'h2', 'h3', 'p', 'a', 'strong', 'em'],
@@ -60,44 +61,68 @@ const BlogSection = () => {
   return (
     <div>
       {/* Header Section */}
-      <div className="flex flex-row-reverse justify-between items-center w-8/10 ml-4 mr-3 md:ml-6 md:mr-4 lg:ml-8 lg:mr-6 xl:ml-10 xl:mr-8 mt-12 pt-6 pb-6 px-6">
-        <div className="flex items-center gap-2 text-right">
-          <div style={{ width: '16px', height: '12px', background: '#06B6D4', borderRadius: '2px' }}></div>
-          <h4 className="text-lg lg:text-2xl font-medium font-inter  mb-3 md:mb-0 text-right">Daily Articles</h4>
-        </div>
-        <Link
-          to="/blog"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="bg-blue-950 text-white text-xs font-medium tracking-[0.5px] px-4 ml-22 rounded-[5px] py-4 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 font-inter"
-          style={{ minWidth: '140px', maxWidth: '160px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          All Access Articles
-        </Link>
-      </div>
+      <div className="flex flex-col sm:flex-row-reverse sm:justify-between sm:items-center items-start w-[90%] ml-4 mr-3 md:ml-6 md:mr-4 lg:ml-8 lg:mr-6 xl:ml-10 xl:mr-8 mt-12 pt-6 pb-6 px-6 gap-y-3 sm:gap-y-0 sm:gap-x-8">
+
+  <div className="flex items-center gap-2 text-right">
+  <div
+  className="-mt-2 lg:mt-0"
+  style={{
+    width: '16px',
+    height: '12px',
+    background: '#06B6D4',
+    borderRadius: '2px'
+  }}
+></div>
+
+    <h4 className="text-lg lg:text-2xl font-medium font-inter mb-3 md:mb-0 text-right">
+      Daily Articles
+    </h4>
+  </div>
+
+  {/* Right side: Link */}
+  <Link
+    to="/blog"
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    className="bg-blue-950 text-white text-[10px] sm:text-xs mt-4 font-medium tracking-[0.5px] px-3 sm:px-4 py-2 sm:py-4 rounded-[5px] duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 font-inter"
+    style={{
+      minWidth: '110px',
+      maxWidth: '160px',
+      height: '40px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    All Access Articles
+  </Link>
+</div>
+
 
       {/* Blog Cards Section */}
-      <div className="mt-10 sm:mt-20 ml-8 mr-4 md:ml-12 md:mr-6 lg:ml-16 lg:mr-8 xl:ml-20 xl:mr-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
+      <div className="mt-10 sm:mt-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+
+        <div className="object-contain grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
           {loading ? (
             <p className="text-center font-inter">Loading blogs...</p>
           ) : error ? (
-            <p className="text-center text-red-500 font-inter">{error}</p>
+            <p className="text-center text-red-500 font-inter ">{error}</p>
           ) : blogs.length === 0 ? (
             <p className="text-center font-inter">No blogs available.</p>
           ) : (
             blogs.map((blog) => (
-              <div className="w-full cursor-pointer" key={blog.id}>
+              <div className=" w-full cursor-pointer" key={blog.id}>
                 <BlogCard
                   image={blog.image_path ? `https://finprimeconsulting.com/${blog.image_path}` : null}
                   date={new Date(blog.created_at).toLocaleDateString()}
                   title={blog.topic}
+                  className="w-full h-full object-contain transition-transform duration-300 transform hover:scale-95 rounded-[10px]"
                   description={DOMPurify.sanitize(blog.content.split(/\s+/).slice(0, 30).join(' '))}
                   id={blog.id}
                   blog_slug={blog.blog_slug}
                 />
               </div>
             ))
-          )}
+          )} 
         </div>
       </div>
     </div>

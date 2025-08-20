@@ -1,13 +1,29 @@
-.youtube-container #youtube-player {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-  
+.youtube-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#youtube-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure the injected YouTube iframe always covers the container */
+#youtube-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
   @media (min-aspect-ratio: 16/9) {
     .youtube-container #youtube-player {
       height: 56.25vw; /* 16:9 aspect ratio */

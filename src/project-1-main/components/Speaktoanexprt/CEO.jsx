@@ -19,7 +19,7 @@ const CEO = () => {
         <div className="relative w-[400px] h-auto xl:h-[700px] mx-auto">
           <img
             src={img1}
-            alt="Image"
+            alt="Ashker Kareem - Founder & CEO of FinPrime Consulting"
             className="w-[80%] mx-auto sm:w-full h-full object-cover rounded-lg hover:scale-105 transition-transform ease-out"
           />
 

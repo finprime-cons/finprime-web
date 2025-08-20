@@ -1,6 +1,4 @@
-
-
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -10,13 +8,15 @@ import { Industries } from '../Industries';
 import { Link } from 'react-router-dom';
 
 
+
 const ServingSection = () => {
   
   const [activeBg, setActiveBg] = useState(""); 
   const [activeAlt, setActiveAlt] = useState("");  
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const fadeElementRef = useRef(null);
+ const fadeElementRef = useRef(null);
+
   const swiperRef = useRef(null);
 
 

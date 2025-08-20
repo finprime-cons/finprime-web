@@ -5,7 +5,6 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import './partnerwith.css';
 
-// Import images
 import ajmanFreeZone from '../../images/partner/ajman-free-zone.jpg';
 import ajmanMediaFreeZone from '../../images/partner/ajman-media-free-zone.jpg';
 import dubaiHealthcareCity from '../../images/partner/dubai-healthcare-city.jpg';
@@ -21,102 +20,110 @@ import sharjahAirportFreeZone from '../../images/partner/sharjah-airport-free-zo
 import sharjahMediaCity from '../../images/partner/sharjah-media-city.jpg';
 import sharjahPublishingCity from '../../images/partner/sharjah-publishing-city-free-zone.jpg';
 import uaqFreeZone from '../../images/partner/uaq-free-trade-zone.jpg';
-import mbmLogo from '../../images/mbm.png';
-import abcLogo from '../../images/ABC.JPG';
 
 const PartnerWithItem = () => {
-    const imageList = [
-        ajmanMediaFreeZone,
-        dubaiHealthcareCity,
-        difc,
-        dubaiMediaCity,
-        dmcc,
-        ifza,
-        dwtc,
-        jafza,
-        meydanFreeZone,
-        rakFreeZone,
-        sharjahAirportFreeZone,
-        sharjahMediaCity,
-        sharjahPublishingCity,
-        uaqFreeZone,
-        ajmanFreeZone,
-        mbmLogo,
-        abcLogo,
-    ];
+  const partners = [
+    { img: ajmanMediaFreeZone, link: 'https://ajmanmediacity.amcfz.ae/' },
+    { img: dubaiHealthcareCity, link: 'https://www.dhcc.ae/' },
+    { img: difc, link: 'https://landing.difc.ae/' },
+    { img: dubaiMediaCity, link: 'https://dmc.ae/' },
+    { img: dmcc, link: 'https://dmcc.ae/' },
+    { img: ifza, link: 'https://ifza.com/en/' },
+    { img: dwtc, link: 'https://www.dwtc.com/en/' },
+    { img: jafza, link: 'https://www.commitbiz.com/' },
+    { img: meydanFreeZone, link: 'https://www.meydanfz.ae/' },
+    { img: rakFreeZone, link: 'https://www.rakez.com' },
+    { img: sharjahAirportFreeZone, link: 'https://www.saif-zone.com/en' },
+    { img: sharjahMediaCity, link: 'https://startwith.shams.ae/' },
+    { img: sharjahPublishingCity, link: 'https://spcfz.ae/' },
+    { img: uaqFreeZone, link: 'https://uaqftz.gov.ae/' },
+    { img: ajmanFreeZone, link: 'https://ajmanfreezone.afz.gov.ae/' },
+  ];
 
-    const [hasFadedIn, setHasFadedIn] = useState(false);
-    const fadeElementRef = useRef(null);
+  const [hasFadedIn, setHasFadedIn] = useState(false);
+  const fadeElementRef = useRef(null);
 
-    useEffect(() => {
-        const fadeInObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasFadedIn) {
-                        setHasFadedIn(true);
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        const currentElement = fadeElementRef.current;
-        if (currentElement) fadeInObserver.observe(currentElement);
-
-        return () => {
-            if (currentElement) fadeInObserver.unobserve(currentElement);
-        };
-    }, [hasFadedIn]);
-
-    return (
-        <div
-            ref={fadeElementRef}
-            className={`mb-0 sm:mt-0 sm:mb-0 lg:mt-0 lg:mb-0 font-inter xl:px-12 lg:px-10 md:px-8 px-6 pt-0`}
-        >
-            <p className="mb-8 mt-0 sm:mb-12 lg:mb-16 text-left leading-tight pl-24"
-               style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, color: '#000000', fontSize: '50px' }}>
-                Your valued channel partners
-            </p>
-
-            <div className="overflow-hidden bg-white mb-14 sm:mb-34 lg:mb-32">
-                <Swiper
-                    modules={[Autoplay]}
-                    spaceBetween={0}
-                    slidesPerView={5}
-                    loop={true}
-                    autoplay={{
-                        delay: 0,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                    }}
-                    speed={5000}
-                    grabCursor={true}
-                    breakpoints={{
-                        320: { slidesPerView: 2 },
-                        640: { slidesPerView: 3 },
-                        768: { slidesPerView: 4 },
-                        1024: { slidesPerView: 6 },
-                    }}
-                >
-                    {imageList.map((img, idx) => (
-                        <SwiperSlide key={idx}>
-                            <div
-                                className="partners-img"
-                                style={{
-                                    backgroundImage: `url(${img})`,
-                                    width: '160px',
-                                    height: '160px',
-                                    backgroundSize: 'contain',
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundPosition: 'center',
-                                }}
-                            ></div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </div>
+  useEffect(() => {
+    const fadeInObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasFadedIn) {
+            setHasFadedIn(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
     );
+
+    const currentElement = fadeElementRef.current;
+    if (currentElement) fadeInObserver.observe(currentElement);
+
+    return () => {
+      if (currentElement) fadeInObserver.unobserve(currentElement);
+    };
+  }, [hasFadedIn]);
+
+  return (
+    <div
+      ref={fadeElementRef}
+      className={`w-full px-6 sm:px-8 md:px-16 lg:px-24 xl:px-28 mb-16 ${
+        hasFadedIn ? 'animate-fadeinbottom' : ''
+      }`}
+    >
+      <p
+        className="mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left text-2xl sm:text-4xl md:text-5xl font-medium text-black"
+        style={{ fontFamily: 'Inter, sans-serif' }}
+      >
+        Your valued channel partners
+      </p>
+
+      <div className="overflow-hidden bg-white w-full flex justify-center items-center">
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={0}
+          loop={true}
+          grabCursor={true}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          speed={5000}
+          breakpoints={{
+            320: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1024: { slidesPerView: 6 },
+          }}
+          className="w-full max-w-none px-0"
+
+        >
+          {partners.map((partner, idx) => (
+            <SwiperSlide key={idx} className="flex justify-center items-center xl:pl-0 ">
+              <a
+                href={partner.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div
+                  className="partners-img"
+                  style={{
+                    backgroundImage: `url(${partner.img})`,
+                    width: '160px',
+                    height: '160px',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                  }}
+                ></div>
+              </a>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
+  );
 };
 
 export default PartnerWithItem;

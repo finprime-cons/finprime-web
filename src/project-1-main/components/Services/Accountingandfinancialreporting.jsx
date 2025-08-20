@@ -8,7 +8,7 @@ import Servicesection3 from './Servicesection3'
 import WhatsAppIcon from '../WhatsAppIcon/WhatsAppIcon'
 import CookieBanner from '../Cookies/CookieBanner'
 import Servicesectionnew from './ServicesectionNewtext'
-import { metaDetails } from '../Services';
+import { metaDetails } from '../Services.jsx';
 
 
 const Accountingandfinancialreporting = () => {
@@ -29,21 +29,21 @@ const Accountingandfinancialreporting = () => {
           <meta name="title" content={currentMeta.title} />
           <meta name="description" content={currentMeta.description} />
           <meta name="keywords" content={currentMeta.keywords} />
-          <meta name="author" content="EpicEventz" />
-          <meta property="og:title" content="Contact Us - EpicEventz" />
-          <meta property="og:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />
-          <meta property="og:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
+          <meta name="author" content="FinPrime Consulting" />
+          <meta property="og:title" content={currentMeta.title} />
+          <meta property="og:description" content={currentMeta.description} />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://yourwebsite.com/about" />
+          <meta property="og:url" content={currentMeta.url || `https://www.finprimeconsulting.com/services/${servicetitle}/${subServicetitle}`} />
+          <link rel="canonical" href={currentMeta.url || `https://www.finprimeconsulting.com/services/${servicetitle}/${subServicetitle}`} />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Contact Us - EpicEventz" />
-          <meta name="twitter:description" content="Reach out to us for expert corporate event solutions, including annual and family day celebrations." />
-          <meta name="twitter:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
+          <meta name="twitter:title" content={currentMeta.title} />
+          <meta name="twitter:description" content={currentMeta.description} />
         </Helmet>
         <Navbar />
         <Servicesection2 />
+        
         <Servicesection3 />
-        <Servicesectionnew />
+      
         <Footer />
         <CookieBanner />
         <WhatsAppIcon />

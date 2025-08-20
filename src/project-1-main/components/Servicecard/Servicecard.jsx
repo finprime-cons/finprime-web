@@ -98,9 +98,9 @@ const Servicecard = () => {
 
       {/* Title */}
       <div id='footerservices' className="absolute left-0 right-0 z-30 flex justify-center top-10 sm:top-16 sm:pl-6 md:pl-8 lg:pl-10 xl:pl-12 sm:justify-start">
-        <h3 className="text-4xl font-bold text-white sm:text-6xl font-inter">
+        <h1 className="text-4xl font-bold text-white sm:text-6xl font-inter">
           Our <span>Services</span>
-        </h3>
+        </h1>
       </div>
 
       <Swiper
