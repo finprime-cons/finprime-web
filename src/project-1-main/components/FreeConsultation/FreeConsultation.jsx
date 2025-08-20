@@ -85,14 +85,38 @@ const WhyChooseUs = () => {
     </div>
   );
 };
-
 const FreeConsultation = () => {
   return (
-    <div className='relative overflow-hidden'>
+    <HelmetProvider>
+    <div className="relative overflow-hidden">
+      <Helmet>
+        <title>Finframe Business and Tax Consultancy</title>
+        <meta
+          name="description"
+          content="Get in touch with EpicEventz for all your corporate event planning needs. Contact us today!"
+        />
+        <meta name="keywords" content="contact, event planning, corporate events" />
+        <meta name="author" content="EpicEventz" />
+        <meta property="og:title" content="Contact Us - EpicEventz" />
+        <meta
+          property="og:description"
+          content="Reach out to us for expert corporate event solutions, including annual and family day celebrations."
+        />
+        <meta property="og:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yourwebsite.com/about" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us - EpicEventz" />
+        <meta
+          name="twitter:description"
+          content="Reach out to us for expert corporate event solutions, including annual and family day celebrations."
+        />
+        <meta name="twitter:image" content="https://yourwebsite.com/images/about-page-image.jpg" />
+      </Helmet>
       <Navbar />
-      <div className="relative pt-60 pb-40">
+      <div className="relative pt-28 sm:pt-32 md:pt-40 lg:pt-60 pb-12 sm:pb-20 md:pb-28 lg:pb-36">
         <div className="relative z-10 container mx-auto px-4 text-black">
-          <div className="text-left">
+          <div className="text-left pl-4 md:pl-0">
             <p className="mb-4 text-lg">Get Your Free Consultation</p>
             <div className="flex items-center">
               <div className="border-l-4 border-black h-16 mr-4"></div>
@@ -100,15 +124,19 @@ const FreeConsultation = () => {
                 Start growing your business firm with srtip
               </h1>
             </div>
-            <p className="mt-4 text-lg">Let us help you with tailored solutions.</p>
-          </div>
+           
+          </div> <p className="mt-4 text-lg">Let us help you with tailored solutions.</p>
+            </div>
+           
         </div>
+      
+;
+<Servicecard />
+        <WhyChooseUs />
+        <PartnersCarousel />
+        <Footer />
       </div>
-      <Servicecard />
-      <WhyChooseUs />
-      <PartnersCarousel />
-      <Footer />
-    </div>
+    </HelmetProvider>
   );
 };
 

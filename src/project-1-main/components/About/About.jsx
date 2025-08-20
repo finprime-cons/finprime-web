@@ -19,7 +19,7 @@ import menuAboutFull from '../../images/company/menu-about-full.jpg';
 const AboutAccordion = () => {
   const [openSection, setOpenSection] = useState(null);
   return (
-    <div className="my-8">
+    <div className="my-8 px-8">
       <InfoSection
         title="What we do"
         open={openSection === 'do'}
@@ -44,8 +44,8 @@ const About = ({ toggleSpeakExpert }) => {
         <HelmetProvider>
             <div className='relative overflow-hidden'>
                 <Helmet>
-                    <title>Finframe Business and Tax Consultancy</title>
-                    <meta name="description" content="Get in touch with EpicEventz for all your corporate event planning needs. Contact us today!" />
+                    <title>About FinPrime Consulting | Trusted Business Advisors UAE</title>
+                    <meta name="description" content="Learn about FinPrime Consulting — your trusted partner for tailored financial, compliance, and business advisory services in Dubai and across the UAE." />
                     <meta name="keywords" content="contact, event planning, corporate events" />
                     <meta name="author" content="EpicEventz" />
                     <meta property="og:title" content="Contact Us - EpicEventz" />
@@ -79,7 +79,7 @@ const About = ({ toggleSpeakExpert }) => {
                 <AboutAccordion />
                 {/* People and Culture Section */}
                 <div
-                  className="relative w-full my-12 h-[50vh] bg-cover bg-center bg-fixed"
+                  className="relative w-full my-12 h-[50vh] bg-cover bg-center bg-fixed mt-24"
                   style={{ backgroundImage: `url(${menuAboutFull})` }}
                 >
                   <div className="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -91,7 +91,7 @@ const About = ({ toggleSpeakExpert }) => {
                     </div>
 
                     {/* Bottom overlay text */}
-                    <div className="w-[90%] max-w-4xl bg-black bg-opacity-60 px-6 py-3 text-white text-xl text-center font-normal font-['Kulim_Park']" style={{ background: 'linear-gradient(90deg, #191F3A 60%, #06B6D4 100%)', opacity: 0.85 }}>
+                    <div className="hidden md:flex w-[90%] max-w-4xl bg-black bg-opacity-60 px-6 py-3 text-white text-xl text-center font-normal font-['Kulim_Park']" style={{ background: 'linear-gradient(90deg, #191F3A 60%, #06B6D4 100%)', opacity: 0.85 }}>
                       Trust grows when your time Might lead them to feel more empowered.
                     </div>
                   </div>

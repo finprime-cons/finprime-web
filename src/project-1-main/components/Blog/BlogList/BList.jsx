@@ -70,7 +70,7 @@ const BList = () => {
 
   return (
     <div
-      className={`max-w-7xl xl:mx-auto lg:mx-10 md:mx-8 mb-10 mx-6 sm:p-4 pt-2 `}>
+      className={`max-w-8xl xl:mx-auto lg:mx-10 md:mx-8 mb-10 mx-6 sm:p-4 pt-2 xl:px-8 `}>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
         {loading ? (

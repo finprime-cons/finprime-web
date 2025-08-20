@@ -59,7 +59,7 @@ const Choose = () => {
   return (
     <div 
     ref={fadeElementRef}
-    className={`max-w-full my-16 xl:ml-12 xl:mr-10 lg:ml-10 lg:mr-8 md:ml-8 md:mr-6 ml-6 mr-4 ${hasFadedIn ? 'animate-fadeinbottom' : ''}`}>
+    className={`max-w-full my-16 xl:ml-12 xl:mr-10 lg:ml-10 lg:mr-8 md:ml-8 md:mr-6 ml-6 px-8 ${hasFadedIn ? 'animate-fadeinbottom' : ''}`}>
 
 
 
@@ -69,21 +69,21 @@ const Choose = () => {
 
 
       
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row ">
 
 
 
         
         <div className="w-full lg:w-2/3 ">
           <h3
-            className='text-2xl md:text-3xl font-medium pb-5 pl-5 border-l-4 border-gray-800'
+            className='text-2xl md:text-3xl font-medium pb-5 pl-5 border-l-4 border-gray-800 px-8'
           >
             Why Choose Us
           </h3>
 
-          <div className="pt-20 pl-5 sm:pl-14 lg:pl-16  pb-10 pr-5">
+          <div className="pt-12 px-2  sm:pl-14 lg:pl-16  pb-10 ">
             <h3 
-              className="text-xl lg:text-3xl font-kulim-park mb-8 text-white py-3 px-5 inline-block"
+              className="text-2xl lg:text-3xl font-kulim-park mb-8 text-white py-3  inline-block px-4"
               style={{ background: 'linear-gradient(to right, #1e293b, #06b6d4)' }}
             >
               We Make World Class Financial Service
@@ -131,7 +131,7 @@ const Choose = () => {
           <div className="flex items-center justify-center lg:justify-end relative bottom-0 lg:top-10 xl:top-5 right-0">
             <img
               src={img2}
-              alt="Banner Image"
+              alt="FinPrime Consulting - Why Choose Us Banner"
               className="h-[220px] sm:h-[260px] md:h-[370px] lg:h-[590px] xl:h-[580px] w-full object-cover"
             />
           </div>

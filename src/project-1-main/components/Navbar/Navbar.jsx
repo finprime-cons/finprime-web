@@ -28,21 +28,48 @@ const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isLogoHovered, setIsLogoHovered] = useState(false);
     const location = useLocation();
+    const isLandingPage = location.pathname === '/';
     const navigate = useNavigate();
+    const [scrollUpDarkLogo, setScrollUpDarkLogo] = useState(false);
 
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
     const closeTimeout = useRef(null);
+
+    // NEW STATE – must be declared before usage
     
+
+    // Page condition checks
+
     // Determine which logo to show based on the current route
-    const shouldShowDarkLogo = location.pathname === '/rightsolutions' || 
-                               location.pathname === '/refer-and-earn' || 
+    const shouldShowDarkLogo = location.pathname === '/rightsolutions' ||
+                               location.pathname === '/refer-and-earn' ||
                                location.pathname === '/freeconsultation' ||
-                               location.pathname.includes('external-audit');
+                            //    location.pathname === '/blog' ||
+                            //    location.pathname === '/about' ||
+                               location.pathname.includes('external-audit') ||
+                               location.pathname.includes('internal-audit') ||
+                               location.pathname.includes('forensic-audit') ||
+                               location.pathname.includes('in-country-value-program') ||
+                               location.pathname.includes('/accounting-and-finance/') ||
+                               location.pathname.includes('/taxation/') ||
+                               location.pathname.includes('banking-operations-excellence') ||
+                               location.pathname.includes('/regulatory-and-compliance/') ||
+                               location.pathname.includes('/company-formation-and-business-consultancy/') ||
+                               location.pathname.includes('/hr-consulting-and-advisory/');
+
     const logoSrc =
-        location.pathname === '/' || location.pathname === '/about'
-            ? logoLanding
-            : logoDark;
+        (isLandingPage && scrollUpDarkLogo) || (location.pathname === '/about' && scrollUpDarkLogo) || (location.pathname === '/blog' && scrollUpDarkLogo) || shouldShowDarkLogo
+            ? logoDark
+            : isLandingPage || location.pathname === '/about' || location.pathname === '/blog'
+                ? logoLanding
+                : logoDark;
+
+    const showTextLogo = (isLandingPage && scrollUpDarkLogo) || (location.pathname === '/about' && scrollUpDarkLogo) || (location.pathname === '/blog' && scrollUpDarkLogo) || shouldShowDarkLogo;
+    const textLogoSrc = showTextLogo ? logoWhite : finLogo;
+    
+    // Menu icon color logic: black when logo is dark on scroll up
+    const shouldShowDarkMenuIcon = (isLandingPage && scrollUpDarkLogo) || shouldShowDarkLogo || location.pathname === '/contactus' || location.pathname.startsWith('/blogs/') || location.pathname.startsWith('/technology/') || location.pathname.startsWith('/healthcare/') || location.pathname.startsWith('/education/') || location.pathname.startsWith('/startups/') || location.pathname.startsWith('/manufacturing/') || location.pathname.startsWith('/financial-services/') || location.pathname.startsWith('/consumer/');
 
     // Toggle overlay menu
     const toggleDropdown = () => {
@@ -63,6 +90,33 @@ const Navbar = () => {
         };
     }, []);
 
+    // Scroll-based navbar visibility
+    const [showNavbar, setShowNavbar] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    
+useEffect(() => {
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        const isScrollingDown = currentScrollY > lastScrollY;
+
+        setShowNavbar(!isScrollingDown);
+
+        // Only apply dark logo on home page when scrolling up
+        if (location.pathname === '/' || location.pathname === '/about' || location.pathname === '/blog') {
+            if (!isScrollingDown && currentScrollY > 30) {
+                setScrollUpDarkLogo(true);  // Show dark logo on scroll up
+            } else {
+                setScrollUpDarkLogo(false); // Default logo on scroll down or top
+            }
+        }
+
+        setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+}, [lastScrollY, location.pathname]);
     const barmenu = [
         { MenuId: 1, title: "FINPRIME", links: "/", icon: <IoMdHome />, bgImage: img3 },
         { MenuId: 2, title: "ABOUT US", links: "/about", icon: <HiMiniUserGroup />, bgImage: img4 },
@@ -111,12 +165,13 @@ const Navbar = () => {
         ...Services.slice(0, 3),
         {
             headtitle: 'Banking Operations Excellence',
+            title: 'banking-operations-excellence',
             subtitles: [
-                { subid: 1, headsubtitle: 'Retail Banking' },
-                { subid: 2, headsubtitle: 'Corporate & SME Banking' },
-                { subid: 3, headsubtitle: 'Risk and Compliance' },
-                { subid: 4, headsubtitle: 'Digital Banking' },
-                { subid: 5, headsubtitle: 'Customer Services and Relationship Management' }
+                { subid: 1, headsubtitle: 'Retail Banking', subtitle: 'retail-banking', keyword: 'retail-banking' },
+                { subid: 2, headsubtitle: 'Corporate & SME Banking', subtitle: 'corporate-sme-banking', keyword: 'corporate-sme-banking' },
+                { subid: 3, headsubtitle: 'Risk and Compliance', subtitle: 'risk-and-compliance', keyword: 'risk-and-compliance' },
+                { subid: 4, headsubtitle: 'Digital Banking', subtitle: 'digital-banking', keyword: 'digital-banking' },
+                { subid: 5, headsubtitle: 'Customer Services and Relationship Management', subtitle: 'customer-services-relationship-management', keyword: 'customer-services-relationship-management' }
             ]
         },
         ...Services.slice(3)
@@ -199,86 +254,88 @@ const Navbar = () => {
         });
     };
 
+    // Add state for mobile service menu and selected nav item
+    const [isMobileServiceOpen, setIsMobileServiceOpen] = useState(false);
+    const [selectedMobileNavItem, setSelectedMobileNavItem] = useState(null);
+
+    // Define the extra mobile menu items in the correct order
+    const extraMobileMenu = [
+        { name: 'FREE CONSULTATION', link: '/freeconsultation' },
+        { name: 'RIGHT SOLUTIONS', link: '/rightsolutions' },
+        { name: 'SPEAK TO AN EXPERT', link: '/#speaktoanexpert' },
+    ];
+
     return (
         <>
             {/* Logo with Accenture-style animation: main logo moves to top right and shrinks, text logo animates in */}
-            <div className="fixed z-[9999] top-8 left-8">
+            <div className={`fixed z-[9999] top-4 sm:top-6 md:top-8 left-2 sm:left-6 md:left-8 transition-all px-4 sm:px-6 duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
                 <Link
                     to="/"
-                    className="relative inline-block h-14 w-[180px] border-none outline-none"
-                    style={{ minWidth: 140, border: 'none', outline: 'none' }}
+                    className="relative inline-block h-12 w-[56px] sm:h-10 sm:w-[120px] md:h-14 md:w-[180px] border-none outline-none"
+                    style={{ minWidth: 56, border: 'none', outline: 'none' }}
                     onMouseEnter={() => setIsLogoHovered(true)}
                     onMouseLeave={() => setIsLogoHovered(false)}
                     onTouchStart={() => setIsLogoHovered(true)}
                     onTouchEnd={() => setIsLogoHovered(false)}
                 >
-                    <img
-                        src={logoSrc}
-                        alt="Finprime Logo"
-                        className={`
-                            absolute  top-0
-                            transition-all duration-500 ease-in-out
-                            h-16 w-auto border-none outline-none
-                            ${isLogoHovered
-                                ? 'transform scale-50 left-8 -translate-y-9 z-20'
-                                : 'transform scale-100 translate-x-0 translate-y-0 z-10'}
-                        `}
-                        style={{ pointerEvents: 'none', border: 'none', outline: 'none' }}
-                    />
+                   <img
+  src={logoSrc}
+  alt="Finprime Logo"
+  className={`absolute top-0 left-1/2
+      transition-all duration-500 ease-in-out
+      h-12 w-auto sm:h-10 md:h-16
+      ${isLogoHovered
+          ? 'transform scale-50 -translate-x-1/2 -translate-y-6 sm:-translate-y-9 z-20'
+          : 'transform scale-100 -translate-x-1/2 translate-y-0 z-10'}`}
+  style={{ pointerEvents: 'none', border: 'none', outline: 'none' }}
+/>
                     {isLogoHovered && (
-                        <span
-                            className={`
-                                absolute left-0 top-0
-                                transition-all duration-500 ease-in-out
-                                h-12 w-auto
-                                flex items-center
-                                opacity-100 translate-x-0 z-10
-                            `}
-                            style={{ pointerEvents: 'none', height: '48px' }}
-                        >
-                            <img
-                                src={finLogo}
-                                alt="Finprime Text Logo"
-                                style={{ height: '48px', width: 'auto', border: 'none', outline: 'none' }}
-                                className="border-none outline-none"
-                            />
-                        </span>
+                        <img
+                            src={textLogoSrc}
+                            alt="Finprime Text Logo"
+                            className=" hidden sm:block h-12 w-auto sm:h-10 md:h-16 z-20 ml-2 transition-all duration-500"
+                            style={{ pointerEvents: 'none', border: 'none', outline: 'none' }}
+                        />
                     )}
                 </Link>
             </div>
 
             {/* Hamburger Menu - Mobile */}
-            <div className="fixed z-[9999] top-8 right-8 block md:hidden">
+            <div className={`fixed z-[9999] top-5 right-2 sm:right-6 md:right-8 block md:hidden px-4 sm:px-6 transition-all duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
                 <button
                     onClick={() => setIsMobileMenuOpen(true)}
-                    className={`${shouldShowDarkLogo ? 'text-black' : 'text-white'} focus:outline-none flex items-center gap-2`}
+                    className={`${shouldShowDarkMenuIcon ? 'text-black' : 'text-white'} focus:outline-none flex items-center gap-2`}
                 >
-                    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke={shouldShowDarkLogo ? 'black' : 'white'}>
+                    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke={shouldShowDarkMenuIcon ? 'black' : 'white'}>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
-                    <span>Menu</span>
+                    <span className="hidden sm:inline">Menu</span>
                 </button>
             </div>
             {/* Hamburger Menu - Desktop */}
-            <div className="fixed z-[9999] top-8 right-8 hidden md:flex">
-                <button
-                    onClick={toggleDropdown}
-                    className={`${shouldShowDarkLogo ? 'text-black' : 'text-white'} focus:outline-none flex items-center gap-2`}
-                >
-                    <span className="flex flex-col justify-center items-start w-6 h-6 mr-2">
-                        <span className={`block w-6 h-0.5 ${shouldShowDarkLogo ? 'bg-black' : 'bg-white'} mb-1`}></span>
-                        <span className={`block w-6 h-0.5 ${shouldShowDarkLogo ? 'bg-black' : 'bg-white'} mb-1`}></span>
-                        <span className={`block w-6 h-0.5 ${shouldShowDarkLogo ? 'bg-black' : 'bg-white'}`}></span>
-                    </span>
-                    <span>Menu</span>
-                </button>
-            </div>
+<div className={`fixed z-[9999] top-8 right-8 hidden md:flex transition-all duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+  <button
+    onClick={toggleDropdown}
+    className={`${shouldShowDarkMenuIcon ? 'text-black' : 'text-white'} flex items-center gap-2`}
+  >
+    {/* Hamburger Icon (3 lines) */}
+    <span className="flex flex-col gap-[4px]">
+      <span className={`w-6 h-0.5 ${shouldShowDarkMenuIcon ? 'bg-black' : 'bg-white'}`}></span>
+      <span className={`w-6 h-0.5 ${shouldShowDarkMenuIcon ? 'bg-black' : 'bg-white'}`}></span>
+      <span className={`w-6 h-0.5 ${shouldShowDarkMenuIcon ? 'bg-black' : 'bg-white'}`}></span>
+    </span>
+    {/* Text Label */}
+    <span className={`${shouldShowDarkMenuIcon ? 'text-black' : 'text-white'} ml-2 text-base font-normal`}>
+      Menu
+    </span>
+  </button>
+</div>
 
             {/* Mobile Menu Overlay */}
             {isMobileMenuOpen && (
                 <div 
                     ref={dropdownRef}
-                    className="fixed inset-0 bg-black bg-opacity-90 z-[10000] flex flex-col items-center justify-center"
+                    className="fixed inset-0 bg-black bg-opacity-90 z-[10000] flex flex-col items-center justify-center md:hidden"
                 >
                     <button 
                         onClick={() => setIsMobileMenuOpen(false)}
@@ -286,35 +343,110 @@ const Navbar = () => {
                     >
                         <HiXMark className="h-10 w-10" />
                     </button>
-                    <ul className="text-center">
-                        {barmenu.map(item => (
-                            <li key={item.MenuId} className="my-6">
-                                <Link
-                                    to={item.links}
-                                    className="text-white text-3xl font-light hover:text-cyan-400 transition-colors duration-300"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                    {!isMobileServiceOpen ? (
+                        <ul className="text-center">
+                            {barmenu.map(item => (
+                                <li key={item.MenuId} className="my-6">
+                                    <Link
+                                        to={item.links}
+                                        className="text-white text-lg md:text-3xl font-light hover:text-cyan-400 transition-colors duration-300"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {item.title}
+                                    </Link>
+                                </li>
+                            ))}
+                            {/* Extra mobile-only items, all caps */}
+                            {extraMobileMenu.map((item, idx) => (
+                                <li key={item.name} className="my-6 block md:hidden">
+                                    {item.name === 'SPEAK TO AN EXPERT' ? (
+                                        <button
+                                            onClick={() => {
+                                                setIsMobileMenuOpen(false);
+                                                toggleSpeakExpert();
+                                            }}
+                                            className="text-white text-lg md:text-3xl font-light hover:text-cyan-400 transition-colors duration-300 tracking-widest"
+                                            style={{ letterSpacing: '0.1em' }}
+                                        >
+                                            {item.name}
+                                        </button>
+                                    ) : (
+                                        <Link
+                                            to={item.link}
+                                            className="text-white text-lg md:text-3xl font-light hover:text-cyan-400 transition-colors duration-300 tracking-widest"
+                                            style={{ letterSpacing: '0.1em' }}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    )}
+                                </li>
+                            ))}
+                            <li className="my-6">
+                                <button
+                                    className="text-white text-lg md:text-3xl font-light hover:text-cyan-400 transition-colors duration-300 tracking-widest"
+                                    style={{ letterSpacing: '0.1em' }}
+                                    onClick={() => setIsMobileServiceOpen(true)}
                                 >
-                                    {item.title}
-                                </Link>
+                                    SERVICES
+                                </button>
                             </li>
-                        ))}
-                         <li className="my-6">
+                        </ul>
+                    ) : selectedMobileNavItem === null ? (
+                        // Show all main navbar items under Service
+                        <div className="w-full flex flex-col items-center">
                             <button
-                                onClick={() => {
-                                    setIsMobileMenuOpen(false);
-                                    handleMouseEnter();
-                                }}
-                                className="text-white text-3xl font-light hover:text-cyan-400 transition-colors duration-300"
+                                onClick={() => setIsMobileServiceOpen(false)}
+                                className="text-white text-xl mb-4"
                             >
-                                Services
+                                Back
                             </button>
-                        </li>
-                    </ul>
+                            <ul className="w-full max-w-xs mx-auto">
+                                {menuItems.map((item, idx) => (
+                                    <li key={idx} className="text-white text-lg my-2">
+                                        <button
+                                            onClick={() => setSelectedMobileNavItem(idx)}
+                                            className="w-full text-left text-white text-lg py-2 px-4 rounded hover:bg-cyan-700"
+                                        >
+                                            {item.headtitle}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : (
+                        // Show subcontents for the selected main item
+                        <div className="w-full flex flex-col items-center">
+                            <button
+                                onClick={() => setSelectedMobileNavItem(null)}
+                                className="text-white text-xl mb-4"
+                            >
+                                Back
+                            </button>
+                            <ul className="w-full max-w-xs mx-auto">
+                                {menuItems[selectedMobileNavItem].subtitles?.map((sub, subIdx) => (
+                                    <li key={subIdx} className="text-cyan-300 text-base my-1">
+                                        <Link
+                                            to={`/services/${menuItems[selectedMobileNavItem].title.replace(/\s+/g, '-')}/${sub.keyword.replace(/\s+/g, '-')}`}
+                                            onClick={() => {
+                                                setIsMobileMenuOpen(false);
+                                                setIsMobileServiceOpen(false);
+                                                setSelectedMobileNavItem(null);
+                                            }}
+                                            className="block py-2 px-4 hover:bg-cyan-800 rounded"
+                                        >
+                                            {sub.headsubtitle}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             )}
 
             {/* Main Navbar - Centered */}
-            <nav className="fixed z-[9999] top-6 left-1/2 -translate-x-1/2 hidden md:block">
+            <nav className={`fixed z-[9999] top-6 left-1/2 -translate-x-1/2 hidden md:block transition-all duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
                 <div className="w-[860px] h-[47px] bg-gradient-to-r from-[#1A1F39] to-[#06B6D4] rounded-[26px] px-8">
                     <div className="flex items-center justify-between h-full">
                     {/* Desktop Navigation */}
@@ -411,7 +543,7 @@ const Navbar = () => {
                                     <div className="relative w-[340px] h-[380px] mt-2">
                                         <img src={companyProfileImage} alt="Company Profile" className="w-full h-full object-contain" />
                                         <button
-                                            onClick={() => window.open('/pdf/finprime-company-profile.pdf', '_blank')}
+                                            onClick={() => window.open('/components/pdf/finprime%20comapny%20profile%20final.pdf', '_blank')}
                                             className="absolute left-1/2 -translate-x-1/2 bottom-8 w-[230px] h-[48px] rounded-[24px] flex items-center justify-between px-8 text-white font-roboto text-base transition-all hover:shadow-lg"
                                             style={{
                                                 background: 'linear-gradient(90deg, #1A1F39 0%, #06B6D4 100%)',
@@ -431,7 +563,7 @@ const Navbar = () => {
                                     <ul>
                                         {Services.map((service, index) => (
                                             <li key={index} className="group">
-                              <button
+                                                <button
                                                     onClick={() => handleQuestionClick(index)}
                                                     className={`text-black font-khula text-lg flex justify-between w-full pl-8 py-5 border-b ${selectedIndexOpen === index
                                                         ? 'bg-brandBlue text-white border-l-8 border-cyan-500'
@@ -439,12 +571,12 @@ const Navbar = () => {
                                                         }`}
                                                 >
                                                     {service.headtitle}
-                                                    <FaArrowRight className={`right-0 text-2xl mr-5 ${selectedIndexOpen === index ? 'hidden' : 'group-hover:animate-fadeinleftsmall'}`} />
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                                                    <FaArrowRight className={`right-0 text-base mr-4 ${selectedIndexOpen === index ? 'hidden' : 'group-hover:animate-fadeinleftsmall'}`} />
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
 
                                 {/* Column 3: Sub-services Display */}
                                 <div className='flex flex-col w-full md:w-[40%] h-full relative'>
@@ -459,12 +591,12 @@ const Navbar = () => {
                                                 </button>
                                                 <h4 className="pt-10 mb-3 text-2xl font-bold text-white font-khula">
                                                     {Services[selectedIndexOpen].headtitle}
-                            </h4>
+                                                </h4>
                                             </div>
                                             <ul>
                                                 {Services[selectedIndexOpen].subtitles.map((sub) => (
                                                     <li key={sub.subid}>
-                                  <Link
+                                                        <Link
                                                             to={`/services/${Services[selectedIndexOpen].title.replace(/\s+/g, '-')}/${sub.keyword.replace(/\s+/g, '-')}`}
                                                             state={{
                                                                 service_id: Services[selectedIndexOpen].id,
@@ -473,35 +605,39 @@ const Navbar = () => {
                                                             className="mb-1 ml-8 text-lg text-white hover-underline-animation"
                                                             onClick={handleLinkClick}
                                                         >
-                                    {sub.headsubtitle}
-                                  </Link>
+                                                            {sub.headsubtitle}
+                                                        </Link>
                                                     </li>
                                                 ))}
-                            </ul>
+                                            </ul>
                                         </div>
                                     ) : (
                                         <ul className="px-4 py-4 text-black md:px-28 md:py-16">
                                             <h4 className='font-semibold md:text-3xl font-khula'>Who We Serve</h4>
-                              {[
-                                'Technology',
-                                'Healthcare',
-                                'Education',
-                                'Startups',
-                                'Manufacturing',
-                                'Financial Services',
-                                'Consumer',
-                              ].map((item) => (
-                                                <p
-                                                    key={item} className='flex w-full py-2 cursor-pointer text-md font-raleway items-center'>
-                                                    <span className='mr-2 text-lg font-bold'>&gt;</span>
-                                                    <span className='hover-underline-animation'>{item}</span>
-                                                </p>
-                              ))}
-                            </ul>
-                        )}
-                      </div>
-                    </div>
-                </div>
+                                            {[
+                                                { name: 'Technology', link: '/technology/software-development' },
+                                                { name: 'Healthcare', link: '/healthcare/hospitals-and-clinics' },
+                                                { name: 'Education', link: '/education/k-12-schools' },
+                                                { name: 'Startups', link: '/startups/e-commerce-ventures' },
+                                                { name: 'Manufacturing', link: '/technology/it-services-and-consulting' },
+                                                { name: 'Financial Services', link: '/technology/it-services-and-consulting' },
+                                                { name: 'Consumer', link: '/technology/it-services-and-consulting' },
+                                            ].map((item) => (
+                                                <li key={item.name}>
+                                                    <Link
+                                                        to={item.link}
+                                                        className='flex w-full py-2 cursor-pointer text-md font-raleway items-center hover-underline-animation'
+                                                    >
+                                                        <span className='mr-2 text-lg font-bold'>&gt;</span>
+                                                        <span>{item.name}</span>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             )}
@@ -534,7 +670,6 @@ const Navbar = () => {
                                                     width: '178px',
                                                     height: '45px',
                                                     borderRadius: '26.5px',
-                                                    
                                                 }}
                                             >
                                                 {idx === 0 && (
@@ -568,12 +703,12 @@ const Navbar = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                </div>
+                                    </div>
                                 </Link>
                             ))}
-                </ul>
-            </div>
-        </div>
+                        </ul>
+                    </div>
+                </div>
             )}
 
             {/* Speak to an Expert Modal */}
@@ -640,8 +775,8 @@ const Navbar = () => {
                     </div>
                 </div>
             )}
-        </> 
+        </>
     );
-};
+}
 
 export default Navbar;

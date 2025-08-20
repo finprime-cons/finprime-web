@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import ReferralImg from '../../images/referal.png';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // Placeholder for the country flag icon
 const UAEFlag = () => (
@@ -12,17 +14,21 @@ const UAEFlag = () => (
     </svg>
 );
 
-const ArticleCard = ({ image, name }) => (
-    <div className="w-full md:w-1/2 lg:w-1/4 p-3">
-        <img src={image} alt={name} className="w-full h-full object-cover" />
-    </div>
-);
 
 const Refer = () => {
     return (
-        <div className="bg-white font-sans">
+        <HelmetProvider>
+        <div className="bg-white font-sans ">
+        <Helmet>
+                <title>Earn Rewards with FinPrime | Referral Program UAE</title>
+                <meta
+                    name="description"
+                    content="Earn exclusive rewards with FinPrime’s referral program. Get rewarded for every successful referral and help others benefit from our expert services in UAE."
+                />
+            </Helmet>
             <Navbar />
-            <div className="max-w-screen-xl mx-auto py-20 md:py-40 mt-8 md:mt-16 px-4">
+        
+            <div className="max-w-screen-xl mx-auto py-20 md:py-40 mt-8 md:mt-16 px-8">
                 <div className="flex flex-wrap -mx-4">
                     {/* Left Column */}
                     <div className="w-full lg:w-3/5 px-4">
@@ -38,12 +44,14 @@ const Refer = () => {
                                 <li><span className="mr-2 text-xs">&gt;</span>Enjoy your rewards after the successful completion of the deal.</li>
                             </ul>
                         </div>
-                        <div className="flex flex-wrap -mx-3 mt-12 md:mt-20">
-                            <ArticleCard image="https://via.placeholder.com/400x500/555555/FFFFFF/" name="Automotive" />
-                            <ArticleCard image="https://via.placeholder.com/400x500/555555/FFFFFF/" name="Beauty Brands" />
-                            <ArticleCard image="https://via.placeholder.com/400x500/555555/FFFFFF/" name="Technology" />
-                            <ArticleCard image="https://via.placeholder.com/400x500/555555/FFFFFF/" name="Finance" />
-                        </div>
+                      
+                        <div className="flex justify-left mt-12 md:mt-12 px-4 ml-0 md:pl-0">
+                       <img
+                       src={ReferralImg}
+                      alt="Earn Rewards with FinPrime Dubai, UAE"
+                     className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl object-contain"
+                      />
+                     </div>
                     </div>
 
                     {/* Right Column (Form) */}
@@ -118,6 +126,7 @@ const Refer = () => {
             </div>
             <Footer />
         </div>
+        </HelmetProvider>
     );
 };
 

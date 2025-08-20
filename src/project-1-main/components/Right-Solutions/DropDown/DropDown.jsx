@@ -121,7 +121,7 @@ const DropDown = () => {
     return (
       <div 
         className={`relative overflow-hidden inline-flex w-auto max-w-[90vw]`}
-        style={{ height: '48px', alignItems: 'center' }}
+        style={{ minHeight: '48px', alignItems: 'center' }}
       >
         <div 
           className="absolute inset-0"
@@ -140,7 +140,7 @@ const DropDown = () => {
             borderRadius: '40px'
           }}
         />
-        <span className="relative z-10 text-white font-inter text-[14px] px-8 py-3 whitespace-nowrap text-center">{text}</span>
+        <span className="relative z-10 text-white font-inter text-[14px] px-8 py-3 break-words text-center">{text}</span>
       </div>
     );
   };
@@ -149,8 +149,8 @@ const DropDown = () => {
     <>
       {/* Search Bar Section */}
       <div className="w-full bg-white py-16">
-        <div className="max-w-[1400px] mx-auto px-4">
-          <div className="relative max-w-3xl mx-auto">
+        <div className="max-w-[1050px] mx-auto px-6">
+          <div className="relative w-full">
             <input
               type="text"
               className="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-blue-500 font-inter text-[14px] text-[#C5C5C5]"
@@ -169,7 +169,7 @@ const DropDown = () => {
       </div>
 
       {/* Horizontal Cards Section */}
-      <div className="w-full bg-white py-16">
+      <div className="w-full bg-white py-16 px-8">
         <div className="max-w-[1400px] mx-auto px-4">
           <div className="relative">
             <div 
@@ -178,22 +178,33 @@ const DropDown = () => {
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {Rquestion.map((item, index) => (
-                <div
-                  key={index}
-                  className="w-full h-auto md:w-[369px] md:h-[494px] p-8 font-inter flex flex-col justify-start md:flex-shrink-0"
-                  style={item.bgImage ? {
-                    backgroundImage: `url(${item.bgImage})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  } : {
-                    backgroundColor: cardColors[index % cardColors.length]
-                  }}
-                >
-                  <div className="border border-white/50 rounded-full py-3 px-6 mb-8 self-start bg-black/20 backdrop-blur-sm">
-                    <h3 className='text-white font-kulim-park font-semibold text-base text-left tracking-wider whitespace-nowrap'>{item.question}</h3>
-                  </div>
-                  <p className="text-white text-base leading-relaxed text-left">{item.answer}</p>
-                </div>
+  <div
+  key={index}
+  className="relative w-full h-auto min-h-[380px] md:w-[369px] md:h-[494px] pt-20 px-4 sm:px-6 md:px-8 pb-8 font-inter flex flex-col justify-start md:flex-shrink-0"
+  style={item.bgImage ? {
+    backgroundImage: `url(${item.bgImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  } : {
+    backgroundColor: cardColors[index % cardColors.length]
+  }}
+>
+
+
+  {/* Floating heading inside card, visually pinned */}
+  <div className="absolute top-6 left-3 right-3 sm:right-6 z-10 border border-white/50 rounded-full py-2 sm:py-3 px-4 sm:px-6 bg-black/20 backdrop-blur-sm">
+  <h3 className="text-white font-kulim-park font-semibold text-sm sm:text-base text-left tracking-wide break-words sm:whitespace-nowrap pr-4">
+    {item.question}
+  </h3>
+</div>
+
+
+  {/* Body text pushed lower to avoid overlap */}
+  <p className="text-white text-base leading-relaxed text-left mt-6">
+    {item.answer}
+  </p>
+</div>
+
               ))}
             </div>
 
@@ -217,7 +228,7 @@ const DropDown = () => {
       </div>
 
       {/* Client Journey Section */}
-      <div className="w-full bg-white py-8">
+      <div className="w-full bg-white py-8 px-8">
         <div className="max-w-[1400px] mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-[48px] font-kulim-park mb-6" style={{ fontWeight: '400' }}>
@@ -228,68 +239,53 @@ const DropDown = () => {
             </p>
             
             {/* Search Bar */}
-            <div className="relative max-w-[900px] mx-auto">
-              <input
-                type="text"
-                className="w-full px-6 py-4 rounded-full border border-[#E5E5E5] focus:outline-none focus:border-blue-500 font-inter text-[16px]"
-                placeholder="Breaking down your journey with us"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                style={{ color: '#333333' }}
-              />
-              <button 
-                className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-transparent border-none focus:outline-none"
-                aria-label="Search"
-              >
-                <FiArrowRight className="w-6 h-6 text-black" />
-              </button>
-            </div>
+            <div className="relative w-full max-w-[900px] mx-auto px-4">
+  <input
+    type="text"
+    className="w-full px-4 py-3 pr-14 rounded-full border border-[#E5E5E5]
+               focus:outline-none focus:border-blue-500 font-inter text-sm sm:text-[16px]"
+    placeholder="Breaking down your journey with us"
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    style={{ color: '#333333' }}
+  />
+  <button 
+    className="absolute right-6 top-1/2 transform -translate-y-1/2
+               bg-transparent border-none focus:outline-none"
+    aria-label="Search"
+  >
+    <FiArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-black" />
+  </button>
+</div>
+
+
           </div>
         </div>
       </div>
 
       {/* Blue Journey Steps Section */}
-      <div className="w-full bg-[#151934] mt-8" style={{ minHeight: '1000px' }}>
-        <div className="w-full h-full px-8 py-20">
-          <div className="h-full grid grid-cols-12 gap-x-[40px] gap-y-[80px]">
+      <div className="w-full bg-[#151934] mt-8 px-2" style={{ minHeight: '1000px' }} >
+        <div className="w-full h-full px-2 sm:px-8 py-10 sm:py-20">
+          {/* Mobile: block layout, Desktop: grid */}
+          <div className="block md:grid md:grid-cols-12 md:gap-x-[40px] md:gap-y-[80px]">
             {sections.map((section, index) => (
-              <div key={index} className={`relative ${index % 2 === 0 ? 'col-span-7' : 'col-span-5'}`}>
+              <div key={index} className={`relative w-full px-4 mb-12 md:mb-0 ${index % 2 === 0 ? 'md:col-span-7' : 'md:col-span-5'}`}>
                 <h3 
-                  className="text-white mb-8" 
-                  style={{ 
-                    fontFamily: 'Kulim Park, sans-serif', 
-                    fontSize: '32px',
-                    fontWeight: '300',
-                    letterSpacing: '0.5px'
-                  }}
+                  className="text-white mb-6 sm:mb-8 text-2xl sm:text-[32px] font-light font-kulim-park"
+                  style={{ letterSpacing: '0.5px' }}
                 >
                   {section.title}
                 </h3>
-
-                {section.title === "Discovery & Onboarding" ? (
-                  <div className="flex flex-col gap-4">
-                    <div className="flex gap-4">
-                      <RoundedItem text={section.items[0]} />
-                      <RoundedItem text={section.items[1]} />
+                {/* Mobile: show all items as blocks, Desktop: keep flex/grid */}
+                <div className="flex flex-col gap-4 ">
+                  {section.items.map((item, itemIndex) => (
+                    <div className="inline-flex w-full" key={itemIndex}>
+                      <RoundedItem text={item} isLong={section.title === 'System Setup & Transition'} />
                     </div>
-                    <div className="inline-flex"><RoundedItem text={section.items[2]} /></div>
-                  </div>
-                ) : section.title === "System Setup & Transition" ? (
-                  <div className="flex flex-col gap-4">
-                    {section.items.map((item, itemIndex) => (
-                      <div className="inline-flex" key={itemIndex}><RoundedItem text={item} isLong={true} /></div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-4">
-                    {section.items.map((item, itemIndex) => (
-                      <div className="inline-flex" key={itemIndex}><RoundedItem text={item} /></div>
-                    ))}
-                  </div>
-                )}
-
+                  ))}
+                </div>
                 <div 
-                  className="w-full h-[1px] mt-12"
+                  className="w-full h-[1px] mt-8 sm:mt-12"
                   style={{
                     background: 'linear-gradient(90deg, rgba(219, 219, 219, 0.2), rgba(219, 219, 219, 0.05))'
                   }}
@@ -299,7 +295,7 @@ const DropDown = () => {
           </div>
 
           {/* Ongoing Support & Advisory Section */}
-          <div className="mt-20">
+          <div className="mt-20 px-4 text-md">
             <h3 
               className="text-white mb-8" 
               style={{ 
@@ -312,11 +308,11 @@ const DropDown = () => {
               Ongoing Support & Advisory
             </h3>
             <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <div className="inline-flex"><RoundedItem text="Business insights and forecasting" /></div>
-                <div className="inline-flex"><RoundedItem text="Regulatory guidance & audit support" /></div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="inline-flex w-full md:w-auto"><RoundedItem text="Business insights and forecasting" /></div>
+                <div className="inline-flex w-full md:w-auto"><RoundedItem text="Regulatory guidance & audit support" /></div>
               </div>
-              <div className="inline-flex"><RoundedItem text="Scalability as your business grows" /></div>
+              <div className="inline-flex w-full md:w-auto"><RoundedItem text="Scalability as your business grows" /></div>
             </div>
           </div>
         </div>

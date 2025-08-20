@@ -147,7 +147,7 @@ const Accounts = () => {
           >
             <img
               src={image.src}
-              alt={`Image ${image.id}`}
+              alt={`${image.title} - FinPrime Accounting Services`}
               className="w-full h-[400px] sm:h-[480px] xl:h-[580px] 
               object-cover transition-transform duration-300 transform group-hover:scale-95
               " 

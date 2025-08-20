@@ -5,7 +5,7 @@ const InfoSection = ({ title, open, onToggle, children }) => {
   return (
     <div className="w-full md:w-4/5 sm:mx-auto sm:px-4 font-kulim-park">
       <div className="flex justify-between items-center  border-gray-300 pb-2 cursor-pointer" onClick={onToggle}>
-        <h2 className="text-2xl md:text-2xl" style={{ fontFamily: 'Kulim Park, sans-serif', fontWeight: 200 }}>{title}</h2>
+        <h2 className="text-2xl md:text-2xl pl-8 md:pl-0" style={{ fontFamily: 'Kulim Park, sans-serif', fontWeight: 200 }}>{title}</h2>
         <button className="text-2xl bg-transparent text-black rounded-full w-12 h-12 flex items-center justify-center focus:outline-none">
           {open ? <FaArrowDown /> : <FaArrowRight />}
         </button>

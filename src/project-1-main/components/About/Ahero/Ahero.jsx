@@ -49,7 +49,7 @@ const Hero = () => {
         </div>
         <div className="flex flex-col items-center md:items-end xl:pr-10  md:pr-6 pr-4 pl-6 sm:pl-0 md:pt-[400px] pt-16 xl:pt-0 lg:pr-8 lg:pt-80 justify-center w-full md:w-1/3  
         ">
-          <div className="flex space-x-2 bg-white bg-opacity-55 rounded-[5px] border border-opacity-20  p-3 -mb-1 ">
+          <div className=" hidden md:flex space-x-2 bg-white bg-opacity-55 rounded-[5px] border border-opacity-20  p-3 -mb-1 ">
             <button className="hidden md:block   pl-4 pr-4 rounded-sm   shadow-black  text-[16px] tracking-[1px]
             transition-all duration-300 ease-out bg-gradient-to-r from-brandBlue to-cyan-500 text-white">Follow</button>
             <a href="https://www.facebook.com/finprimeconsulting" aria-label="Facebook" className="p-2 
@@ -79,7 +79,7 @@ const Hero = () => {
             </a>
           </div >
           <div className='pr-52   '>
-             <CgArrowLongDown  className="text-white  text-opacity-40  text-6xl animate-fadeinright"  aria-label="Scroll down" />
+             <CgArrowLongDown  className=" hidden md:flex text-white  text-opacity-40  text-6xl animate-fadeinright"  aria-label="Scroll down" />
           </div>
           
         </div>

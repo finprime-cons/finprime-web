@@ -28,6 +28,18 @@ const Bannerslider = () => {
   const CurrentTitle = Services[currentSlide];
   const CurrentSubtitles = CurrentTitle.subtitles || [];
 
+  // Generate the read more URL
+  const readMoreUrl = CurrentSubtitles[0]?.keyword 
+    ? `/services/${CurrentTitle.title}/${CurrentSubtitles[0].keyword}`
+    : `/services/${CurrentTitle.title}`;
+
+  const handleReadMoreClick = () => {
+    console.log('Read More clicked!');
+    console.log('CurrentTitle:', CurrentTitle);
+    console.log('CurrentSubtitles:', CurrentSubtitles);
+    console.log('URL:', readMoreUrl);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide(prevSlide => (prevSlide + 1) % videos.length);
@@ -48,48 +60,10 @@ const Bannerslider = () => {
     setCurrentSlide(index);
   };
 
-  //   const [isSpeakExpert, setIsSpeakExpert] = useState(false);
-
-  //   const toggleSpeakExpert = () => {
-  //     setIsSpeakExpert(!isSpeakExpert);
-  // };
-
-  //   useEffect(() => {
-  //     if (isSpeakExpert) {
-  //         document.body.style.overflow = 'hidden';  
-  //     } else {
-  //         document.body.style.overflow = '';  
-  //     }
-  //     return () => {
-  //         document.body.style.overflow = '';
-  //     };
-  // }, [isSpeakExpert]);
-
-
-  // const [selectedService, setSelectedService] = useState("");  // State for selected service
-  // const [selectedSubtitle, setSelectedSubtitle] = useState(""); // State for selected subtitle
-  // const [selectedIndexOpen, setSelectedIndexOpen] = useState(null); // Index of the selected service
-
-  // const handleServiceChange = (e) => {
-  //   const serviceTitle = e.target.value;
-  //   setSelectedService(serviceTitle);
-
-  //   // Find the index of the selected service from the Services array
-  //   const selectedServiceIndex = Services.findIndex(service => service.title === serviceTitle);
-  //   setSelectedIndexOpen(selectedServiceIndex);
-  //   setSelectedSubtitle("");  // Reset subtitle when service changes
-  // };
-
-  // const handleSubtitleChange = (e) => {
-  //   setSelectedSubtitle(e.target.value);
-  // };
-
-
-
   return (
-    <div className='relative w-full h-screen hero-ban-fin'>
+    <div className='relative w-full h-screen hero-ban-fin '>
       {/* Decorative element, now hidden on smaller screens */}
-      <div className='hidden lg:block absolute w-[200px] h-[550px] left-0 top-1/2 -translate-y-1/2 bg-[#06b6d4] rounded-r-3xl'></div>
+      {/* <div className='hidden lg:block absolute w-[200px] h-[550px] left-0 top-1/2 -translate-y-1/2 bg-[#06b6d4] rounded-r-3xl'></div> */}
 
       <Swiper
         spaceBetween={30}
@@ -109,7 +83,8 @@ const Bannerslider = () => {
               >
                 <source src={video} type="video/mp4" />
               </video>
-              <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 " />
+              {/* <div className='relative w-full h-screen hero-ban-fin bg-black'> */}
+
 
               {/* Banner Content */}
               <div className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full p-4 text-white md:p-0">
@@ -122,7 +97,7 @@ const Bannerslider = () => {
                           fontFamily: 'Inter, sans-serif',
                           fontWeight: 400,
                           color: '#fff',
-                          fontSize: '24px',
+                          fontSize: '28px',
                           marginBottom: '0.5rem',
                           lineHeight: 1.2
                         }}
@@ -155,14 +130,14 @@ const Bannerslider = () => {
                     </div>
                   ) : (
                     <>
-                      <h3
-                        className="text-3xl md:text-4xl lg:text-5xl"
-                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, color: '#FFFFFF', margin: 0 }}
-                      >
-                        {CurrentTitle.headtitle}
-                      </h3>
+                      <h2
+                     className="text-3xl md:text-4xl lg:text-5xl xl:text-3xl text-white font-normal m-0"
+                   style={{ fontFamily: 'Inter, sans-serif' }}
+                    >
+                  {CurrentTitle.headtitle}
+                   </h2>
                       <span
-                        className="text-3xl md:text-4xl lg:text-5xl"
+                        className="text-3xl md:text-4xl lg:text-5xl "
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, color: '#FFFFFF', display: 'block', marginTop: '8px', marginLeft: 0 }}
                       >
                         {CurrentSubtitles[0]?.headsubtitle}
@@ -170,9 +145,26 @@ const Bannerslider = () => {
                     </>
                   )}
                   {/* Read more with vertical lines - its own row */}
-                  <div className="flex items-center mt-6 mb-8">
+                  <div className="flex items-center mt-6 mb-8 relative z-10">
                     <span style={{ height: '33px', width: '1px', background: '#008EAA', display: 'inline-block', marginRight: '16px' }}></span>
-                    <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '20px', lineHeight: '100%', color: '#FFFFFF', letterSpacing: '0' }}>Read more</span>
+                    <Link
+                      to={readMoreUrl}
+                      onClick={handleReadMoreClick}
+                      className="cursor-pointer hover:text-cyan-300 transition-colors duration-300 relative z-20"
+                      style={{ 
+                        fontFamily: 'Inter, sans-serif', 
+                        fontWeight: 400, 
+                        fontSize: '20px', 
+                        lineHeight: '100%', 
+                        color: '#FFFFFF', 
+                        letterSpacing: '0', 
+                        textDecoration: 'none',
+                        position: 'relative',
+                        zIndex: 20
+                      }}
+                    >
+                      Read more
+                    </Link>
                     <span style={{ height: '33px', width: '1px', background: '#008EAA', display: 'inline-block', marginLeft: '16px' }}></span>
                   </div>
                   {/* Controls Row: Arrows, Button, Logos - separate row below Read more */}
@@ -194,27 +186,53 @@ const Bannerslider = () => {
                       className='text-center sm:text-left cursor-pointer text-[15px] bg-brandBlue sm:text-[16px] sm:tracking-[2px] tracking-[1px] text-white border border-cyan-700 rounded-[5px] transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 py-3 px-5 md:ml-2'>
                       <p>Make an Appointment</p>
                     </Link>
-                    <img src={groupedLogo} alt="Google and Trustpilot" className="h-10 md:h-12 object-contain md:ml-26" />
-                    <div className="flex items-center h-14 bg-white bg-opacity-55 border border-opacity-20 px-4 space-x-2 ml-auto mr-4 rounded-md">
-                      <button className="px-3 py-1 rounded shadow text-[15px] tracking-[1px] bg-gradient-to-r from-brandBlue to-cyan-500 text-white">Follow</button>
-                      <div className="flex space-x-2">
-                          <a href="https://www.facebook.com/finprimeconsulting" aria-label="Facebook" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:border-opacity-10 hover:from-brandBlue hover:to-cyan-500 hover:text-white">
-                          <FaFacebookF size={20} />
-                          </a>
-                          <a href="https://x.com/FinPrimeConsult" aria-label="Twitter" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:border-opacity-10 hover:to-cyan-500 hover:text-white ">
-                          <FaXTwitter size={20} />
-                          </a>
-                          <a href="https://www.linkedin.com/company/finprimeconsulting/" aria-label="LinkedIn" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:border-opacity-10 hover:text-white ">
-                          <RiLinkedinFill size={20} />
-                          </a>
-                          <a href="https://www.instagram.com/finprimeconsulting/" aria-label="Instagram" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10">
-                          <FaInstagramSquare size={20} />
-                          </a>
-                          <a href="https://www.youtube.com/@FinPrimeConsulting" aria-label="YouTube" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10">
-                          <FaYoutube size={20} />
-                          </a>
-                      </div>
+                    {/* Grouped Logo with Two Clickable Areas */}
+                    <div className="relative inline-block">
+                      <img
+                        src={groupedLogo}
+                        alt="Trustpilot and Google Reviews"
+                        className="h-10 md:h-12 object-contain md:ml-26"
+                      />
+                      
+                      {/* Trustpilot Clickable Area (Left half) */}
+                      <a
+                        href="https://www.trustpilot.com/review/www.finprimeconsulting.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-0 left-0 w-1/2 h-full cursor-pointer"
+                        title="Trustpilot Reviews"
+                      ></a>
+                      
+                      {/* Google Reviews Clickable Area (Right half) */}
+                      <a
+                        href="https://g.page/r/CegLElJfYPR0EAI/review"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-0 right-0 w-1/2 h-full cursor-pointer"
+                        title="Google Reviews"
+                      ></a>
                     </div>
+                    <div className="hidden md:flex items-center h-14 bg-white bg-opacity-55 border border-opacity-20 px-4 space-x-2 ml-auto mr-4 rounded-md">
+  <button className="px-3 py-1 rounded shadow text-[15px] tracking-[1px] bg-gradient-to-r from-brandBlue to-cyan-500 text-white">Follow</button>
+  <div className="flex space-x-2">
+    <a href="https://www.facebook.com/finprimeconsulting" aria-label="Facebook" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:border-opacity-10 hover:from-brandBlue hover:to-cyan-500 hover:text-white">
+      <FaFacebookF size={20} />
+    </a>
+    <a href="https://x.com/FinPrimeConsult" aria-label="Twitter" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:border-opacity-10 hover:to-cyan-500 hover:text-white ">
+      <FaXTwitter size={20} />
+    </a>
+    <a href="https://www.linkedin.com/company/finprimeconsulting/" aria-label="LinkedIn" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:border-opacity-10 hover:to-cyan-500 hover:text-white ">
+      <RiLinkedinFill size={20} />
+    </a>
+    <a href="https://www.instagram.com/finprimeconsulting/" aria-label="Instagram" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10">
+      <FaInstagramSquare size={20} />
+    </a>
+    <a href="https://www.youtube.com/@FinPrimeConsulting" aria-label="YouTube" className="p-2 text-black transition-all duration-300 ease-out bg-white rounded-full shadow-black hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white hover:border-opacity-10">
+      <FaYoutube size={20} />
+    </a>
+  </div>    
+</div>
+
                   </div>
                 </div>
 
@@ -230,19 +248,20 @@ const Bannerslider = () => {
                 </div>
 
                 {/* Paragraph at the bottom */}
-                <div className="absolute bottom-0 w-full text-center">
-                  <div className="flex text-white text-[10px] sm:text-xs md:text-[16px] tracking-[1px] uppercase">
-                    <button className="flex-1 p-2 text-center bg-[#1A233A] transition-all duration-300 md:p-4 hover:bg-gradient-to-r from-[#06B6D4] to-[#1A233A]">
-                      Giving smartness to your business accounting 
-                    </button>
-                    <button className="flex-1 p-2 text-center bg-[#1A233A] transition-all duration-300 border-l border-r border-gray-600 md:p-4 hover:bg-gradient-to-r from-[#06B6D4] to-[#1A233A]">
-                      Best Accounting Companies
-                    </button>
-                    <button className="flex-1 p-2 text-center bg-[#1A233A] transition-all duration-300 md:p-4 hover:bg-gradient-to-r from-[#06B6D4] to-[#1A233A]">
-                      Corporate Tax Services
-                    </button>
-                  </div>
-                </div>
+<div className=" hidden sm:block absolute bottom-0 w-full text-center">
+  <div className="flex flex-col md:flex-row text-white  text-[10px] sm:text-xs md:text-[16px] tracking-[1px] uppercase">
+    <button className="flex-1 p-2 text-center bg-[#1A233A] transition-all duration-300 md:p-4 hover:bg-gradient-to-r from-[#06B6D4] to-[#1A233A]">
+      Giving smartness to your business accounting 
+    </button>
+    <button className="flex-1 p-2 text-center bg-[#1A233A] transition-all duration-300 border-t md:border-t-0 md:border-l md:border-r border-gray-600 md:p-4 hover:bg-gradient-to-r from-[#06B6D4] to-[#1A233A]">
+      Best Accounting Companies
+    </button>
+    <button className="flex-1 p-2 text-center bg-[#1A233A] transition-all duration-300 md:p-4 hover:bg-gradient-to-r from-[#06B6D4] to-[#1A233A]">
+      Corporate Tax Services
+    </button>
+  </div>
+</div>
+
               </div>
             </div>
           </SwiperSlide>

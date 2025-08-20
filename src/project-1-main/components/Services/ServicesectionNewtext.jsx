@@ -28,22 +28,23 @@ const ServicesectionNewText = () => {
 
 
 
+    const location = useLocation();
+
     useEffect(() => {
         if (location.hash) {
             const elementId = location.hash.substring(1);
             const element = document.getElementById(elementId);
 
             if (element) {
-
                 setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth' });
-                },);
+                }, 100);
             }
         }
     }, [location]);
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col pt-8">
             <div className="w-full font-inter px-6 sm:px-6 md:px-10 lg:px-12 text-sm md:text-base leading-relaxed tracking-wide text-black">
                 <div className="mb-12" dangerouslySetInnerHTML={{ __html: subService.subcontentbottom }}>
                 </div>

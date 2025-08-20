@@ -33,8 +33,8 @@ const Rhero = () => {
 
   return (
     <div className="flex pt-20 bg-white w-full justify-center">
-      <div className="w-full max-w-5xl px-6">
-        <div className='text-left w-full pt-24'>
+      <div className="w-full max-w-5xl px-8">
+        <div className='text-left w-full pt-24 pl-4 md:pl-0'>
           <h1
             style={{
               fontFamily: 'Kulim Park, sans-serif',

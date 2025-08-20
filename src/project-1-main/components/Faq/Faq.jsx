@@ -60,11 +60,11 @@ const Faq = () => {
 
   return (
     <div
-      ref={fadeElementRef}
-      className={`flex items-left md:ml-14 md:mr-6 xl:ml-24 xl:mr-10 lg:mr-8 lg:ml-18 ml-2 mr-4 mb-[20px] mt-[28px] sm:mt-28 sm:mb-28 ${hasFadedIn ? 'animate-fadeinbottom' : ''}`}
-    >
+  ref={fadeElementRef}
+  className={`flex items-start w-full px-8 sm:px-8 md:px-12 lg:px-20 xl:px-28 mt-7 mb-5 sm:mt-28 sm:mb-28 ${hasFadedIn ? 'animate-fadeinbottom' : ''}`}
+>
       <div className='w-full md:w-[90%] lg:w-[80%] 2xl:w-[70%] px-4 sm:px-0'>
-        <h1 className='text-lg sm:text-2xl font-inter font-semibold mb-6'>Frequently Asked Questions</h1>
+        <h5 className='text-lg sm:text-2xl font-inter font-semibold mb-6'>Frequently Asked Questions</h5>
         <div className='space-y-4'>
           {faqs.map((faq, index) => (
             <div key={faq.id}>

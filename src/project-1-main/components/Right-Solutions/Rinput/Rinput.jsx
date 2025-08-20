@@ -80,7 +80,7 @@ const handleSubmit = (e) => {
 
   return (
     <div className='bg-black pt-10 sm:pb-10'>
-      <div className="w-[60%] sm:w-[70%] mx-auto sm:py-10 text-white">
+      <div className="w-full px-4 sm:px-6 lg:px-8 sm:py-10 text-white">
       <div className=''>
             {/* Address Section */}
             <div className='flex justify-between pt-5 pb-5  border-t-2 border-b-2'>
