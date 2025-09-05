@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  root: path.resolve(__dirname, 'project-1-main'),
+  
   publicDir: path.resolve(__dirname, 'project-1-main/public'),
   build: {
     emptyOutDir: true,
