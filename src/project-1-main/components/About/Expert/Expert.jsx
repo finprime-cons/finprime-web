@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Murshina_A from "../../../images/team/Murshina_A.jpg";
 import Hiba_Farook from "../../../images/team/Hiba_Farook.jpg";
-import Ashker_Cv from "../../../images/team/Ashker_Cv.jpg";
+import Ashker_Cv from "../../../images/team/ashker.jpg";
 import Abood_Wadi from "../../../images/team/Abood_Wadi.jpg";
 import Zain_Rabab from "../../../images/team/Zain_Rabab.jpg";
 import Siljo_Devassy from "../../../images/team/Siljo_Devassy.jpg";
