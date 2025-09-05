@@ -91,7 +91,7 @@ const handleSubmit = (e) => {
             {/* Contact Section */}
             <div className='flex justify-between pt-5 pb-5  border-b-2'>
                 <h4 className='text-xs md:text-lg font-semibold pr-2 xs:pr-0'>CONTACT</h4>
-                <h4 className='text-xs md:text-lg text-gray-300'>info@finprimeconsulting.com +971 582 593 543</h4>
+                <h4 className='text-xs md:text-lg text-gray-300'>info@finprimeconsulting.com +971 52 258 1876</h4>
             </div>
         </div>
 

@@ -121,7 +121,7 @@ const FreeConsultation = () => {
             <div className="flex items-center">
               <div className="border-l-4 border-black h-16 mr-4"></div>
               <h1 className="text-4xl font-semibold font-kulim-park uppercase">
-                Start growing your business firm with srtip
+                Start growing your business with us
               </h1>
             </div>
            

@@ -20,6 +20,7 @@ import companyProImg from '../../images/company-pro.png';
 import { IoIosClose } from 'react-icons/io';
 import emailjs from "emailjs-com";
 import companyProfileImage from '../../images/company-pro.png';
+import companyProfilePdf from '../pdf/finprime comapny profile final.pdf';
 import { MdCenterFocusStrong } from 'react-icons/md';
 import finLogo from '../../images/Navbar/fin.png';
 import logoLanding from '../../images/Navbar/p.svg';
@@ -162,19 +163,7 @@ useEffect(() => {
 
     // Build a single menuItems array for correct index alignment
     const menuItems = [
-        ...Services.slice(0, 3),
-        {
-            headtitle: 'Banking Operations Excellence',
-            title: 'banking-operations-excellence',
-            subtitles: [
-                { subid: 1, headsubtitle: 'Retail Banking', subtitle: 'retail-banking', keyword: 'retail-banking' },
-                { subid: 2, headsubtitle: 'Corporate & SME Banking', subtitle: 'corporate-sme-banking', keyword: 'corporate-sme-banking' },
-                { subid: 3, headsubtitle: 'Risk and Compliance', subtitle: 'risk-and-compliance', keyword: 'risk-and-compliance' },
-                { subid: 4, headsubtitle: 'Digital Banking', subtitle: 'digital-banking', keyword: 'digital-banking' },
-                { subid: 5, headsubtitle: 'Customer Services and Relationship Management', subtitle: 'customer-services-relationship-management', keyword: 'customer-services-relationship-management' }
-            ]
-        },
-        ...Services.slice(3)
+        ...Services
     ];
 
     // Speak to an Expert Modal State & Logic
@@ -543,7 +532,7 @@ useEffect(() => {
                                     <div className="relative w-[340px] h-[380px] mt-2">
                                         <img src={companyProfileImage} alt="Company Profile" className="w-full h-full object-contain" />
                                         <button
-                                            onClick={() => window.open('/components/pdf/finprime%20comapny%20profile%20final.pdf', '_blank')}
+                                            onClick={() => window.open(companyProfilePdf, '_blank')}
                                             className="absolute left-1/2 -translate-x-1/2 bottom-8 w-[230px] h-[48px] rounded-[24px] flex items-center justify-between px-8 text-white font-roboto text-base transition-all hover:shadow-lg"
                                             style={{
                                                 background: 'linear-gradient(90deg, #1A1F39 0%, #06B6D4 100%)',

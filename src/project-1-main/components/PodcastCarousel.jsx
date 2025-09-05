@@ -146,7 +146,7 @@ const PodcastCarousel = () => {
         <div className="mb-6 font-inter text-center md:text-left pl-6 px-8">
           <h4 className=" text-base xl:text-xl font-normal mb-2">Headquarters</h4>
           <p className=" text-white  xl:text-xl  text-xs mb-1">Suite 1203, Floor 12A, DAMAC Executive Bay, Business Bay, Dubai, UAE</p>
-          <p className=" text-white xl:text-xl text-xs">Phone: +971 58 259 3543</p>
+          <p className=" text-white xl:text-xl text-xs">Phone: +971 52 258 1876</p>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-end gap-4 mb-8">
           <ul className='flex space-x-2'>
