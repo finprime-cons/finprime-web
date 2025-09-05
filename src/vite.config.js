@@ -7,8 +7,9 @@ export default defineConfig({
   root: path.resolve(__dirname, 'project-1-main'),
   publicDir: path.resolve(__dirname, 'project-1-main/public'),
   build: {
+    emptyOutDir: true,
     chunkSizeWarningLimit: 1000, // Increase chunk size warning limit to 1000 KB
-    outDir: path.resolve(__dirname, 'dist'),
+    outDir: path.resolve(__dirname, '../dist'),
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'project-1-main/index.html')
