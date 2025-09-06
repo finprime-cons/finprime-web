@@ -11,6 +11,7 @@ import HR_Consulting_Advisory from '../../video/HR_Consulting_Advisory.mp4';
 import Regulatory_and_Compliance from '../../video/Regulatory_and_Compliance.mp4';
 import Taxation from '../../video/Taxation.mp4';
 import Accounting_Finance from '../../video/Accounting_Finance.mp4';
+import auditAssuranceImage from '../../images/servicecard/audit and assurence.jpg';
 import { Services } from '../Services';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -73,6 +74,17 @@ const Bannerslider = () => {
         {videos.map((video, index) => (
           <SwiperSlide key={index}>
             <div className="relative w-full h-full">
+              {/* Background Image Fallback */}
+              <div 
+                className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none z-[-2]"
+                style={{
+                  backgroundImage: `url(${auditAssuranceImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              ></div>
+              
               {/* Background Video */}
               <video
                 autoPlay

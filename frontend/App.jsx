@@ -87,7 +87,7 @@ const Home = () => {
   const [showConsultation, setShowConsultation] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowConsultation(true), 2000);
+    const timer = setTimeout(() => setShowConsultation(true), 20000);
     return () => clearTimeout(timer);
   }, []);
 

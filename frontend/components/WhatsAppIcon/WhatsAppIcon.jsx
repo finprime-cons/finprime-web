@@ -35,7 +35,7 @@ const ContactIcons = () => {
   };
 
   const handleCallClick = () => {
-    window.location.href = 'tel:2593543'; // Updated phone number
+    window.location.href = 'tel: +971 52 258 1876'; // Updated phone number
   };
 
   if (isHeroVisible) {
