@@ -14,8 +14,14 @@ const form2Routes = require('./routes/form2Routes');
 const sidenavbarRoutes = require("./routes/sidenavbarRoutes");  
 const emailRoutes = require("./routes/emailRoutes");
 const email2Routes = require("./routes/email2Routes");
+const { submitForm } = require('./controllers/formController');
+const templateService = require('./services/templateService');
+
+
 const app = express();
 
+// Initialize templates
+templateService.initTemplates();
 
 app.use(cors());  
 app.use(bodyParser.json());
