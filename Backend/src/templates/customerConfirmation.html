@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Your Submission</title>
+  <style>
+    {{css}}
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <header class="header">
+      <img src="cid:logo" alt="Logo" style="max-width:180px; margin-bottom:20px;" />
+      <h1>Thank You, {{firstName}}!</h1>
+      <p>We've received your inquiry and will contact you soon.</p>
+    </header>
+    
+    <div class="content">
+      <div class="details-card">
+        <h2>Your Submission Details</h2>
+        <div class="detail-row">
+          <span class="label">Company:</span>
+          <span class="value">{{companyName}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Name:</span>
+          <span class="value">{{firstName}} {{lastName}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Email:</span>
+          <span class="value">{{email}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Phone:</span>
+          <span class="value">{{phone}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Service:</span>
+          <span class="value">{{service}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Subservice:</span>
+          <span class="value">{{subService}}</span>
+        </div>
+      </div>
+      
+      <div class="next-steps">
+        <h3>What Happens Next?</h3>
+        <p>Our team will review your request and contact you within 1-2 business days.</p>
+      </div>
+    </div>
+    
+    <footer class="footer" style="background: #2c3e50; color: white; padding: 20px; text-align: center; font-size: 12px; border-top: 1px solid #495057;">
+      <p style="margin: 0; margin-bottom: 10px; opacity: 0.8;">© {{currentYear}} Finprime. All rights reserved.</p>
+      <p style="margin: 0;"><a href="https://youtube.com/@finprimeconsulting?si=s53Eve-26GmpJyey" style="color: #74b9ff; text-decoration: none;">Subscribe to our YouTube Channel!</a></p>
+    </footer>
+  </div>
+</body>
+</html>
