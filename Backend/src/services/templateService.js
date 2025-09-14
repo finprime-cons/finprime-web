@@ -58,7 +58,6 @@ const compileTemplate = async (templateName, data) => {
     
     // Inline CSS with Juice
     const inlinedHtml = juice(html, {
-      extraCss: getTemplateCss(templateName),
       preserveMediaQueries: true,
       removeStyleTags: false
     });
@@ -70,30 +69,7 @@ const compileTemplate = async (templateName, data) => {
   }
 };
 
-// Get CSS for a specific template
-const getTemplateCss = (templateName) => {
-  try {
-    // Get shared CSS
-    // const sharedCssPath = path.join(__dirname, '../templates/shared/styles.css');
-    // let css = fs.readFileSync(sharedCssPath, 'utf8');
-    
-    // Get template-specific CSS
-    const templateCssPath = path.join(
-      __dirname, 
-      `../templates/${templateName}.css`
-    );
-    
-    let css = '';
-    if (fs.existsSync(templateCssPath)) {
-      css = fs.readFileSync(templateCssPath, 'utf8');
-    }
-    
-    return css;
-  } catch (error) {
-    console.error('Error loading CSS:', error);
-    return '';
-  }
-};
+
 
 module.exports = {
   initTemplates,
