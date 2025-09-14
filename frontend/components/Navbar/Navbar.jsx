@@ -257,10 +257,10 @@ useEffect(() => {
     return (
         <>
             {/* Logo with Accenture-style animation: main logo moves to top right and shrinks, text logo animates in */}
-            <div className={`fixed z-[9999] top-4 sm:top-6 md:top-8 left-2 sm:left-6 md:left-8 transition-all px-4 sm:px-6 duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+            <div className={`fixed z-[9999] top-3 sm:top-4 md:top-5 lg:top-6 xl:top-8 left-2 sm:left-4 md:left-5 lg:left-6 xl:left-8 transition-all px-2 sm:px-4 md:px-5 lg:px-6 duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
                 <Link
                     to="/"
-                    className="relative inline-block h-12 w-[56px] sm:h-10 sm:w-[120px] md:h-14 md:w-[180px] border-none outline-none"
+                    className="relative inline-block h-10 w-[48px] sm:h-9 sm:w-[100px] md:h-10 md:w-[120px] lg:h-12 lg:w-[140px] xl:h-14 xl:w-[180px] border-none outline-none"
                     style={{ minWidth: 56, border: 'none', outline: 'none' }}
                     onMouseEnter={() => setIsLogoHovered(true)}
                     onMouseLeave={() => setIsLogoHovered(false)}
@@ -272,9 +272,9 @@ useEffect(() => {
   alt="Finprime Logo"
   className={`absolute top-0 left-1/2
       transition-all duration-500 ease-in-out
-      h-12 w-auto sm:h-10 md:h-16
+      h-10 w-auto sm:h-9 md:h-10 lg:h-12 xl:h-16
       ${isLogoHovered
-          ? 'transform scale-50 -translate-x-1/2 -translate-y-6 sm:-translate-y-9 z-20'
+          ? 'transform scale-50 -translate-x-1/2 -translate-y-5 sm:-translate-y-6 md:-translate-y-7 lg:-translate-y-8 xl:-translate-y-9 z-20'
           : 'transform scale-100 -translate-x-1/2 translate-y-0 z-10'}`}
   style={{ pointerEvents: 'none', border: 'none', outline: 'none' }}
 />
@@ -282,7 +282,7 @@ useEffect(() => {
                         <img
                             src={textLogoSrc}
                             alt="Finprime Text Logo"
-                            className=" hidden sm:block h-12 w-auto sm:h-10 md:h-16 z-20 ml-2 transition-all duration-500"
+                            className=" hidden sm:block h-10 w-auto sm:h-9 md:h-10 lg:h-12 xl:h-16 z-20 ml-1 sm:ml-2 transition-all duration-500"
                             style={{ pointerEvents: 'none', border: 'none', outline: 'none' }}
                         />
                     )}
@@ -290,7 +290,7 @@ useEffect(() => {
             </div>
 
             {/* Hamburger Menu - Mobile */}
-            <div className={`fixed z-[9999] top-5 right-2 sm:right-6 md:right-8 block md:hidden px-4 sm:px-6 transition-all duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+            <div className={`fixed z-[9999] top-4 right-2 sm:right-4 md:right-5 lg:right-6 xl:right-8 block md:hidden px-2 sm:px-4 md:px-5 lg:px-6 transition-all duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
                 <button
                     onClick={() => setIsMobileMenuOpen(true)}
                     className={`${shouldShowDarkMenuIcon ? 'text-black' : 'text-white'} focus:outline-none flex items-center gap-2`}
@@ -302,7 +302,7 @@ useEffect(() => {
                 </button>
             </div>
             {/* Hamburger Menu - Desktop */}
-<div className={`fixed z-[9999] top-8 right-8 hidden md:flex transition-all duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+<div className={`fixed z-[9999] top-5 md:top-6 lg:top-7 xl:top-8 right-5 md:right-6 lg:right-7 xl:right-8 hidden md:flex transition-all duration-500 ${showNavbar ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
   <button
     onClick={toggleDropdown}
     className={`${shouldShowDarkMenuIcon ? 'text-black' : 'text-white'} flex items-center gap-2`}
@@ -522,18 +522,18 @@ useEffect(() => {
                         <div
                             className={`fixed left-0 w-full text-black bg-white mt-3 shadow-xl transition-opacity duration-300 ease-in-out transform ${isServiceOpen ? 'animate-fadeinrightsmall visible' : 'opacity-0 -translate-y-4 invisible'} font-roboto font-semibold z-[10001] top-[70px]`}
                         >
-                            <div className="flex flex-col w-full h-full md:flex-row">
+                            <div className="flex flex-col w-full h-full lg:flex-row">
                                 {/* Column 1: Company Profile Card with heading and button overlay */}
-                                <div className="flex flex-col items-start justify-start pt-2 px-4 md:px-10 w-full md:w-[28%] min-w-[320px] max-w-[440px]">
+                                <div className="flex flex-col items-start justify-start pt-2 px-4 lg:px-6 xl:px-10 w-full lg:w-[30%] xl:w-[28%] min-w-[280px] max-w-[400px]">
                                     <h4 className="mb-3 mt-1 text-xl font-bold font-roboto text-left w-full leading-snug">
                                         Working with you,<br/>
                                         not just for you
                                     </h4>
-                                    <div className="relative w-[340px] h-[380px] mt-2">
+                                    <div className="relative w-full max-w-[320px] lg:max-w-[340px] h-[320px] lg:h-[380px] mt-2">
                                         <img src={companyProfileImage} alt="Company Profile" className="w-full h-full object-contain" />
                                         <button
                                             onClick={() => window.open(companyProfilePdf, '_blank')}
-                                            className="absolute left-1/2 -translate-x-1/2 bottom-8 w-[230px] h-[48px] rounded-[24px] flex items-center justify-between px-8 text-white font-roboto text-base transition-all hover:shadow-lg"
+                                            className="absolute left-1/2 -translate-x-1/2 bottom-6 lg:bottom-8 w-[200px] lg:w-[230px] h-[44px] lg:h-[48px] rounded-[24px] flex items-center justify-between px-6 lg:px-8 text-white font-roboto text-sm lg:text-base transition-all hover:shadow-lg"
                                             style={{
                                                 background: 'linear-gradient(90deg, #1A1F39 0%, #06B6D4 100%)',
                                                 height: '48px',
@@ -548,13 +548,13 @@ useEffect(() => {
                                 </div>
 
                                 {/* Column 2: Service List */}
-                                <div className='flex flex-col py-4 pl-4 w-full md:w-[40%]'>
+                                <div className='flex flex-col py-4 pl-4 w-full lg:w-[35%] xl:w-[40%]'>
                                     <ul>
                                         {Services.map((service, index) => (
                                             <li key={index} className="group">
                                                 <button
                                                     onClick={() => handleQuestionClick(index)}
-                                                    className={`text-black font-khula text-lg flex justify-between w-full pl-8 py-5 border-b ${selectedIndexOpen === index
+                                                    className={`text-black font-khula text-base lg:text-lg flex justify-between w-full pl-4 lg:pl-8 py-3 lg:py-5 border-b ${selectedIndexOpen === index
                                                         ? 'bg-brandBlue text-white border-l-8 border-cyan-500'
                                                         : 'group-hover:bg-brandBlue group-hover:text-white group-hover:border-l-8 group-hover:border-cyan-500'
                                                         }`}
@@ -568,9 +568,9 @@ useEffect(() => {
                                 </div>
 
                                 {/* Column 3: Sub-services Display */}
-                                <div className='flex flex-col w-full md:w-[40%] h-full relative'>
+                                <div className='flex flex-col w-full lg:w-[35%] xl:w-[40%] h-full relative'>
                                     {selectedIndexOpen !== null && isAnswerVisible ? (
-                                        <div className={`inset-0 w-full h-[445px] transition-opacity duration-500 ease-in-out animate-fadeinleftsmall bg-brandBlue px-4 md:px-28 py-4`}>
+                                        <div className={`inset-0 w-full h-[400px] lg:h-[445px] transition-opacity duration-500 ease-in-out animate-fadeinleftsmall bg-brandBlue px-4 lg:px-16 xl:px-28 py-4`}>
                                             <div className='flex items-center'>
                                                 <button
                                                     onClick={handleCloseAnswer}
@@ -601,8 +601,8 @@ useEffect(() => {
                                             </ul>
                                         </div>
                                     ) : (
-                                        <ul className="px-4 py-4 text-black md:px-28 md:py-16">
-                                            <h4 className='font-semibold md:text-3xl font-khula'>Who We Serve</h4>
+                                        <ul className="px-4 py-4 text-black lg:px-16 xl:px-28 lg:py-16">
+                                            <h4 className='font-semibold text-2xl lg:text-3xl font-khula'>Who We Serve</h4>
                                             {[
                                                 { name: 'Technology', link: '/technology/software-development' },
                                                 { name: 'Healthcare', link: '/healthcare/hospitals-and-clinics' },
@@ -615,7 +615,7 @@ useEffect(() => {
                                                 <li key={item.name}>
                                                     <Link
                                                         to={item.link}
-                                                        className='flex w-full py-2 cursor-pointer text-md font-raleway items-center hover-underline-animation'
+                                                        className='flex w-full py-2 cursor-pointer text-sm lg:text-md font-raleway items-center hover-underline-animation'
                                                     >
                                                         <span className='mr-2 text-lg font-bold'>&gt;</span>
                                                         <span>{item.name}</span>

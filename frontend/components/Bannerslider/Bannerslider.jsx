@@ -5,7 +5,7 @@ import { FaInstagramSquare } from "react-icons/fa";
 // import { IoIosClose } from 'react-icons/io';
 import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
 import { HiOutlineArrowSmallRight } from "react-icons/hi2";
-import Audit_and_Assurance from '../../video/Audit_and_Assurance.mp4';
+import Audit_and_Assurance from '../../video/Audit_and_Assurancee.mp4';
 import Company_formation_Business_Consultancy from '../../video/Company_formation_Business_Consultancy.mp4';
 import HR_Consulting_Advisory from '../../video/HR_Consulting_Advisory.mp4';
 import Regulatory_and_Compliance from '../../video/Regulatory_and_Compliance.mp4';

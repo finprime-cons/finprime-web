@@ -19,6 +19,59 @@
   }
 }
 
+/* Medium-large screens (1200px - 1599px) */
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+  .services-dropdown {
+    max-width: 95vw;
+  }
+  
+  .services-dropdown .company-profile-card {
+    min-width: 250px;
+    max-width: 350px;
+  }
+  
+  .services-dropdown .service-list {
+    font-size: 0.9rem;
+  }
+  
+  .services-dropdown .who-we-serve {
+    font-size: 0.9rem;
+  }
+  
+  /* Logo positioning for 1200px screens */
+  .navbar-logo {
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+  
+  .navbar-logo img {
+    height: 2.5rem;
+    width: auto;
+  }
+  
+  .navbar-hamburger {
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+  
+  /* Additional responsive adjustments for 1200px */
+  @media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    .navbar-logo {
+      top: 1rem;
+      left: 1rem;
+    }
+    
+    .navbar-logo img {
+      height: 2.25rem;
+    }
+    
+    .navbar-hamburger {
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+}
+
 /* Tablet and below */
 @media (max-width: 1024px) {
   /* Generic row layout used in multiple sections */
