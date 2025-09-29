@@ -13,17 +13,50 @@ const uaeLocations = [
 const ConsultationModal = ({ show, onClose }) => {
   const [form, setForm] = useState({
     name: '', email: '', country: '', phone: '',
-    query: '', location: '', soon: '', activity: '',
+    whatAreYouLookingFor: '', businessLocations: '', businessActivity: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Form submitted! (API integration coming soon)');
-    onClose();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/api/submit-consultation-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage('Form submitted successfully! We will contact you soon.');
+        setForm({
+          name: '', email: '', country: '', phone: '',
+          whatAreYouLookingFor: '', businessLocations: '', businessActivity: '',
+        });
+        setTimeout(() => {
+          onClose();
+          setSubmitMessage('');
+        }, 2000);
+      } else {
+        setSubmitMessage(data.message || 'Failed to submit form. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitMessage('Failed to submit form. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!show) return null;
@@ -88,14 +121,14 @@ const ConsultationModal = ({ show, onClose }) => {
           <input
             className="border rounded px-3 py-2 text-sm"
             placeholder="What are you looking for?"
-            name="query"
-            value={form.query}
+            name="whatAreYouLookingFor"
+            value={form.whatAreYouLookingFor}
             onChange={handleChange}
           />
           <select
             className="border rounded px-3 py-2 text-sm"
-            name="location"
-            value={form.location}
+            name="businessLocations"
+            value={form.businessLocations}
             onChange={handleChange}
           >
             <option value="" disabled>Business locations</option>
@@ -106,16 +139,29 @@ const ConsultationModal = ({ show, onClose }) => {
           <input
             className="border rounded px-3 py-2 text-sm"
             placeholder="Business activity"
-            name="activity"
-            value={form.activity}
+            name="businessActivity"
+            value={form.businessActivity}
             onChange={handleChange}
           />
 
+          {submitMessage && (
+            <div className={`text-sm p-2 rounded ${
+              submitMessage.includes('successfully') 
+                ? 'bg-green-100 text-green-800' 
+                : 'bg-red-100 text-red-800'
+            }`}>
+              {submitMessage}
+            </div>
+          )}
+
           <button
             type="submit"
-            className="mt-4 bg-gradient-to-r from-[#1A1F39] to-[#06B6D4] text-white font-semibold py-2 px-6 text-sm rounded shadow-md hover:opacity-90 transition-all duration-300 w-full"
+            disabled={isSubmitting}
+            className={`mt-4 bg-gradient-to-r from-[#1A1F39] to-[#06B6D4] text-white font-semibold py-2 px-6 text-sm rounded shadow-md transition-all duration-300 w-full ${
+              isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-90'
+            }`}
           >
-            Book Your Free Consultation
+            {isSubmitting ? 'Submitting...' : 'Book Your Free Consultation'}
           </button>
         </form>
       </div>
