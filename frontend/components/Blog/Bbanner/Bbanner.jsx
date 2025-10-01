@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa'; 
 import vdo from '../BlogVideo/blogvideo.mp4';
+import auditAssuranceImage from '../../../images/servicecard/audit and assurence.jpg';
 import { Link } from 'react-router-dom';
 
 const Bbanner = () => {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef(null);
 
   const handlePlayPause = () => {
@@ -24,6 +26,18 @@ const Bbanner = () => {
 
   return (
     <div className="relative h-[500px] w-full overflow-hidden">
+      {/* Background Image Fallback */}
+      <div 
+        className={`absolute top-0 left-0 w-full h-full object-cover pointer-events-none z-[-2] transition-opacity duration-500 ${
+          videoLoaded ? 'opacity-30' : 'opacity-100'
+        }`}
+        style={{
+          backgroundImage: `url(${auditAssuranceImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      ></div>
 
 
 
@@ -37,8 +51,12 @@ const Bbanner = () => {
         autoPlay
         loop
         muted
-        playsInline 
+        playsInline
+        onLoadedData={() => setVideoLoaded(true)}
       />
+
+      {/* Dark overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
 
 
