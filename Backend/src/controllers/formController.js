@@ -1,7 +1,7 @@
 const db = require('../config/db'); // Import db connection
 const util = require('util');
 const queryAsync = util.promisify(db.query).bind(db); // Promisify db.query
-const { sendCustomerConfirmation, sendAdminNotification } = require('../services/emailService');
+const { sendCustomerConfirmation, sendAdminNotification, sendConsultationCustomerConfirmation, sendConsultationAdminNotification } = require('../services/emailService');
 const s3Service = require('../services/s3Service'); // Import S3 service for image handling
 
 
@@ -62,4 +62,32 @@ const getFormSubmissions = async (req, res) => {
   }
 };
 
-module.exports = { submitForm, getFormSubmissions };
+
+const submitConsultationForm = async (req, res) => {
+  try {
+    const { name, email, country, phone, whatAreYouLookingFor, businessLocations, businessActivity } = req.body;
+
+    // Validate input
+    if (!name || !email || !country || !phone || !whatAreYouLookingFor || !businessLocations || !businessActivity) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const formData = { name, email, country, phone, whatAreYouLookingFor, businessLocations, businessActivity };
+    
+    // Get admin emails
+    const admins = [process.env.ADMIN1_EMAIL, process.env.ADMIN2_EMAIL];
+    
+    // Send emails
+    await Promise.all([
+      sendConsultationCustomerConfirmation(formData),
+      sendConsultationAdminNotification(admins, formData)
+    ]);
+
+    res.status(200).json({ message: 'Consultation form submitted successfully!' });
+  } catch (err) {
+    console.error('Error:', err.message);
+    res.status(500).json({ message: 'Error processing request' });
+  }
+};
+
+module.exports = { submitForm, getFormSubmissions, submitConsultationForm };
