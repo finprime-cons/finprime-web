@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 const countryOptions = [
   'United Arab Emirates', 'India', 'United States', 'United Kingdom',
@@ -28,7 +29,8 @@ const ConsultationModal = ({ show, onClose }) => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('/api/submit-consultation-form', {
+      // First try to submit to the backend API
+      const response = await fetch('https://finprimeconsulting.com/api/submit-consultation-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,20 +42,91 @@ const ConsultationModal = ({ show, onClose }) => {
 
       if (response.ok) {
         setSubmitMessage('Form submitted successfully! We will contact you soon.');
+        
+        // Send email notification using EmailJS
+        const templateParams = {
+          name: form.name,
+          email: form.email,
+          country: form.country,
+          phone: form.phone,
+          whatAreYouLookingFor: form.whatAreYouLookingFor,
+          businessLocations: form.businessLocations,
+          businessActivity: form.businessActivity,
+        };
+
+        emailjs
+          .send('service_m92dk5v', 'template_nhk2mx3', templateParams, '_zGtLeC1_fmp56KY0')
+          .then(
+            (emailResponse) => {
+              console.log('Consultation form email sent successfully!');
+              // Send auto-reply email
+              const autoReplyParams = {
+                to_name: form.name,
+                to_email: form.email,
+              };
+              emailjs.send('service_m92dk5v', 'template_x05occf', autoReplyParams, '_zGtLeC1_fmp56KY0')
+                .then(() => console.log('Auto-reply sent successfully!'))
+                .catch((error) => console.error('Auto-reply failed:', error));
+            },
+            (emailError) => {
+              console.error('EmailJS failed:', emailError);
+            }
+          );
+
+        // Reset form
         setForm({
           name: '', email: '', country: '', phone: '',
           whatAreYouLookingFor: '', businessLocations: '', businessActivity: '',
         });
+        
         setTimeout(() => {
           onClose();
           setSubmitMessage('');
         }, 2000);
       } else {
-        setSubmitMessage(data.message || 'Failed to submit form. Please try again.');
+        throw new Error(data.message || 'Failed to submit form');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setSubmitMessage('Failed to submit form. Please check your connection and try again.');
+      
+      // Fallback: Send email directly using EmailJS if backend fails
+      try {
+        const templateParams = {
+          name: form.name,
+          email: form.email,
+          country: form.country,
+          phone: form.phone,
+          whatAreYouLookingFor: form.whatAreYouLookingFor,
+          businessLocations: form.businessLocations,
+          businessActivity: form.businessActivity,
+        };
+
+        await emailjs.send('service_m92dk5v', 'template_nhk2mx3', templateParams, '_zGtLeC1_fmp56KY0');
+        
+        // Send auto-reply
+        const autoReplyParams = {
+          to_name: form.name,
+          to_email: form.email,
+        };
+        emailjs.send('service_m92dk5v', 'template_x05occf', autoReplyParams, '_zGtLeC1_fmp56KY0')
+          .catch((error) => console.error('Auto-reply failed:', error));
+
+        setSubmitMessage('Form submitted successfully via email! We will contact you soon.');
+        
+        // Reset form
+        setForm({
+          name: '', email: '', country: '', phone: '',
+          whatAreYouLookingFor: '', businessLocations: '', businessActivity: '',
+        });
+        
+        setTimeout(() => {
+          onClose();
+          setSubmitMessage('');
+        }, 2000);
+      } catch (emailError) {
+        console.error('EmailJS fallback failed:', emailError);
+        setSubmitMessage('Failed to submit form. Please check your connection and try again.');
+      }
     } finally {
       setIsSubmitting(false);
     }
