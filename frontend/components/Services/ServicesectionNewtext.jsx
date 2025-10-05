@@ -43,6 +43,12 @@ const ServicesectionNewText = () => {
         }
     }, [location]);
 
+    // Don't show subcontentbottom here if it's already shown in Servicesection2
+    // This prevents duplicate content for financial reporting and other services
+    if (subService.subcontentbottom && subService.subcontentbottom.trim() !== '') {
+        return null; // Don't render anything, content is already shown in Servicesection2
+    }
+
     return (
         <div className="flex flex-col pt-8">
             <div className="w-full font-inter px-6 sm:px-6 md:px-10 lg:px-12 text-sm md:text-base leading-relaxed tracking-wide text-black">
@@ -50,8 +56,6 @@ const ServicesectionNewText = () => {
                 </div>
             </div>
         </div>
-
-
     );
 };
 

@@ -250,6 +250,13 @@ const Servicesection2 = () => {
           className="w-full h-auto object-cover rounded-lg"
         />
       </div>
+      
+      {subService.subcontentbottom && (
+        <div className='w-full font-["Inter"] px-2 text-[16px] leading-7 tracking-[0.5px] text-gray-700 mt-8'>
+          <div className='mb-6' dangerouslySetInnerHTML={{ __html: subService.subcontentbottom }}></div>
+        </div>
+      )}
+      
       <ServicesectionNewText />
     </>
   )}
