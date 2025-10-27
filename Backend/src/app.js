@@ -24,15 +24,16 @@ const app = express();
 templateService.initTemplates();
 
 app.use(cors());  
-app.use(bodyParser.json());
 app.use(morgan('dev'));  
-app.use(express.json());  
 app.use(express.urlencoded({ extended: true }));  
 app.use('/uploads', express.static('uploads')); 
 app.use(helmet());
 
 // Blog Routes
 app.use('/api/blogs', blogRoutes);
+app.use(bodyParser.json());
+app.use(express.json());  
+
 app.use('/api/testimonials', testimonialsRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/dashboard", dashboardRoutes);
