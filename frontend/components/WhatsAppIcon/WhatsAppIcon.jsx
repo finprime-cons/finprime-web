@@ -31,11 +31,11 @@ const ContactIcons = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/971522581876', '_blank'); // Updated WhatsApp number
+    window.open('https://wa.me/971527619299', '_blank'); // Updated WhatsApp number
   };
 
   const handleCallClick = () => {
-    window.location.href = 'tel: +971 52 258 1876'; // Updated phone number
+    window.location.href = 'tel:+971521570972'; // Updated phone number
   };
 
   if (isHeroVisible) {

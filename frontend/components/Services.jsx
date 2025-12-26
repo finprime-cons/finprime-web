@@ -560,8 +560,8 @@ export const metaDetails = {
        
     },
     'aml-compliance-services-in-uae': {
-        title: 'Regulatory & Compliance Services UAE | Dubai Compliance',
-        description: 'Finprime Consulting provides regulatory and compliance services in Dubai and UAE. Stay compliant with local laws, governance frameworks, and risk controls.',
+        title: 'Anti-Money Laundering (AML) Solutions in Dubai, UAE',
+        description: 'Finprime Consulting provides Anti-Money Laundering (AML) Solutions in Dubai, UAE. Stay compliant with local laws, governance frameworks, and risk controls.',
         keywords: 'AML Compliance Services in UAE',
         url:'https://www.finprimeconsulting.com/services/regulatory-and-compliance/aml-compliance-services-in-uae'
        

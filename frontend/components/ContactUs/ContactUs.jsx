@@ -139,7 +139,7 @@ const handleSubmit = (e) => {
                 <h4 className="text-[22px] font-semibold pb-4">UAE</h4>
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><CgMail size={22} className="mr-2 bg-white rounded-full shadow-lg py-1 px-1 transition-all duration-300 ease-out 
                 hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />info@finprimeconsulting.com</p>
-                <p className="flex items-center text-[16px] tracking-[1px] font-medium"><IoIosPhonePortrait size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />+971 52 258 1876</p>
+                <p className="flex items-center text-[16px] tracking-[1px] font-medium"><IoIosPhonePortrait size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />+971 52 157 0972</p>
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><ImAddressBook size={24} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />12A03, The Executive Bay, Tower B, Business Bay, Dubai, United Arab Emirates</p>
                 <LocationMap mapSrc="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.317334553686!2d55.26386477592983!3d25.192518731889233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f69d5bfeaf5f7%3A0xab8c50a717489dbd!2sTower%20B%20-%20Executive%20Towers!5e0!3m2!1sen!2sin!4v1734004210545!5m2!1sen!2sin" />
               </div>
@@ -158,7 +158,7 @@ const handleSubmit = (e) => {
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><CgMail size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all
                  duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />info@finprimeconsulting.com</p>
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><IoIosPhonePortrait size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all
-                 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />+919633747200</p>
+                 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />+91 9633747200</p>
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><ImAddressBook size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all 
                 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />First Floor, Bluemark Building, Kadavanthra, Kochi, Kerala, India</p>
                 <LocationMap mapSrc="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15718.905242896682!2d76.29285820896868!3d9.956714026953446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0872cb66c596cb%3A0xd0c2654dc1875acb!2sKadavanthra%2C%20Kochi%2C%20Ernakulam%2C%20Kerala%20682020!5e0!3m2!1sen!2sin!4v1734004998043!5m2!1sen!2sin" />
@@ -177,7 +177,7 @@ const handleSubmit = (e) => {
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><CgMail size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1
                  transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />info@finprimeconsulting.com</p>
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><IoIosPhonePortrait size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all
-                 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />+97336302789</p>
+                 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />+973 36302789</p>
                 <p className="flex items-center text-[16px] tracking-[1px] font-medium"><ImAddressBook size={22} className="mr-2 bg-white rounded-full shadow-md py-1 px-1 transition-all 
                 duration-300 ease-out hover:bg-gradient-to-r hover:from-brandBlue hover:to-cyan-500 hover:text-white" />First Floor, Qudaibiya Building, Qudaibiya, Kingdom of Bahrain</p>
                 <LocationMap mapSrc="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14317.285695167542!2d50.57970981310372!3d26.218743733156494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49af4831d1cd89%3A0xcc5d98f4294dd0bb!2sQudaibiya%2C%20Manama%2C%20Bahrain!5e0!3m2!1sen!2sin!4v1734005143506!5m2!1sen!2sin" />

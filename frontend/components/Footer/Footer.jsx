@@ -174,7 +174,7 @@ const Footer = () => {
           <div className="mb-6 font-inter text-center md:text-left">
             <h4 className="text-base font-semibold mb-2">Headquarters</h4>
             <p className="text-white text-xs mb-1">Suite 1203, Floor 12A, DAMAC Executive Bay, Business Bay, Dubai, UAE</p>
-            <p className="text-white text-xs">Phone: +971 52 258 1876</p>
+            <p className="text-white text-xs">Phone: +971 52 157 0972</p>
           </div>
 
           {/* Social media and email section */}

@@ -52,6 +52,7 @@ import Refer from './components/Refer/Refer';
 import YoutubeBroadcast from './components/YoutubeBroadcast/YoutubeBroadcast';
 import { IoIosClose } from 'react-icons/io';
 import ConsultationModal from './components/ConsultationModal';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 
 // ⛑️ Error Boundary Component
 class ErrorBoundary extends React.Component {
@@ -103,6 +104,10 @@ const Home = () => {
         <Dropdown />
         <Banner />
         <Text2 />
+        {/* Elfsight Google Reviews */}
+        <div className="w-full flex justify-center my-16 px-6">
+          <div className="elfsight-app-15cb44d6-fd21-461a-867a-eac41c35b30d" data-elfsight-app-lazy></div>
+        </div>
         <Text3 />
         <Servingsection />
         <Inputsection />
@@ -273,6 +278,7 @@ const App = () => {
               <Route path="/freeconsultation" element={<FreeConsultation />} />
               <Route path="/blogs/:slug" element={<BPost />} />
               <Route path="/contactus" element={<Contact />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/offer" element={<Offer />} />
               <Route path="/CEO" element={<CEO />} />
               <Route path="/:industriestitle/:subindustrytitle" element={<PageWrapper><Industries /></PageWrapper>} />
