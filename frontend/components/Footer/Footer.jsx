@@ -212,7 +212,7 @@ const Footer = () => {
           <div className="text-xs text-center md:text-left text-gray-400 pb-8">
             © 2025 - 2028 Finprime Consulting, Presented by{' '}
             <a href="https://zorro.ae" className="text-[#FFD700] hover:text-cyan-500 transition-colors">
-              Zorro Arab Emirates
+              Zorro Ad Agency
             </a>
           </div>
         </div>
