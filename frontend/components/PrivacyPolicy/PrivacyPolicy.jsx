@@ -161,7 +161,7 @@ const PrivacyPolicy = () => {
               {/* Last Updated */}
               <section className="pt-6 border-t border-gray-300">
                 <p className="text-sm text-gray-600 font-inter italic">
-                  Last updated: December 2025
+                  Last updated: January 2026
                 </p>
               </section>
             </div>
