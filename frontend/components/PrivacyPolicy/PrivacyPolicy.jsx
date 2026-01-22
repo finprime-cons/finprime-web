@@ -153,7 +153,7 @@ const PrivacyPolicy = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
-                    Zorro Arab Emirates
+                    Zorro Ad Agency
                   </a>.
                 </p>
               </section>
